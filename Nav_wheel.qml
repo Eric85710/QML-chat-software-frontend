@@ -8,10 +8,10 @@ Item {
     property int currentIndex: 0    // 當前選中
     property int itemWidth: 100     // 每個項目寬度
 
-    signal indexChanged(int index)   // ✅ signal 名稱不帶 on 開頭
+    signal indexChanged(int index)
 
-    width: 100
-    height: nav_bar.height
+    width: 300
+    height: 200
 
     Flickable {
         id: flick
@@ -49,13 +49,13 @@ Item {
             // 自動對齊到最近項目
             var target = Math.round((contentX + flick.width/2 - root.itemWidth/2) / root.itemWidth) * root.itemWidth - flick.width/2 + root.itemWidth/2;
             contentX = target;
-            root.currentIndex = Math.round(contentX / root.itemWidth)
-            root.indexChanged(root.currentIndex)   // ✅ 發出 signal
+            root.currentIndex = Math.round((contentX + flick.width/2 - root.itemWidth/2) / root.itemWidth);
+            root.indexChanged(root.currentIndex);
         }
 
         // 拖動過程中更新當前 index
         onContentXChanged: {
-            root.currentIndex = Math.round(contentX / root.itemWidth)
+            root.currentIndex = Math.round((contentX + flick.width/2 - root.itemWidth/2) / root.itemWidth);
         }
     }
 
@@ -63,8 +63,8 @@ Item {
     Rectangle {
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.verticalCenter: parent.verticalCenter
-        width: root.itemWidth - 8
-        height: nav_bar.height - 8
+        width: root.itemWidth
+        height: 80
         color: "#80808080"
         radius: 10
     }
