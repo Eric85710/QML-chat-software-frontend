@@ -5,6 +5,7 @@ import QtQuick.Layouts
 import QtQuick.Effects
 
 ApplicationWindow {
+    id:whole_app_window
     width: 640
     height: 480
     visible: true

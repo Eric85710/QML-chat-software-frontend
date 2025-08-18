@@ -1,4 +1,3 @@
-// PickerWheel.qml
 import QtQuick
 import QtQuick.Controls
 
@@ -13,60 +12,60 @@ Item {
     width: 300
     height: 200
 
-    Flickable {
-        id: flick
+    MouseArea{
+        id:nav_touch_area
+        anchors.fill: whole_app_window
+        drag.target: nav_listView
+        drag.axis: Drag.XAxis
+        cursorShape: Qt.OpenHandCursor
+    }
+
+    ListView {
+        id: nav_listView
         anchors.fill: parent
-        contentWidth: row_list.childrenRect.width
-        interactive: true
+        orientation: ListView.Horizontal
+        boundsBehavior: Flickable.StopAtBounds
+        snapMode: ListView.SnapToItem
+        highlightMoveDuration: 200
+        highlightRangeMode: ListView.StrictlyEnforceRange
+        preferredHighlightBegin: (width - root.itemWidth) / 2
+        preferredHighlightEnd: (width + root.itemWidth) / 2
         clip: true
 
-        Row {
-            id: row_list
+        model: root.model
+        currentIndex: root.currentIndex
+
+        delegate: Item {
+            width: root.itemWidth
             height: parent.height
-            spacing: 10
 
-            Repeater {
-                model: root.model.length
-                delegate: Item {
-                    width: root.itemWidth
-                    height: parent.height
+            Text {
+                anchors.centerIn: parent
+                text: modelData
+                font.pixelSize: 20
+                font.weight: Font.Bold
 
-                    Text {
-                        anchors.centerIn: parent
-                        text: root.model[index]
-                        font.pixelSize: 20
-                        font.weight: Font.Bold
-
-                        // 動態縮放和顏色
-                        property real distanceToCenter: Math.abs((index*root.itemWidth + root.itemWidth/2) - (flick.contentX + flick.width/2))
-                        scale: Math.max(0.8, 1 - distanceToCenter/200)
-                        color: distanceToCenter < root.itemWidth/2 ? "blue" : "black"
-                    }
-                }
+                // 動態縮放與顏色
+                property real distanceToCenter: Math.abs((ListView.view.contentX + index * root.itemWidth + root.itemWidth / 2) - (ListView.view.contentX + ListView.view.width / 2))
+                scale: Math.max(0.8, 1 - distanceToCenter / 200)
+                color: distanceToCenter < root.itemWidth / 2 ? "blue" : "black"
             }
         }
 
-        onMovementEnded: {
-            // 自動對齊到最近項目
-            var target = Math.round((contentX + flick.width/2 - root.itemWidth/2) / root.itemWidth) * root.itemWidth - flick.width/2 + root.itemWidth/2;
-            contentX = target;
-            root.currentIndex = Math.round((contentX + flick.width/2 - root.itemWidth/2) / root.itemWidth);
-            root.indexChanged(root.currentIndex);
-        }
-
-        // 拖動過程中更新當前 index
-        onContentXChanged: {
-            root.currentIndex = Math.round((contentX + flick.width/2 - root.itemWidth/2) / root.itemWidth);
+        onCurrentIndexChanged: {
+            root.currentIndex = currentIndex
+            root.indexChanged(currentIndex)
         }
     }
 
     // 中間選中框
     Rectangle {
-        anchors.horizontalCenter: parent.horizontalCenter
         anchors.verticalCenter: parent.verticalCenter
+        anchors.horizontalCenter: parent.horizontalCenter
         width: root.itemWidth
-        height: nav_bar.height
+        height: 40
         color: "#80808080"
         radius: 10
+        z: 1
     }
 }
