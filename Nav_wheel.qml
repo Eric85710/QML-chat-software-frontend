@@ -9,16 +9,9 @@ Item {
 
     signal indexChanged(int index)
 
-    width: 300
-    height: 200
+    width: whole_app_window.width
+    height: whole_app_window.height
 
-    MouseArea{
-        id:nav_touch_area
-        anchors.fill: whole_app_window
-        drag.target: nav_listView
-        drag.axis: Drag.XAxis
-        cursorShape: Qt.OpenHandCursor
-    }
 
     ListView {
         id: nav_listView
@@ -48,7 +41,6 @@ Item {
                 // 動態縮放與顏色
                 property real distanceToCenter: Math.abs((ListView.view.contentX + index * root.itemWidth + root.itemWidth / 2) - (ListView.view.contentX + ListView.view.width / 2))
                 scale: Math.max(0.8, 1 - distanceToCenter / 200)
-                color: distanceToCenter < root.itemWidth / 2 ? "blue" : "black"
             }
         }
 
