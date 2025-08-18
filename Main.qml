@@ -20,9 +20,11 @@ ApplicationWindow {
 
     //nav_bar
     header: ToolBar {
+        id:nav_bar
 
         height: 50
 
+        //nav bar color
         background: Item {
             anchors.fill: parent
 
@@ -34,51 +36,21 @@ ApplicationWindow {
             }
         }
 
-        RowLayout {
+        //nav_wheel_layout
+        RowLayout{
+
             anchors.centerIn: parent
-            spacing: 40
 
-            ToolButton {
-                id:server_btn
-                text: "server"
 
-                background: Rectangle {
-                    radius: 8
-                    color: "#66555555"
+            Nav_wheel{
+                id: pickerWheel
+                anchors.centerIn: parent
+                model: ["Apple", "Banana", "Cherry", "Date", "Grape", "Lemon", "Mango"]
+
+                onIndexChanged: {
+                    console.log("選中項目:", model[currentIndex])
                 }
-            }
 
-
-            ToolButton {
-                id:marketplace_btn
-                text: "marketplace"
-
-                background: Rectangle {
-                    radius: 8
-                    color: "#66555555"
-                }
-                onClicked: console.log("go setting")
-
-                PropertyAnimation {
-                    target: marketplace_btn
-                    property: "rotation"
-                    from: 0
-                    to: 360
-                    duration: 2000
-                    loops: Animation.Infinite
-                    easing.type: Easing.InOutQuad
-                    running: true
-                }
-            }
-
-            ToolButton {
-                text: "message"
-
-                background: Rectangle {
-                    radius: 8
-                    color: "#66555555"
-                }
-                onClicked: console.log("go message")
             }
         }
     }

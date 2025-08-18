@@ -19,6 +19,7 @@ qt_add_qml_module(appqrc_test
     QML_FILES
         Main.qml
         RESOURCES resources.qrc
+        QML_FILES Nav_wheel.qml
 )
 
 
