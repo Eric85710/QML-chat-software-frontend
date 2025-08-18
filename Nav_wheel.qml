@@ -35,6 +35,7 @@ Item {
                         anchors.centerIn: parent
                         text: root.model[index]
                         font.pixelSize: 20
+                        font.weight: Font.Bold
 
                         // 動態縮放和顏色
                         property real distanceToCenter: Math.abs((index*root.itemWidth + root.itemWidth/2) - (flick.contentX + flick.width/2))
@@ -64,7 +65,7 @@ Item {
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.verticalCenter: parent.verticalCenter
         width: root.itemWidth
-        height: 80
+        height: nav_bar.height
         color: "#80808080"
         radius: 10
     }
