@@ -9,15 +9,27 @@ Item {
     property int itemWidth: 100     // 每個項目寬度
     property bool allowScroll: false
 
+
+    Timer {
+        id:scroll_release_timer                 //Timer for avoid snap bug
+        interval: 600
+        running: false
+        repeat: false
+        onTriggered: root.allowScroll = false
+    }
+
     focus: true
     Keys.onPressed: {
         if (event.modifiers & Qt.ControlModifier || event.modifiers & Qt.MetaModifier) {
+            scroll_release_timer.stop()
             root.allowScroll = true
             event.accepted = true
         }
     }
     Keys.onReleased: {
-        root.allowScroll = false
+        if (event.key === Qt.Key_Control || event.key === Qt.Key_Meta) {
+            scroll_release_timer.restart()
+        }
         event.accepted = true
     }
 
@@ -102,10 +114,10 @@ Item {
         anchors.verticalCenter: parent.verticalCenter
         anchors.horizontalCenter: parent.horizontalCenter
 
-        width: root.allowScroll ? root.itemWidth * 1.4 : root.itemWidth
+        width: root.allowScroll ? root.itemWidth * 1.2 : root.itemWidth
         height: root.allowScroll ? 60 : 40
 
-        Behavior on width {
+        Behavior on height {
             NumberAnimation{
                 duration: 200
                 easing.type: Easing.InOutQuad
