@@ -1,3 +1,4 @@
+//Nav_wheel.qml
 import QtQuick
 import QtQuick.Controls
 
@@ -6,14 +7,30 @@ Item {
     property var model: []          // 選項列表
     property int currentIndex: 0    // 當前選中
     property int itemWidth: 100     // 每個項目寬度
+    property bool allowScroll: false
+
+    focus: true
+    Keys.onPressed: {
+        if (event.modifiers & Qt.ControlModifier || event.modifiers & Qt.MetaModifier) {
+            root.allowScroll = true
+            event.accepted = true
+        }
+    }
+    Keys.onReleased: {
+        root.allowScroll = false
+        event.accepted = true
+    }
+
+    Component.onCompleted: root.forceActiveFocus()
 
     signal indexChanged(int index)
 
     width: whole_app_window.width
-    height: whole_app_window.height
+    height: whole_app_window.height * 2
 
 
     ListView {
+        interactive: root.allowScroll
         id: nav_listView
         anchors.fill: parent
         orientation: ListView.Horizontal
@@ -24,6 +41,7 @@ Item {
         preferredHighlightBegin: (width - root.itemWidth) / 2
         preferredHighlightEnd: (width + root.itemWidth) / 2
         clip: true
+
 
         model: root.model
         currentIndex: root.currentIndex
@@ -38,7 +56,6 @@ Item {
                 anchors.fill: parent
                 onClicked: {
                     nav_listView.currentIndex = index
-                    console.log("選取值", modelData)
                 }
             }
 
@@ -81,6 +98,7 @@ Item {
 
     // 中間選中框
     Rectangle {
+        id:choosing_rect
         anchors.verticalCenter: parent.verticalCenter
         anchors.horizontalCenter: parent.horizontalCenter
         width: root.itemWidth

@@ -23,7 +23,9 @@ ApplicationWindow {
     header: ToolBar {
         id:nav_bar
 
-        height: 50
+        property int nav_bar_h: 50
+
+        height: nav_bar_h
 
         //nav bar color
         background: Item {
