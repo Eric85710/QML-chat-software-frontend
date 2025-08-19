@@ -32,6 +32,14 @@ Item {
             width: root.itemWidth
             height: parent.height
 
+            MouseArea {
+                anchors.fill: parent
+                onClicked: {
+                    nav_listView.currentIndex = index
+                    console.log("選取值", modelData)
+                }
+            }
+
             Text {
                 anchors.centerIn: parent
                 text: modelData
