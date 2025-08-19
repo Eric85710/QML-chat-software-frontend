@@ -50,11 +50,11 @@ Item {
 
 
                 //是否為選中項目
-                property bool isSelected: ListView.view.currentIndex === ListView.view.currentIndex
+                property bool isNavSelected: index === root.currentIndex
 
                 //顏色與縮放
-                color: isSelected ? "#ffffff" : "#aaaaaa"
-                scale: isSelected ? 1.2 : 0.6
+                color: isNavSelected ? "#ffffff" : "#aaaaaa"
+                scale: isNavSelected ? 1.0 : 0.6
 
                 //動畫效果
                 Behavior on scale {
