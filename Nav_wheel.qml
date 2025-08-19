@@ -101,8 +101,23 @@ Item {
         id:choosing_rect
         anchors.verticalCenter: parent.verticalCenter
         anchors.horizontalCenter: parent.horizontalCenter
-        width: root.itemWidth
-        height: 40
+
+        width: root.allowScroll ? root.itemWidth * 1.4 : root.itemWidth
+        height: root.allowScroll ? 60 : 40
+
+        Behavior on width {
+            NumberAnimation{
+                duration: 200
+                easing.type: Easing.InOutQuad
+            }
+        }
+        Behavior on width {
+            NumberAnimation{
+                duration: 200
+                easing.type: Easing.InOutBounce
+            }
+        }
+
         color: "#80808080"
         radius: 10
         z: 1
