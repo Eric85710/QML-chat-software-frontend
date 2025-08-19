@@ -28,11 +28,13 @@ Item {
         model: root.model
         currentIndex: root.currentIndex
 
-        delegate: Item {
+
+
+        delegate: Item {                    //each option repeat in here
             width: root.itemWidth
             height: parent.height
 
-            MouseArea {
+            MouseArea {                     //點選功能
                 anchors.fill: parent
                 onClicked: {
                     nav_listView.currentIndex = index
@@ -46,9 +48,28 @@ Item {
                 font.pixelSize: 20
                 font.weight: Font.Bold
 
-                // 動態縮放與顏色
-                property real distanceToCenter: Math.abs((ListView.view.contentX + index * root.itemWidth + root.itemWidth / 2) - (ListView.view.contentX + ListView.view.width / 2))
-                scale: Math.max(0.8, 1 - distanceToCenter / 200)
+
+                //是否為選中項目
+                property bool isSelected: ListView.view.currentIndex === ListView.view.currentIndex
+
+                //顏色與縮放
+                color: isSelected ? "#ffffff" : "#aaaaaa"
+                scale: isSelected ? 1.2 : 0.6
+
+                //動畫效果
+                Behavior on scale {
+                    NumberAnimation{
+                        duration: 200
+                        easing.type: Easing.InOutQuad
+                    }
+                }
+
+                //顏色動畫
+                Behavior on color {
+                    ColorAnimation {
+                        duration: 200
+                    }
+                }
             }
         }
 
