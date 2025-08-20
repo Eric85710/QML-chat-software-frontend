@@ -48,7 +48,7 @@ ApplicationWindow {
             Nav_wheel{
                 id: pickerWheel
                 anchors.centerIn: parent
-                model: ["Apple", "Banana", "Cherry", "Date", "Grape", "Lemon", "Mango"]
+                model: ["message", "server", "marketplace", "setting", "workspace"]
 
                 onIndexChanged: {
                     console.log("選中項目:", model[currentIndex])

@@ -36,9 +36,11 @@ Item {
         snapMode: ListView.SnapToItem
         highlightMoveDuration: 200
         highlightRangeMode: ListView.StrictlyEnforceRange
-        preferredHighlightBegin: (width - root.itemWidth) / 2
-        preferredHighlightEnd: (width + root.itemWidth) / 2
+        preferredHighlightBegin: (width - nav_listView.currentItem.width) / 2
+        preferredHighlightEnd: (width + nav_listView.currentItem.width) / 2
         clip: true
+
+
 
 
         model: root.model
@@ -47,7 +49,18 @@ Item {
 
 
         delegate: Item {                    //each option repeat in here
-            width: root.itemWidth
+
+            Text_width_calulator{
+                id: widthCalc
+                text: modelData
+                fontSize: 20
+                bold: true
+                padding: 40
+            }
+
+
+
+            width: widthCalc.calculatedWidth
             height: parent.height
 
             MouseArea {                     //點選功能
