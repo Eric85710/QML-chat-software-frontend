@@ -10,27 +10,13 @@ Item {
     property bool allowScroll: false
 
 
-    Timer {
-        id:scroll_release_timer                 //Timer for avoid snap bug
-        interval: 600
-        running: false
-        repeat: false
-        onTriggered: root.allowScroll = false
-    }
 
-    focus: true
+    focus: true                                 //command press toggle
     Keys.onPressed: {
         if (event.modifiers & Qt.ControlModifier || event.modifiers & Qt.MetaModifier) {
-            scroll_release_timer.stop()
             root.allowScroll = true
             event.accepted = true
         }
-    }
-    Keys.onReleased: {
-        if (event.key === Qt.Key_Control || event.key === Qt.Key_Meta) {
-            scroll_release_timer.restart()
-        }
-        event.accepted = true
     }
 
     Component.onCompleted: root.forceActiveFocus()
@@ -106,6 +92,16 @@ Item {
             root.currentIndex = currentIndex
             root.indexChanged(currentIndex)
         }
+
+        onMovementEnded: {                          //avoiding snap bug
+            root.allowScroll = false
+        }
+
+        onFlickEnded: {
+            root.allowScroll = false
+        }
+
+
     }
 
     // 中間選中框
