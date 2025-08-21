@@ -90,6 +90,11 @@ ApplicationWindow {
         id: message_Page
     }
 
+    //marketplace
+    Marketplace_page_q{
+        id:marketplace_Page
+    }
+
 
 
 

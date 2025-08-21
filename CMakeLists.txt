@@ -23,6 +23,7 @@ qt_add_qml_module(appqrc_test
         QML_FILES Text_width_calulator.qml
         QML_FILES Server_page_q.qml
         QML_FILES Message_page_q.qml
+        QML_FILES Marketplace_page_q.qml
 )
 
 
