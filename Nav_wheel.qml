@@ -64,20 +64,20 @@ Item {
             width: widthCalc.calculatedWidth
             height: parent.height
 
-            MouseArea {                     //點選功能
-                id: nav_bar_click_area
-                anchors.fill: parent
-                onClicked: {
-                    nav_listView.currentIndex = index
-                }
-                propagateComposedEvents: true
-            }
-
             Rectangle {
-                anchors.fill: parent
-                border.color: "red"
-                border.width: 2
-                color: "transparent"
+                    id: localNavColor
+                    anchors.verticalCenter: parent.verticalCenter
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    width: parent.width
+                    height: 50  // 與 ToolBar 的 nav_bar_h 一致
+                    color: "transparent"
+
+                    MouseArea {
+                        anchors.fill: parent
+                        onClicked: {
+                        nav_listView.currentIndex = index
+                    }
+                }
             }
 
             Text {
