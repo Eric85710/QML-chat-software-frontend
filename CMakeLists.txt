@@ -21,7 +21,8 @@ qt_add_qml_module(appqrc_test
         RESOURCES resources.qrc
         QML_FILES Nav_wheel.qml
         QML_FILES Text_width_calulator.qml
-        QML_FILES server_page_q.qml
+        QML_FILES Server_page_q.qml
+        QML_FILES Message_page_q.qml
 )
 
 

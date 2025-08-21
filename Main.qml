@@ -79,71 +79,15 @@ ApplicationWindow {
 
 
 
-
-    Component {
-        id: server_Page
-        Rectangle {
-            anchors.fill: parent
-            color: "red"
-            opacity: 0
-
-            Behavior on opacity {
-                NumberAnimation { duration: 300 }
-            }
-
-            // 淡入效果
-            Component.onCompleted: opacity = 1
-
-            Text {
-                text: "Server Page"
-                anchors.centerIn: parent
-                color: "white"
-            }
-        }
+    //server
+    Server_page_q{
+        id:server_Page
     }
 
-    Component {
+
+    //Message
+    Message_page_q{
         id: message_Page
-        Rectangle {
-            anchors.fill: parent
-            color: "white"
-            opacity: 0
-
-            Behavior on opacity {
-                NumberAnimation { duration: 300 }
-            }
-
-            // 淡入效果
-            Component.onCompleted: opacity = 1
-
-            Text {
-                text: "Server Page"
-                anchors.centerIn: parent
-                color: "white"
-            }
-        }
-    }
-
-    Component {
-        id: marketplace_Page
-        Rectangle {
-            anchors.fill: parent
-            color: "blue"
-            opacity: 0
-
-            Behavior on opacity {
-                NumberAnimation { duration: 300 }
-            }
-
-            // 淡入效果
-            Component.onCompleted: opacity = 1
-
-            Text {
-                text: "Server Page"
-                anchors.centerIn: parent
-                color: "white"
-            }
-        }
     }
 
 
