@@ -63,19 +63,18 @@ ApplicationWindow {
     Loader {
         id: pageLoader
         anchors.fill: parent
-        anchors.topMargin: nav_bar.height
+        anchors.topMargin: 10
         sourceComponent: {
             switch (pickerWheel.model[pickerWheel.currentIndex]) {
-                case "message": return messagePage
+                case "message": return message_Page
                 case "server": return server_Page
-                case "marketplace": return marketplacePage
-                case "setting": return settingPage
-                case "workspace": return workspacePage
-                default: return null
+                case "marketplace": return marketplace_Page
+                case "setting": return setting_Page
+                case "workspace": return workspace_Page
+                default: return server_Page
             }
         }
     }
-
 
 
 
@@ -102,6 +101,52 @@ ApplicationWindow {
             }
         }
     }
+
+    Component {
+        id: message_Page
+        Rectangle {
+            anchors.fill: parent
+            color: "white"
+            opacity: 0
+
+            Behavior on opacity {
+                NumberAnimation { duration: 300 }
+            }
+
+            // 淡入效果
+            Component.onCompleted: opacity = 1
+
+            Text {
+                text: "Server Page"
+                anchors.centerIn: parent
+                color: "white"
+            }
+        }
+    }
+
+    Component {
+        id: marketplace_Page
+        Rectangle {
+            anchors.fill: parent
+            color: "blue"
+            opacity: 0
+
+            Behavior on opacity {
+                NumberAnimation { duration: 300 }
+            }
+
+            // 淡入效果
+            Component.onCompleted: opacity = 1
+
+            Text {
+                text: "Server Page"
+                anchors.centerIn: parent
+                color: "white"
+            }
+        }
+    }
+
+
 
 
 }
