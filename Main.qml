@@ -59,4 +59,49 @@ ApplicationWindow {
     }
 
 
+
+    Loader {
+        id: pageLoader
+        anchors.fill: parent
+        anchors.topMargin: nav_bar.height
+        sourceComponent: {
+            switch (pickerWheel.model[pickerWheel.currentIndex]) {
+                case "message": return messagePage
+                case "server": return server_Page
+                case "marketplace": return marketplacePage
+                case "setting": return settingPage
+                case "workspace": return workspacePage
+                default: return null
+            }
+        }
+    }
+
+
+
+
+
+
+    Component {
+        id: server_Page
+        Rectangle {
+            anchors.fill: parent
+            color: "red"
+            opacity: 0
+
+            Behavior on opacity {
+                NumberAnimation { duration: 300 }
+            }
+
+            // 淡入效果
+            Component.onCompleted: opacity = 1
+
+            Text {
+                text: "Server Page"
+                anchors.centerIn: parent
+                color: "white"
+            }
+        }
+    }
+
+
 }
