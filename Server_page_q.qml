@@ -8,7 +8,7 @@ Component {
         color: "transparent"
 
         Behavior on opacity {
-            NumberAnimation { duration: 300 }
+            NumberAnimation { duration: 400 }
         }
 
         // 淡入效果
@@ -24,11 +24,22 @@ Component {
             height: parent.height
             width: 300
 
-            property bool animateNow: false
-            x: animateNow ? 300 : 0
+            x:-200
+            y: 60
+            Component.onCompleted: {
+                x = 0
+                y = 0
+            }
+
             Behavior on x {
                 NumberAnimation {
-                    duration: 800
+                    duration: 200
+                    easing.type: Easing.InOutQuad
+                }
+            }
+            Behavior on y {
+                NumberAnimation {
+                    duration: 300
                     easing.type: Easing.InOutQuad
                 }
             }

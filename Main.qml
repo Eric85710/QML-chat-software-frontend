@@ -75,9 +75,6 @@ ApplicationWindow {
                 default: return server_Page
             }
         }
-        onLoaded: {
-            server_Page.item.animateNow = true
-        }
     }
 
 
