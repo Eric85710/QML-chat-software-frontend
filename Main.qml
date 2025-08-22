@@ -60,6 +60,7 @@ ApplicationWindow {
 
 
 
+    //page loader
     Loader {
         id: pageLoader
         anchors.fill: parent

@@ -5,16 +5,24 @@ Component {
     Rectangle {
         anchors.fill: parent
         opacity: 0
+        color: "transparent"
 
         Behavior on opacity {
             NumberAnimation { duration: 300 }
         }
-
         // 淡入效果
         Component.onCompleted: opacity = 1
 
+
+
+
+
+
+
+
         Rectangle{
-            anchors.fill: parent
+            height: parent.height
+            width: 300
             color: "Blue"
             Text {
                 text: "Server Page"
