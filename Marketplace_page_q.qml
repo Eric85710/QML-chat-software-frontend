@@ -21,8 +21,10 @@ Component {
 
 
         Rectangle{
-            height: parent.height
+            id:market_search_bar
+            height: 60
             width: 300
+            anchors.centerIn: parent
             color: "Blue"
             Text {
                 text: "Server Page"
