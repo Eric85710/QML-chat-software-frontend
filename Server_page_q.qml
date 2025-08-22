@@ -1,54 +1,51 @@
-//server_page_q.qml
+//Server_page_q.qml
 import QtQuick
 
 Component {
-    Rectangle {
-        anchors.fill: parent
-        opacity: 0
-        color: "transparent"
+    Item {
+        Rectangle {
+            id: server_block
+            anchors.fill: parent
+            opacity: 0
+            color: "transparent"
 
-        Behavior on opacity {
-            NumberAnimation { duration: 400 }
-        }
+            Behavior on opacity {
+                NumberAnimation { duration: 300 }
+            }
 
-        // 淡入效果
-        Component.onCompleted: opacity = 1
-
-
-
-
-
-
-        Rectangle{
-            id:server_list
-            height: parent.height
-            width: 300
-
-            x:-200
-            y: 60
             Component.onCompleted: {
-                x = 0
-                y = 0
+                opacity = 1
+                state = "entered"
             }
 
-            Behavior on x {
-                NumberAnimation {
-                    duration: 200
-                    easing.type: Easing.InOutQuad
-                }
-            }
-            Behavior on y {
-                NumberAnimation {
-                    duration: 300
-                    easing.type: Easing.InOutQuad
-                }
+            states: State {
+                name: "entered"
+                PropertyChanges { target: chat_list; x: 0 }
+                PropertyChanges { target: chat_block; x: parent.width - chat_block.width }
             }
 
-            color: "red"
-            Text {
-                text: "Server Page"
-                anchors.centerIn: parent
-                color: "white"
+            transitions: Transition {
+                NumberAnimation { properties: "x"; duration: 300; easing.type: Easing.InOutQuad }
+            }
+
+            Rectangle {
+                id: chat_list
+                color: "#44000000"
+                width: 100
+                height: parent.height
+                radius: 12
+                x: -chat_list.width
+                y: 0
+            }
+
+            Rectangle {
+                id: chat_block
+                color: "#44000000"
+                width: server_block.width - chat_list.width - 20
+                height: parent.height
+                radius: 12
+                x: parent.width
+                y: 0
             }
         }
     }

@@ -41,11 +41,32 @@ Component {
             Rectangle {
                 id: chat_block
                 color: "#44000000"
-                width: 600
+                width: message_block.width - chat_list.width - 20
                 height: parent.height
                 radius: 12
                 x: parent.width
                 y: 0
+
+                Column {
+                        id: messageColumn
+                        anchors.fill: parent
+                        spacing: 8
+                        padding: 12
+
+                        // 範例訊息
+                        Repeater {
+                            model: 5  // 你可以改成動態 model
+                            delegate: Rectangle {
+                                width: parent.width
+                                height: implicitHeight
+                                color: "#eeeeee"
+                                radius: 8
+                                border.color: "#cccccc"
+                                border.width: 1
+
+                            }
+                        }
+                }
             }
         }
     }
