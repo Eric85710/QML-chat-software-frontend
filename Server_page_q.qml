@@ -24,19 +24,20 @@ Component {
             height: parent.height
             width: 300
 
+            property bool animateNow: false
+            x: animateNow ? 300 : 0
+            Behavior on x {
+                NumberAnimation {
+                    duration: 800
+                    easing.type: Easing.InOutQuad
+                }
+            }
+
             color: "red"
             Text {
                 text: "Server Page"
                 anchors.centerIn: parent
                 color: "white"
-            }
-
-
-            NumberAnimation {
-                target: server_list
-                property: "x"
-                duration: 200
-                easing.type: Easing.InOutQuad
             }
         }
     }
