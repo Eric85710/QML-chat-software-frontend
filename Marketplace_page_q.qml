@@ -113,19 +113,27 @@ Component {
 
                                 property int plugin_item_width: 120
                                 property int plugin_item_count: Math.floor(width / plugin_item_width)
+                                spacing: 30
 
                                 Repeater {
                                     model: row_1.plugin_item_count
-                                    delegate: Rectangle {
-                                        width: row_1.plugin_item_width
+                                    delegate: Item {
+                                        width: row_1.plugin_item_width + 10  // 加上間距
                                         height: 80
-                                        color: index % 2 === 0 ? "white" : "lightgreen"
-                                        Text {
-                                            anchors.centerIn: parent
-                                            text: "Item " + index
+
+                                        Rectangle {
+                                            width: row_1.plugin_item_width
+                                            height: parent.height
+                                            anchors.left: parent.left
+                                            color: index % 2 === 0 ? "white" : "lightgreen"
+                                            Text {
+                                                anchors.centerIn: parent
+                                                text: "Item " + index
+                                            }
                                         }
                                     }
                                 }
+
                             }
                         }
                     }
