@@ -9,6 +9,29 @@ Component {
             anchors.fill: parent
             color: "transparent"
 
+            //sliding animation
+            Component {
+                id: slideInAnimation
+                ParallelAnimation {
+                    NumberAnimation {
+                        target: server_list_loadin_animation
+                        property: "x"
+                        to: 0
+                        duration: 300
+                        easing.type: Easing.InOutQuad
+                    }
+                    NumberAnimation {
+                        target: server_list_loadin_animation
+                        property: "y"
+                        to: 0
+                        duration: 300
+                        easing.type: Easing.InOutQuad
+                    }
+                }
+            }
+
+
+
 
 
 
@@ -26,6 +49,8 @@ Component {
             opacity: 0
             Component.onCompleted: {
                 server_block.state = "entered"
+                var anim = slideInAnimation.createObject(server_list_loadin_animation)
+                anim.start()
 
             }
 
@@ -47,14 +72,10 @@ Component {
 
                     transform: Translate{
                         id:server_list_loadin_animation
-                        x:0
+                        x:-100
+                        y:100
                     }
 
-                    Component.onCompleted: {
-                        var loadin_anim_1 = NumberAnimation {
-                            target: server_list_loadin_animation
-                        }
-                    }
                 }
 
                 Rectangle {
@@ -64,7 +85,7 @@ Component {
                     Layout.fillHeight: true
                     radius: 12
 
-                    OpacityAnimator { target: server_chat_block; from: 0; to: 1; duration: 300 }
+                    OpacityAnimator { target: server_chat_block; from: -100; to: 1; duration: 300 }
                 }
 
                 Rectangle {
