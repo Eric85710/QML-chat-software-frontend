@@ -105,17 +105,25 @@ Component {
 
                         Column {
                             width: parent.width
-                            spacing: 10
+                            spacing: 60
 
-                            Repeater {
-                                model: 20
-                                delegate: Rectangle {
-                                    width: parent.width
-                                    height: 40
-                                    color: index % 2 === 0 ? "white" : "lightgreen"
-                                    Text {
-                                        anchors.centerIn: parent
-                                        text: "Item " + index
+                            Row{
+                                id: row_1
+                                width: parent.width
+
+                                property int plugin_item_width: 120
+                                property int plugin_item_count: Math.floor(width / plugin_item_width)
+
+                                Repeater {
+                                    model: row_1.plugin_item_count
+                                    delegate: Rectangle {
+                                        width: row_1.plugin_item_width
+                                        height: 80
+                                        color: index % 2 === 0 ? "white" : "lightgreen"
+                                        Text {
+                                            anchors.centerIn: parent
+                                            text: "Item " + index
+                                        }
                                     }
                                 }
                             }
