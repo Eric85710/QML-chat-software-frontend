@@ -18,14 +18,23 @@ Component {
                 state = "entered"
             }
 
+
+
+
+
+
+
             states: State {
                 name: "entered"
                 PropertyChanges { target: chat_list; x: 0 }
                 PropertyChanges { target: chat_block; x: parent.width - chat_block.width }
+                PropertyChanges { target: chat_list; y: 0 }
+                PropertyChanges { target: chat_block; y: parent.height - chat_block.height }
             }
 
             transitions: Transition {
                 NumberAnimation { properties: "x"; duration: 300; easing.type: Easing.InOutQuad }
+                NumberAnimation { properties: "y"; duration: 300; easing.type: Easing.InOutQuad }
             }
 
             Rectangle {
@@ -35,7 +44,7 @@ Component {
                 height: parent.height
                 radius: 12
                 x: -chat_list.width
-                y: 0
+                y: chat_list.height
             }
 
             Rectangle {
@@ -45,7 +54,7 @@ Component {
                 height: parent.height
                 radius: 12
                 x: parent.width
-                y: 0
+                y: parent.height
 
                 Column {
                         id: messageColumn
