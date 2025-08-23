@@ -16,14 +16,7 @@ Component {
                 ParallelAnimation {
                     //list_animation
                     NumberAnimation {
-                        target: friends_list_loadin_animation
-                        property: "x"
-                        to: 0
-                        duration: 300
-                        easing.type: Easing.InOutQuad
-                    }
-                    NumberAnimation {
-                        target: friends_list_loadin_animation
+                        target: marketplace_search_bar_loadin_animation
                         property: "y"
                         to: 0
                         duration: 300
@@ -33,14 +26,7 @@ Component {
 
                     //member_list_animation
                     NumberAnimation {
-                        target: message_chat_block_loadin_animation
-                        property: "x"
-                        to: 0
-                        duration: 300
-                        easing.type: Easing.InOutQuad
-                    }
-                    NumberAnimation {
-                        target: message_chat_block_loadin_animation
+                        target: marketplace_plugins__block_loadin_animation
                         property: "y"
                         to: 0
                         duration: 300
@@ -75,43 +61,67 @@ Component {
 
 
             // 主排版區塊
-            RowLayout {
+            ColumnLayout {
                 anchors.fill: parent
                 spacing: 12
 
                 Rectangle {
-                    id: chat_room_list
+                    id: marketplace_search_bar_area
                     color: "#44000000"
-                    Layout.preferredWidth: 820
-                    Layout.fillHeight: true
+                    Layout.fillWidth: true
+                    Layout.preferredHeight: 100
                     radius: 12
 
                     // 淡入動畫
-                    OpacityAnimator { target: chat_room_list; from: 0; to: 1; duration: 300 }
+                    OpacityAnimator { target: marketplace_search_bar_area; from: 0; to: 1; duration: 300 }
 
                     transform: Translate{
-                        id:friends_list_loadin_animation
-                        x:-100
+                        id:marketplace_search_bar_loadin_animation
                         y:100
                     }
-
                 }
 
 
+                //marketplace_plugins_container
                 Rectangle {
-                    id: message_chat_block
+                    id: marketplace_piugins_block
                     color: "#44000000"
                     Layout.fillWidth: true
                     Layout.fillHeight: true
                     radius: 12
 
-                    OpacityAnimator { target: message_chat_block; from: 0; to: 1; duration: 300 }
+                    OpacityAnimator { target: marketplace_piugins_block; from: 0; to: 1; duration: 300 }
 
                     transform: Translate{
-                        id:message_chat_block_loadin_animation
-                        x:100
+                        id:marketplace_plugins__block_loadin_animation
                         y:100
                     }
+
+
+                    //plugins
+                    ScrollView {
+                        width: parent.width
+                        height: parent.height
+
+                        Column {
+                            width: parent.width
+                            spacing: 10
+
+                            Repeater {
+                                model: 20
+                                delegate: Rectangle {
+                                    width: parent.width
+                                    height: 40
+                                    color: index % 2 === 0 ? "white" : "lightgreen"
+                                    Text {
+                                        anchors.centerIn: parent
+                                        text: "Item " + index
+                                    }
+                                }
+                            }
+                        }
+                    }
+
                 }
             }
         }
