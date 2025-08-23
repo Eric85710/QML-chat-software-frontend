@@ -104,6 +104,7 @@ Component {
                         height: parent.height
 
                         Column {
+                            topPadding: 40
                             width: parent.width
                             spacing: 60
 
@@ -112,13 +113,13 @@ Component {
                                 width: parent.width
 
                                 property int plugin_item_width: 120
-                                property int plugin_item_count: Math.floor(width / plugin_item_width)
+                                property int plugin_item_count: Math.floor(width / plugin_item_width) - 1
                                 spacing: 30
 
                                 Repeater {
                                     model: row_1.plugin_item_count
                                     delegate: Item {
-                                        width: row_1.plugin_item_width + 10  // 加上間距
+                                        width: row_1.plugin_item_width // 加上間距
                                         height: 80
 
                                         Rectangle {
