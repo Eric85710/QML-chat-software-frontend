@@ -1,3 +1,4 @@
+//Server_page_q.qml
 import QtQuick
 import QtQuick.Layouts
 import QtQuick.Controls
@@ -13,6 +14,7 @@ Component {
             Component {
                 id: slideInAnimation
                 ParallelAnimation {
+                    //list_animation
                     NumberAnimation {
                         target: server_list_loadin_animation
                         property: "x"
@@ -22,6 +24,31 @@ Component {
                     }
                     NumberAnimation {
                         target: server_list_loadin_animation
+                        property: "y"
+                        to: 0
+                        duration: 300
+                        easing.type: Easing.InOutQuad
+                    }
+
+                    //chat_box_animtion
+                    NumberAnimation {
+                        target: server_chat_block_loadin_animation
+                        property: "y"
+                        to: 0
+                        duration: 300
+                        easing.type: Easing.InOutQuad
+                    }
+
+                    //member_list_animation
+                    NumberAnimation {
+                        target: server_member_list_loadin_animation
+                        property: "x"
+                        to: 0
+                        duration: 300
+                        easing.type: Easing.InOutQuad
+                    }
+                    NumberAnimation {
+                        target: server_member_list_loadin_animation
                         property: "y"
                         to: 0
                         duration: 300
@@ -86,6 +113,11 @@ Component {
                     radius: 12
 
                     OpacityAnimator { target: server_chat_block; from: -100; to: 1; duration: 300 }
+
+                    transform: Translate{
+                        id:server_chat_block_loadin_animation
+                        y:100
+                    }
                 }
 
                 Rectangle {
@@ -96,6 +128,12 @@ Component {
                     radius: 12
 
                     OpacityAnimator { target: server_member_list; from: 0; to: 1; duration: 300 }
+
+                    transform: Translate{
+                        id:server_member_list_loadin_animation
+                        x:100
+                        y:100
+                    }
                 }
             }
         }
