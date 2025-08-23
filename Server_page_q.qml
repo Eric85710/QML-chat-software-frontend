@@ -1,62 +1,81 @@
-//Server_page_q.qml
 import QtQuick
+import QtQuick.Layouts
+import QtQuick.Controls
 
 Component {
     Item {
         Rectangle {
             id: server_block
             anchors.fill: parent
-            opacity: 0
             color: "transparent"
 
-            Behavior on opacity {
-                NumberAnimation { duration: 300 }
-            }
-
-            Component.onCompleted: {
-                opacity = 1
-                state = "entered"
-            }
 
 
 
-
-
+            // 淡入動畫
             states: State {
                 name: "entered"
-                PropertyChanges { target: server_list; x: 0 }
-                PropertyChanges { target: chat_block; x: parent.width - chat_block.width }
-                PropertyChanges { target: server_list; y: 0 }
-                PropertyChanges { target: chat_block; y: parent.height - chat_block.height }
+                PropertyChanges { target: server_block; opacity: 1 }
             }
 
             transitions: Transition {
-                NumberAnimation { properties: "x"; duration: 300; easing.type: Easing.InOutQuad }
-                NumberAnimation { properties: "y"; duration: 300; easing.type: Easing.InOutQuad }
+                NumberAnimation { properties: "opacity"; duration: 300 }
             }
 
-            Rectangle {
-                id: server_list
-                color: "#44000000"
-                width: 100
-                height: parent.height
-                radius: 12
-                x: -server_list.width
-                y: server_list.height
+            // 初始透明，進場時淡入
+            opacity: 0
+            Component.onCompleted: {
+                server_block.state = "entered"
+
             }
 
-            Rectangle {
-                id: chat_block
-                color: "#44000000"
-                width: server_block.width - server_list.width - 20
-                height: parent.height
-                radius: 12
-                x: parent.width
-                y: parent.height
-            }
 
-            Rectangle {
+            // 主排版區塊
+            RowLayout {
+                anchors.fill: parent
+                spacing: 12
 
+                Rectangle {
+                    id: server_list
+                    color: "#44000000"
+                    Layout.preferredWidth: 300
+                    Layout.fillHeight: true
+                    radius: 12
+
+                    // 淡入動畫
+                    OpacityAnimator { target: server_list; from: 0; to: 1; duration: 300 }
+
+                    transform: Translate{
+                        id:server_list_loadin_animation
+                        x:0
+                    }
+
+                    Component.onCompleted: {
+                        var loadin_anim_1 = NumberAnimation {
+                            target: server_list_loadin_animation
+                        }
+                    }
+                }
+
+                Rectangle {
+                    id: server_chat_block
+                    color: "#44000000"
+                    Layout.fillWidth: true
+                    Layout.fillHeight: true
+                    radius: 12
+
+                    OpacityAnimator { target: server_chat_block; from: 0; to: 1; duration: 300 }
+                }
+
+                Rectangle {
+                    id: server_member_list
+                    color: "#44000000"
+                    Layout.preferredWidth: 160
+                    Layout.fillHeight: true
+                    radius: 12
+
+                    OpacityAnimator { target: server_member_list; from: 0; to: 1; duration: 300 }
+                }
             }
         }
     }
