@@ -104,17 +104,22 @@ Component {
                         height: parent.height
 
                         Column {
+                            id:entire_plugin_area
                             topPadding: 40
                             width: parent.width
                             spacing: 60
 
+                            property int plugin_item_width: 120
+                            property int plugin_item_spacing: 30
+                            property int plugin_item_count: Math.floor(width / (plugin_item_width + plugin_item_spacing))
+                            property int row_width: plugin_item_count * plugin_item_width + (plugin_item_count - 1) * plugin_item_spacing
+
                             Row{
                                 id: row_1
-                                width: parent.width
+                                width: entire_plugin_area.plugin_item_width
 
-                                property int plugin_item_width: 120
-                                property int plugin_item_count: Math.floor(width / 150)
-                                spacing: 30
+                                spacing: entire_plugin_area.plugin_item_spacing
+                                anchors.horizontalCenter: parent.horizontalCenter
 
                                 Repeater {
                                     model: row_1.plugin_item_count
