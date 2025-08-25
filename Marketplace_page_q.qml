@@ -116,21 +116,19 @@ Component {
 
                             Row{
                                 id: row_1
-                                width: entire_plugin_area.plugin_item_width
-
+                                width: entire_plugin_area.row_width
                                 spacing: entire_plugin_area.plugin_item_spacing
                                 anchors.horizontalCenter: parent.horizontalCenter
 
                                 Repeater {
-                                    model: row_1.plugin_item_count
+                                    model: entire_plugin_area.plugin_item_count
                                     delegate: Item {
-                                        width: row_1.plugin_item_width // 加上間距
+                                        width: entire_plugin_area.plugin_item_width // 加上間距
                                         height: 80
 
                                         Rectangle {
-                                            width: row_1.plugin_item_width
+                                            width: entire_plugin_area.plugin_item_width
                                             height: parent.height
-                                            anchors.left: parent.left
                                             color: index % 2 === 0 ? "white" : "lightgreen"
                                             Text {
                                                 anchors.centerIn: parent
