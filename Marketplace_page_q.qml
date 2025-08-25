@@ -131,6 +131,13 @@ Component {
                                         width: entire_plugin_area.plugin_item_width // 加上間距
                                         height: 140
 
+                                        opacity: 0
+                                        Behavior on opacity {
+                                            NumberAnimation { duration: 1000 }
+                                        }
+                                        Component.onCompleted: opacity = 1
+
+
                                         Rectangle {
                                             width: entire_plugin_area.plugin_item_width
                                             height: parent.height
