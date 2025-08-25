@@ -119,37 +119,88 @@ Component {
                             property int plugin_item_count: Math.max(1, Math.floor(parent.width / (plugin_item_width + plugin_item_spacing)))
                             property int row_width: plugin_item_count * plugin_item_width + (plugin_item_count - 1) * plugin_item_spacing
 
-                            Row{
-                                id: row_1
-                                width: entire_plugin_area.row_width
-                                spacing: entire_plugin_area.plugin_item_spacing
-                                anchors.horizontalCenter: parent.horizontalCenter
+                            Rectangle{
+                                id:row_line_1
+                                width: parent.width
+                                height: 140
+                                Row{
+                                    id: row_1
+                                    width: entire_plugin_area.row_width
+                                    height: 140
+                                    spacing: entire_plugin_area.plugin_item_spacing
+                                    anchors.horizontalCenter: parent.horizontalCenter
 
-                                Repeater {
-                                    model: entire_plugin_area.plugin_item_count
-                                    delegate: Item {
-                                        width: entire_plugin_area.plugin_item_width // 加上間距
-                                        height: 140
+                                    Repeater {
+                                        model: entire_plugin_area.plugin_item_count
+                                        delegate: Item {
+                                            width: entire_plugin_area.plugin_item_width // 加上間距
+                                            height: 140
 
-                                        opacity: 0
-                                        Behavior on opacity {
-                                            NumberAnimation { duration: 1000 }
-                                        }
-                                        Component.onCompleted: opacity = 1
+                                            opacity: 0
+                                            Behavior on opacity {
+                                                NumberAnimation { duration: 1000 }
+                                            }
+                                            Component.onCompleted: opacity = 1
 
 
-                                        Rectangle {
-                                            width: entire_plugin_area.plugin_item_width
-                                            height: parent.height
-                                            color: index % 2 === 0 ? "white" : "lightgreen"
-                                            Text {
-                                                anchors.centerIn: parent
-                                                text: "Item " + index
+                                            Rectangle {
+                                                width: entire_plugin_area.plugin_item_width
+                                                height: parent.height
+                                                color: index % 2 === 0 ? "white" : "lightgreen"
+                                                Text {
+                                                    anchors.centerIn: parent
+                                                    text: "Item " + index
+                                                }
                                             }
                                         }
                                     }
+
+                                }
+                            }
+
+                            Rectangle{
+                                id:row_line_2
+                                width: parent.width
+                                height: 140
+
+                                Rectangle {
+                                    anchors.fill: parent
+                                    color: "red" // debug 用
                                 }
 
+                                Row{
+                                    id: row_2
+                                    width: entire_plugin_area.row_width
+                                    height: 140
+                                    spacing: entire_plugin_area.plugin_item_spacing
+                                    anchors.horizontalCenter: parent.horizontalCenter
+
+                                    Repeater {
+                                        model: entire_plugin_area.plugin_item_count
+                                        delegate: Item {
+                                            width: entire_plugin_area.plugin_item_width // 加上間距
+                                            height: 140
+
+                                            opacity: 0
+                                            Behavior on opacity {
+                                                NumberAnimation { duration: 1000 }
+                                            }
+                                            Component.onCompleted: opacity = 1
+
+
+                                            Rectangle {
+                                                width: entire_plugin_area.plugin_item_width
+                                                height: parent.height
+                                                color: index % 2 === 0 ? "white" : "green"
+                                                Text {
+                                                    anchors.centerIn: parent
+                                                    text: "Item " + index
+                                                }
+                                            }
+                                        }
+                                    }
+
+                                }
                             }
                         }
                     }
