@@ -105,13 +105,20 @@ Component {
 
                         Column {
                             id:entire_plugin_area
-                            topPadding: 40
+
                             width: parent.width
                             spacing: 60
+                            Text {
+                                text: entire_plugin_area.plugin_item_count
+                                color: "transparent"
+                                anchors.top: parent.top
+                                anchors.horizontalCenter: parent.horizontalCenter
+                            }
+
 
                             property int plugin_item_width: 120
                             property int plugin_item_spacing: 30
-                            property int plugin_item_count: Math.floor(width / (plugin_item_width + plugin_item_spacing))
+                            property int plugin_item_count: Math.max(1, Math.floor(parent.width / (plugin_item_width + plugin_item_spacing)))
                             property int row_width: plugin_item_count * plugin_item_width + (plugin_item_count - 1) * plugin_item_spacing
 
                             Row{
