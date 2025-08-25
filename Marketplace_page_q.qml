@@ -113,7 +113,7 @@ Component {
                                 width: parent.width
 
                                 property int plugin_item_width: 120
-                                property int plugin_item_count: Math.floor(width / plugin_item_width) - 1
+                                property int plugin_item_count: Math.floor(width / 150)
                                 spacing: 30
 
                                 Repeater {
