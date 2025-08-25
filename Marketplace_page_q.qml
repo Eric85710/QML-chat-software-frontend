@@ -70,7 +70,6 @@ Component {
                     color: "#44000000"
                     Layout.fillWidth: true
                     Layout.preferredHeight: 100
-                    radius: 12
 
                     // 淡入動畫
                     OpacityAnimator { target: marketplace_search_bar_area; from: 0; to: 1; duration: 300 }
@@ -88,7 +87,6 @@ Component {
                     color: "#44000000"
                     Layout.fillWidth: true
                     Layout.fillHeight: true
-                    radius: 12
 
                     OpacityAnimator { target: marketplace_piugins_block; from: 0; to: 1; duration: 300 }
 
@@ -116,7 +114,7 @@ Component {
                             }
 
 
-                            property int plugin_item_width: 120
+                            property int plugin_item_width: 240
                             property int plugin_item_spacing: 30
                             property int plugin_item_count: Math.max(1, Math.floor(parent.width / (plugin_item_width + plugin_item_spacing)))
                             property int row_width: plugin_item_count * plugin_item_width + (plugin_item_count - 1) * plugin_item_spacing
@@ -131,7 +129,7 @@ Component {
                                     model: entire_plugin_area.plugin_item_count
                                     delegate: Item {
                                         width: entire_plugin_area.plugin_item_width // 加上間距
-                                        height: 80
+                                        height: 140
 
                                         Rectangle {
                                             width: entire_plugin_area.plugin_item_width
