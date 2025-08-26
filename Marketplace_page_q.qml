@@ -104,15 +104,8 @@ Component {
                         ColumnLayout {
                             id:entire_plugin_area
 
-                            width: parent.width
+                            anchors.fill: parent
                             spacing: 60
-                            Text {
-                                text: entire_plugin_area.plugin_item_count
-                                color: "transparent"
-                                anchors.top: parent.top
-                                anchors.horizontalCenter: parent.horizontalCenter
-                            }
-
 
                             property int plugin_item_width: 240
                             property int plugin_item_spacing: 30
@@ -121,17 +114,17 @@ Component {
 
 
 
-
+                            //the row area
                             Rectangle{
                                 id:row_line_1
-                                width: parent.width
-                                height: 140
-                                Row{
+                                Layout.fillWidth: true
+                                Layout.preferredHeight: 140
+                                RowLayout{
                                     id: row_1
                                     width: entire_plugin_area.row_width
                                     height: 140
                                     spacing: entire_plugin_area.plugin_item_spacing
-                                    anchors.horizontalCenter: parent.horizontalCenter
+                                    Layout.alignment: Qt.AlignCenter
 
                                     Repeater {
                                         model: entire_plugin_area.plugin_item_count
@@ -163,8 +156,8 @@ Component {
 
                             Rectangle{
                                 id:row_line_2
-                                width: parent.width
-                                height: 140
+                                Layout.fillWidth: true
+                                Layout.preferredHeight: 140
 
                                 Rectangle {
                                     anchors.fill: parent
@@ -176,7 +169,7 @@ Component {
                                     width: entire_plugin_area.row_width
                                     height: 140
                                     spacing: entire_plugin_area.plugin_item_spacing
-                                    anchors.horizontalCenter: parent.horizontalCenter
+                                    Layout.alignment: Qt.AlignCenter
 
                                     Repeater {
                                         model: entire_plugin_area.plugin_item_count
