@@ -101,7 +101,7 @@ Component {
                         width: parent.width
                         height: parent.height
 
-                        Column {
+                        ColumnLayout {
                             id:entire_plugin_area
 
                             width: parent.width
@@ -118,6 +118,9 @@ Component {
                             property int plugin_item_spacing: 30
                             property int plugin_item_count: Math.max(1, Math.floor(parent.width / (plugin_item_width + plugin_item_spacing)))
                             property int row_width: plugin_item_count * plugin_item_width + (plugin_item_count - 1) * plugin_item_spacing
+
+
+
 
                             Rectangle{
                                 id:row_line_1
