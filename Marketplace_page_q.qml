@@ -67,7 +67,7 @@ Component {
 
                 Rectangle {
                     id: marketplace_search_bar_area
-                    color: "#44000000"
+                    color: "transparent"
                     Layout.fillWidth: true
                     Layout.preferredHeight: 100
 
@@ -78,13 +78,23 @@ Component {
                         id:marketplace_search_bar_loadin_animation
                         y:100
                     }
+
+
+                    Rectangle{
+                        id:marketplace_search_bar_rect
+                        width: 360
+                        height: 40
+                        anchors.centerIn: parent
+                        radius: 12
+                        color: "#80000000"
+                    }
                 }
 
 
                 //marketplace_plugins_container
                 Rectangle {
                     id: marketplace_piugins_block
-                    color: "#44000000"
+                    color: "transparent"
                     Layout.fillWidth: true
                     Layout.fillHeight: true
 
@@ -119,12 +129,15 @@ Component {
                                 id:row_line_1
                                 Layout.fillWidth: true
                                 Layout.preferredHeight: 140
+                                color: "transparent"
+
+
                                 RowLayout{
                                     id: row_1
                                     width: entire_plugin_area.row_width
                                     height: 140
                                     spacing: entire_plugin_area.plugin_item_spacing
-                                    Layout.alignment: Qt.AlignCenter
+                                    anchors.centerIn: parent
 
                                     Repeater {
                                         model: entire_plugin_area.plugin_item_count
@@ -147,6 +160,8 @@ Component {
                                                     anchors.centerIn: parent
                                                     text: "Item " + index
                                                 }
+
+                                                radius: 12
                                             }
                                         }
                                     }
@@ -158,18 +173,15 @@ Component {
                                 id:row_line_2
                                 Layout.fillWidth: true
                                 Layout.preferredHeight: 140
+                                color: "transparent"
 
-                                Rectangle {
-                                    anchors.fill: parent
-                                    color: "red" // debug 用
-                                }
 
                                 Row{
                                     id: row_2
                                     width: entire_plugin_area.row_width
                                     height: 140
                                     spacing: entire_plugin_area.plugin_item_spacing
-                                    Layout.alignment: Qt.AlignCenter
+                                    anchors.centerIn: parent
 
                                     Repeater {
                                         model: entire_plugin_area.plugin_item_count
@@ -192,6 +204,8 @@ Component {
                                                     anchors.centerIn: parent
                                                     text: "Item " + index
                                                 }
+
+                                                radius: 12
                                             }
                                         }
                                     }
