@@ -155,7 +155,7 @@ Component {
                                             Rectangle {
                                                 width: entire_plugin_area.plugin_item_width
                                                 height: parent.height
-                                                color: index % 2 === 0 ? "white" : "lightgreen"
+                                                color: index % 2 === 0 ? "white" : "green"
                                                 Text {
                                                     anchors.centerIn: parent
                                                     text: "Item " + index
@@ -178,6 +178,94 @@ Component {
 
                                 Row{
                                     id: row_2
+                                    width: entire_plugin_area.row_width
+                                    height: 140
+                                    spacing: entire_plugin_area.plugin_item_spacing
+                                    anchors.centerIn: parent
+
+                                    Repeater {
+                                        model: entire_plugin_area.plugin_item_count
+                                        delegate: Item {
+                                            width: entire_plugin_area.plugin_item_width // 加上間距
+                                            height: 140
+
+                                            opacity: 0
+                                            Behavior on opacity {
+                                                NumberAnimation { duration: 1000 }
+                                            }
+                                            Component.onCompleted: opacity = 1
+
+
+                                            Rectangle {
+                                                width: entire_plugin_area.plugin_item_width
+                                                height: parent.height
+                                                color: index % 2 === 0 ? "white" : "green"
+                                                Text {
+                                                    anchors.centerIn: parent
+                                                    text: "Item " + index
+                                                }
+
+                                                radius: 12
+                                            }
+                                        }
+                                    }
+
+                                }
+                            }
+
+                            Rectangle{
+                                id:row_line_3
+                                Layout.fillWidth: true
+                                Layout.preferredHeight: 140
+                                color: "transparent"
+
+
+                                Row{
+                                    id: row_3
+                                    width: entire_plugin_area.row_width
+                                    height: 140
+                                    spacing: entire_plugin_area.plugin_item_spacing
+                                    anchors.centerIn: parent
+
+                                    Repeater {
+                                        model: entire_plugin_area.plugin_item_count
+                                        delegate: Item {
+                                            width: entire_plugin_area.plugin_item_width // 加上間距
+                                            height: 140
+
+                                            opacity: 0
+                                            Behavior on opacity {
+                                                NumberAnimation { duration: 1000 }
+                                            }
+                                            Component.onCompleted: opacity = 1
+
+
+                                            Rectangle {
+                                                width: entire_plugin_area.plugin_item_width
+                                                height: parent.height
+                                                color: index % 2 === 0 ? "white" : "green"
+                                                Text {
+                                                    anchors.centerIn: parent
+                                                    text: "Item " + index
+                                                }
+
+                                                radius: 12
+                                            }
+                                        }
+                                    }
+
+                                }
+                            }
+
+                            Rectangle{
+                                id:row_line_4
+                                Layout.fillWidth: true
+                                Layout.preferredHeight: 140
+                                color: "transparent"
+
+
+                                Row{
+                                    id: row_4
                                     width: entire_plugin_area.row_width
                                     height: 140
                                     spacing: entire_plugin_area.plugin_item_spacing
