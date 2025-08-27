@@ -132,7 +132,7 @@ Component {
                 //chat with your son in here
                 Rectangle {
                     id: server_chat_block
-                    color: "#44000000"
+                    color: "transparent"
                     Layout.fillWidth: true
                     Layout.fillHeight: true
                     radius: 12

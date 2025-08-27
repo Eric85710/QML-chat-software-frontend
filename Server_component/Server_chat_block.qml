@@ -5,11 +5,33 @@ import QtQuick.Controls
 ColumnLayout{
     anchors.fill: parent
 
+
+
+    //message will shows in here
     Rectangle {
         id:chat_message_block
         Layout.fillWidth: true
         Layout.fillHeight: true
+        color: "transparent"
+
+        ColumnLayout {
+            id:showing_the_chat_message
+            anchors.fill: parent
+
+            Rectangle {
+                id:message_own
+                Layout.fillWidth: true
+                Layout.preferredHeight: 200
+            }
+        }
     }
+
+
+
+
+
+
+
 
     Rectangle {
         id: message_input_block
@@ -17,13 +39,13 @@ ColumnLayout{
         Layout.preferredHeight: 80
         color: "transparent"
 
-        //search_bar_rect
+        //input_bar_rect
         Rectangle {
             id: message_input_button_area
             anchors.left: parent.left
             anchors.right: parent.right
             anchors.margins: 10
-            height: 40
+            height: 60
             radius: 12
             color: "black"
             opacity: 0.6
