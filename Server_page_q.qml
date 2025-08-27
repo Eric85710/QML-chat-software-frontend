@@ -143,6 +143,10 @@ Component {
                         id:server_chat_block_loadin_animation
                         y:100
                     }
+
+                    Server_chat_block {
+                        id:server_message_chat_block
+                    }
                 }
 
 
