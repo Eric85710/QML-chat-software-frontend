@@ -13,6 +13,18 @@ ColumnLayout{
     Rectangle {
         id: message_input_block
         Layout.fillWidth: true
-        Layout.preferredHeight: 200
+        Layout.preferredHeight: 80
+        color: "transparent"
+
+        Rectangle {
+            id: message_input_button_area
+            anchors.left: parent.left
+            anchors.right: parent.right
+            anchors.margins: 10
+            height: 40
+            radius: 12
+            color: "black"
+            opacity: 0.6
+        }
     }
 }
