@@ -103,7 +103,7 @@ Component {
                 Rectangle {
                     id: server_list
                     color: "#44000000"
-                    Layout.preferredWidth: 300
+                    Layout.preferredWidth: 340
                     Layout.fillHeight: true
                     radius: 12
 

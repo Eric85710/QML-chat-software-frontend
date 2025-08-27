@@ -1,10 +1,16 @@
+//..Server_component/Server_list.qml
 import QtQuick 2.15
+import QtQuick.Layouts
 
-Item {
+ColumnLayout{
     anchors.fill: parent
 
     Rectangle {
-        width: 50
-        height: 100
+        Layout.preferredWidth: 68
+        Layout.fillHeight: true
+        radius: 12
+        opacity: 0.4
+        border.color: "red"
+        border.width: 10
     }
 }
