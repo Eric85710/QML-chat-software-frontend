@@ -2,6 +2,7 @@
 import QtQuick
 import QtQuick.Layouts
 import QtQuick.Controls
+import "Server_component"
 
 Component {
     Item {
@@ -82,11 +83,23 @@ Component {
             }
 
 
+
+
+
+
+
+
+
             // 主排版區塊
             RowLayout {
                 anchors.fill: parent
                 spacing: 12
 
+
+
+
+
+                //choosing the server here
                 Rectangle {
                     id: server_list
                     color: "#44000000"
@@ -103,8 +116,20 @@ Component {
                         y:100
                     }
 
+
+                    Server_list{
+                        id:server_list_qmlfile
+                    }
                 }
 
+
+
+
+
+
+
+
+                //chat with your son in here
                 Rectangle {
                     id: server_chat_block
                     color: "#44000000"
@@ -120,6 +145,21 @@ Component {
                     }
                 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                //all of the members will shows in here
                 Rectangle {
                     id: server_member_list
                     color: "#44000000"
