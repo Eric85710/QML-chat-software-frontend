@@ -32,6 +32,7 @@ qt_add_qml_module(appqrc_test
 qt_add_resources(appqrc_test "icons"
     PREFIX "/"
     FILES img/after-sunset.jpg
+    FILES img/avatar.png
 )
 
 

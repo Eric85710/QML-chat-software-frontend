@@ -18,6 +18,11 @@ ColumnLayout{
             id:showing_the_chat_message
             anchors.fill: parent
 
+
+
+
+
+            //how the message looks like
             Rectangle {
                 id:message_own
                 Layout.fillWidth: true
@@ -33,6 +38,7 @@ ColumnLayout{
 
 
 
+    //input bar in here
     Rectangle {
         id: message_input_block
         Layout.fillWidth: true
