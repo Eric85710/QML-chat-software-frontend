@@ -27,6 +27,7 @@ ColumnLayout{
             Rectangle {
                 id:message_own
                 Layout.fillWidth: true
+                color: "transparent"
 
                 Row {
                     id: entire_message_row
@@ -44,19 +45,32 @@ ColumnLayout{
 
 
 
-                    Column {
-                        Text {
-                            id: message_sender
-                            text: qsTr("林余安")
-                            font.pixelSize: 20
-                        }
+                    Rectangle {
+                        id: message_background_color
+                        color: "#4033ccff"
+                        radius: 8
 
-                        Text {
-                            id: message_test
-                            text: qsTr("yooooooo  婊子")
-                            wrapMode: Text.Wrap
-                            font.pixelSize: 22
+                        Column {
+                            id:message_text_column
+                            padding: 10
+                            Text {
+                                id: message_sender
+                                text: qsTr("Walnut")
+                                font.pixelSize: 18
+                                font.bold: true
+                                color: "#904d4ca7"
+                            }
+
+                            Text {
+                                id: message_test
+                                text: qsTr("yooooooo  婊子")
+                                wrapMode: Text.Wrap
+                                font.pixelSize: 22
+                                color: "white"
+                            }
                         }
+                        implicitHeight: message_text_column.implicitHeight
+                        implicitWidth: message_text_column.implicitWidth
                     }
                 }
                 implicitHeight: entire_message_row.implicitHeight + 10
