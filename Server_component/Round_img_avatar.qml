@@ -1,3 +1,4 @@
+//Round_img_avatar.qml
 import QtQuick
 import QtQuick.Effects
 

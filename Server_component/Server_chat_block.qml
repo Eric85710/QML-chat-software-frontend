@@ -30,26 +30,33 @@ ColumnLayout{
 
                 Row {
                     id: entire_message_row
+                    spacing: 10
+
 
                     //crop the image
                     Round_img_avatar {
-                        width: 100
-                        height: 100
-                        radius: 50
+                        width: 50
+                        height: 50
+                        radius: width / 2
                         source: "qrc:/img/after-sunset.jpg"
                     }
 
 
 
 
+                    Column {
+                        Text {
+                            id: message_sender
+                            text: qsTr("林余安")
+                            font.pixelSize: 20
+                        }
 
-
-
-                    Text {
-                        id: message_test
-                        text: qsTr("yooooooo  婊子")
-                        wrapMode: Text.Wrap
-                        font.pixelSize: 20
+                        Text {
+                            id: message_test
+                            text: qsTr("yooooooo  婊子")
+                            wrapMode: Text.Wrap
+                            font.pixelSize: 22
+                        }
                     }
                 }
                 implicitHeight: entire_message_row.implicitHeight + 10
