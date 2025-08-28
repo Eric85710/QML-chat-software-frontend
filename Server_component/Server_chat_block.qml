@@ -2,6 +2,7 @@ import QtQuick 2.15
 import QtQuick.Layouts
 import QtQuick.Controls
 
+
 ColumnLayout{
     anchors.fill: parent
 
@@ -30,16 +31,25 @@ ColumnLayout{
                 Row {
                     id: entire_message_row
 
-                    Image {
-                        id: avatar_own
-                        source: "qrc:/img/avatar.png"
+                    //crop the image
+                    Round_img_avatar {
+                        width: 100
+                        height: 100
+                        radius: 50
+                        source: "qrc:/img/after-sunset.jpg"
                     }
+
+
+
+
+
+
 
                     Text {
                         id: message_test
                         text: qsTr("yooooooo  婊子")
                         wrapMode: Text.Wrap
-                        font.pixelSize: 14
+                        font.pixelSize: 20
                     }
                 }
                 implicitHeight: entire_message_row.implicitHeight + 10
