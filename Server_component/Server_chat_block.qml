@@ -26,7 +26,23 @@ ColumnLayout{
             Rectangle {
                 id:message_own
                 Layout.fillWidth: true
-                Layout.preferredHeight: 200
+
+                Row {
+                    id: entire_message_row
+
+                    Image {
+                        id: avatar_own
+                        source: "qrc:/img/avatar.png"
+                    }
+
+                    Text {
+                        id: message_test
+                        text: qsTr("yooooooo  婊子")
+                        wrapMode: Text.Wrap
+                        font.pixelSize: 14
+                    }
+                }
+                implicitHeight: entire_message_row.implicitHeight + 10
             }
         }
     }
