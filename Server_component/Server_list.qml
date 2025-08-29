@@ -1,6 +1,7 @@
 //..Server_component/Server_list.qml
 import QtQuick 2.15
 import QtQuick.Layouts
+import QtQuick.Effects
 
 RowLayout{
     anchors.fill: parent

@@ -2,7 +2,10 @@
 import QtQuick
 import QtQuick.Layouts
 import QtQuick.Controls
+import QtQuick.Effects
 import "Server_component"
+import "Style_component"
+
 
 Component {
     Item {
@@ -106,6 +109,13 @@ Component {
                     Layout.preferredWidth: 340
                     Layout.fillHeight: true
                     radius: 12
+
+                    FrostedGlass {
+                        anchors.fill: parent
+                        sourceItem: bg1
+                    }
+
+
 
                     // 淡入動畫
                     OpacityAnimator { target: server_list; from: 0; to: 1; duration: 300 }

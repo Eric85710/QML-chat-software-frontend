@@ -2,5 +2,6 @@
     <qresource prefix="/">
         <file>img/after-sunset.jpg</file>
         <file>nav_bar.qml</file>
+        <file>Style_component/FrostedGlass.qml</file>
     </qresource>
 </RCC>
