@@ -14,7 +14,7 @@ RowLayout{
         Layout.fillHeight: true
         model: [
             "qrc:/img/after-sunset.jpg",
-            "qrc:/img/after-sunset.jpg",
+            "qrc:/img/avatar.png",
             "qrc:/img/after-sunset.jpg"
         ]
         delegate: Round_img_avatar {
@@ -23,6 +23,13 @@ RowLayout{
             radius: width / 2
             source: modelData
             anchors.horizontalCenter: parent.horizontalCenter
+
+            MouseArea {
+                anchors.fill: parent
+                onClicked: {
+                    console.log("你點了：", modelData)
+                }
+            }
         }
 
         spacing: 16
