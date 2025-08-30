@@ -29,6 +29,8 @@ qt_add_qml_module(appqrc_test
         QML_FILES Server_component/Round_img_avatar.qml
         QML_FILES Style_component/Style_Component.qml
         QML_FILES Style_component/FrostedGlass.qml
+        QML_FILES Server_component/Server_function_block_component/Server1_function_block.qml
+        QML_FILES Server_component/Server_function_block_component/Server2_function_block.qml
 )
 
 

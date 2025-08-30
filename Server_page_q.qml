@@ -133,6 +133,9 @@ Component {
 
                     Server_list{
                         id:server_list_qmlfile
+                        onServerSelected: {
+                            server_function_text.text = serverID
+                        }
                     }
                 }
 
