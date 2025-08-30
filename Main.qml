@@ -3,6 +3,7 @@ import QtQuick.Window
 import QtQuick.Controls
 import QtQuick.Layouts
 import QtQuick.Effects
+import "Style_component"
 
 ApplicationWindow {
     id:whole_app_window
@@ -30,6 +31,11 @@ ApplicationWindow {
         //nav bar color
         background: Item {
             anchors.fill: parent
+
+            FrostedGlass {
+                anchors.fill: parent
+                sourceItem: bg1
+            }
 
 
             Rectangle {

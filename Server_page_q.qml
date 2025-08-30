@@ -105,17 +105,15 @@ Component {
                 //choosing the server here
                 Rectangle {
                     id: server_list
-                    color: "#44000000"
+                    gradient: Gradient {
+                        GradientStop { position: 0.0; color: "gray" }
+                        GradientStop { position: 1.0; color: "black" }
+                    }
+
+                    opacity: 0.4
                     Layout.preferredWidth: 340
                     Layout.fillHeight: true
                     radius: 12
-
-                    FrostedGlass {
-                        anchors.fill: parent
-                        sourceItem: bg1
-                    }
-
-
 
                     // 淡入動畫
                     OpacityAnimator { target: server_list; from: 0; to: 1; duration: 300 }

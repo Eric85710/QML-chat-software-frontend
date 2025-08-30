@@ -1,6 +1,7 @@
 //Nav_wheel.qml
 import QtQuick
 import QtQuick.Controls
+import "Style_component"
 
 Item {
     id: root
@@ -40,7 +41,6 @@ Item {
         preferredHighlightBegin: (width - nav_listView.currentItem.width) / 2
         preferredHighlightEnd: (width + nav_listView.currentItem.width) / 2
         clip: true
-
 
 
 

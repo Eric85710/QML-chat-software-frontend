@@ -6,8 +6,8 @@ Item {
     id: frostedGlass
     property Item sourceItem  // 要模糊的背景元件
     property real blurAmount: 0.6
-    property color overlayColor: "white"
-    property real overlayOpacity: 0.1
+    property color overlayColor: "gray"
+    property real overlayOpacity: 0.2
     property int radius: 12
 
     width: 200
@@ -40,8 +40,6 @@ Item {
     Rectangle {
         anchors.fill: parent
         radius: frostedGlass.radius
-        border.color: "#FFFFFF"
-        border.width: 1
         color: "transparent"
     }
 }
