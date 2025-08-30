@@ -10,7 +10,8 @@ RowLayout{
     //choosing_the_server in here
     ListView {
         id: servers_icon_list
-        anchors.fill: parent
+        Layout.preferredWidth: 68
+        Layout.fillHeight: true
         model: [
             "qrc:/img/after-sunset.jpg",
             "qrc:/img/after-sunset.jpg",
@@ -24,9 +25,14 @@ RowLayout{
             anchors.horizontalCenter: parent.horizontalCenter
         }
 
-        spacing: 12
+        spacing: 16
         orientation: ListView.Vertical
         clip: true
+
+        header: Item {
+            width: servers_icon_list.width
+            height: 16 // 你想要的間距高度
+        }
     }
 
 
