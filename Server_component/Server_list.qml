@@ -8,22 +8,25 @@ RowLayout{
     anchors.fill: parent
 
     //choosing_the_server in here
-    Rectangle {
-        id:servers_choosing_block
-        Layout.preferredWidth: 68
-        Layout.fillHeight: true
-        color: "transparent"
-
-        Column {
-            id:servers_icon_list
-
-            Round_img_avatar {
-                width: 56
-                height: 56
-                radius: width / 2
-                source: "qrc:/img/after-sunset.jpg"
-            }
+    ListView {
+        id: servers_icon_list
+        anchors.fill: parent
+        model: [
+            "qrc:/img/after-sunset.jpg",
+            "qrc:/img/after-sunset.jpg",
+            "qrc:/img/after-sunset.jpg"
+        ]
+        delegate: Round_img_avatar {
+            width: 56
+            height: 56
+            radius: width / 2
+            source: modelData
+            anchors.horizontalCenter: parent.horizontalCenter
         }
+
+        spacing: 12
+        orientation: ListView.Vertical
+        clip: true
     }
 
 
