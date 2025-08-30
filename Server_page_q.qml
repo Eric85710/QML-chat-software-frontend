@@ -105,18 +105,24 @@ Component {
                 //choosing the server here
                 Rectangle {
                     id: server_list
-                    gradient: Gradient {
-                        GradientStop { position: 0.0; color: "gray" }
-                        GradientStop { position: 1.0; color: "black" }
+                    color: "transparent"
+                    Rectangle {
+                        id:server_list_bg_color
+                        anchors.fill: parent
+                        gradient: Gradient {
+                            GradientStop { position: 0.0; color: "gray" }
+                            GradientStop { position: 1.0; color: "black" }
+                        }
+                        opacity: 0.4
+                        radius: server_list.radius
+                        // 淡入動畫
+                        OpacityAnimator { target: server_list_bg_color; from: 0; to: 1; duration: 300 }
                     }
 
-                    opacity: 0.4
                     Layout.preferredWidth: 340
                     Layout.fillHeight: true
                     radius: 12
 
-                    // 淡入動畫
-                    OpacityAnimator { target: server_list; from: 0; to: 1; duration: 300 }
 
                     transform: Translate{
                         id:server_list_loadin_animation
