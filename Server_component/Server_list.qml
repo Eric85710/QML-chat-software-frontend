@@ -12,22 +12,22 @@ RowLayout{
         id: servers_icon_list
         Layout.preferredWidth: 68
         Layout.fillHeight: true
-        model: [
-            "qrc:/img/after-sunset.jpg",
-            "qrc:/img/avatar.png",
-            "qrc:/img/after-sunset.jpg"
-        ]
+        model: ListModel {
+            ListElement { serverID: "server1"; name: "日落伺服器"; icon: "qrc:/img/after-sunset.jpg"; unread: 3 }
+            ListElement { serverID: "server2"; name: "個人空間"; icon: "qrc:/img/avatar.png"; unread: 0 }
+            ListElement { serverID: "server3"; name: "開發群組"; icon: "qrc:/img/after-sunset.jpg"; unread: 12 }
+        }
         delegate: Round_img_avatar {
             width: 56
             height: 56
             radius: width / 2
-            source: modelData
+            source: model.icon
             anchors.horizontalCenter: parent.horizontalCenter
 
             MouseArea {
                 anchors.fill: parent
                 onClicked: {
-                    console.log("你點了：", modelData)
+                    console.log("你點了：", model.name, model.serverID)
                 }
             }
         }
