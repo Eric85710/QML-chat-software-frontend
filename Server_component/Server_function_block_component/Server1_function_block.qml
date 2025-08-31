@@ -3,21 +3,36 @@ import QtQuick
 import QtQuick.Layouts
 
 
-ColumnLayout {
+Column {
     anchors.fill: parent
+    spacing: 10
 
-    Text {
-        id: server1_function_text
-        color: "white"
-        font.pixelSize: 20
-        text: "Server1"
-        Layout.alignment: Qt.AlignHCenter
+
+    Rectangle {
+        id: server_name_text_container
+        width: parent.width
+        height: 60
+        color: "#555"
+        Text {
+            id: server_name_text
+            text: qsTr("PC孤兒")
+            font.bold: true
+        }
     }
 
     Rectangle {
         width: 60
         height: 40
         radius: 12
-        Layout.alignment: Qt.AlignHCenter
+        color: "#555"
+        anchors.horizontalCenter: parent.horizontalCenter
+    }
+
+    Rectangle {
+        width: 60
+        height: 40
+        radius: 12
+        color: "#777"
+        anchors.horizontalCenter: parent.horizontalCenter
     }
 }
