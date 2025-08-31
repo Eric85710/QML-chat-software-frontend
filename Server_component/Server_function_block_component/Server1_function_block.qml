@@ -42,7 +42,7 @@ Column {
     Rectangle {
         id:gallery_and_video_Rect
         width: parent.width - 20
-        height: 100
+        height: 86
         radius: 12
         color: "#555"
         anchors.horizontalCenter: parent.horizontalCenter
@@ -50,17 +50,20 @@ Column {
         Row {
             anchors.fill: parent
             spacing: 10
+            padding: 10
+
 
             Rectangle {
-                width: (gallery_and_video_Rect.width / 2) - 10
-                height: 88
+                width: (gallery_and_video_Rect.width / 2) - 15
+                height: 70
                 radius: 12
                 anchors.verticalCenter: parent.verticalCenter
+                color: "gray"
             }
 
             Rectangle {
-                width: (gallery_and_video_Rect.width / 2) - 10
-                height: 88
+                width: (gallery_and_video_Rect.width / 2) - 15
+                height: 70
                 radius: 12
                 anchors.verticalCenter: parent.verticalCenter
                 color: "gray"
