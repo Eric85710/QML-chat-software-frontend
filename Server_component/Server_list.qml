@@ -68,8 +68,19 @@ RowLayout{
         Layout.fillWidth: true
         Layout.fillHeight: true
         radius: 12
-        color: "black"
-        opacity: 0.4
+        color: "transparent"
+
+
+        //background color
+        Rectangle {
+            id:server_function_block_bg_color
+            anchors.fill: parent
+            color: "black"
+            opacity: 0.2
+            radius: server_function_block.radius
+            // 淡入動畫
+            OpacityAnimator { target: server_function_block_bg_color; from: 0; to: 1; duration: 300 }
+        }
 
         Loader {
             id: server_function_ContentLoader
