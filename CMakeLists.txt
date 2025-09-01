@@ -34,6 +34,7 @@ qt_add_qml_module(appqrc_test
         RESOURCES svg_icon/gallery-svgrepo-com.svg
         RESOURCES svg_icon/video-library-svgrepo-com.svg
         RESOURCES svg_icon/search-svgrepo-com.svg
+        RESOURCES svg_icon/text-square-svgrepo-com.svg
 )
 
 
@@ -45,6 +46,7 @@ qt_add_resources(appqrc_test "icons"
         svg_icon/gallery-svgrepo-com.svg
         svg_icon/video-library-svgrepo-com.svg
         svg_icon/search-svgrepo-com.svg
+        svg_icon/text-square-svgrepo-com.svg
 )
 
 
