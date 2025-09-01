@@ -1,12 +1,135 @@
+//Server1_function_block.qml
 import QtQuick
+import QtQuick.Layouts
+import QtQuick.Controls
+import "Server_additional_block"
 
-Item {
+
+Column {
     anchors.fill: parent
-    Text {
-        id: server1_function_text
-        anchors.centerIn: parent
-        color: "white"
-        font.pixelSize: 20
-        text: "Server2"
+    spacing: 10
+
+
+
+    Rectangle {
+        width: parent.width
+        height: server_name_text.height + 10  // 高度略加 margin 空間
+        color: "transparent"
+
+        Text {
+            id: server_name_text
+            text: qsTr("SCAICT")
+            font.bold: true
+            font.pixelSize: 28
+            anchors.top: parent.top
+            anchors.left: parent.left
+            anchors.topMargin: 10
+            anchors.leftMargin: 20
+            color: "white"
+            opacity: 0.8
+        }
+    }
+
+
+    //sperate line
+    Rectangle {
+        id: seperate_line_forserver_title
+        width: parent.width
+        height: 4
+        color: "black"
+        opacity: 0.2
+    }
+
+
+
+
+
+
+
+    //scrollable area
+    ScrollView {
+        width: parent.width
+        height: parent.height
+        ScrollBar.horizontal.policy: ScrollBar.AlwaysOff
+
+        //all the scrollable function in here
+        Column {
+            width: parent.width
+            spacing: 20
+            padding: 10
+
+
+
+
+
+            Server_function_search_bar {
+                id:server_fun_searchBar_anim
+                transform: Translate { id: trans1; y: 100 }
+
+                Component.onCompleted: SequentialAnimation {
+                    ParallelAnimation {
+                        NumberAnimation {
+                            target: trans1
+                            property: "y"
+                            to: 0
+                            duration: 100
+                            easing: Easing.InOutQuad
+                        }
+                    }
+                }
+            }
+
+            Server_gallery_and_video {
+                id:server_g_v_anim
+                transform: Translate { id: trans2; y: 100 }
+                opacity: 0
+
+                Component.onCompleted: SequentialAnimation {
+                    PauseAnimation { duration: 40 } // 延遲 100ms
+                    NumberAnimation {
+                        target: server_g_v_anim
+                        property: "opacity"
+                        to: 1
+                        duration: 250
+                        easing: Easing.InOutQuad
+                    }
+
+                    NumberAnimation {
+                        target: trans2
+                        property: "y"
+                        to: 0
+                        duration: 200
+                        easing: Easing.InOutQuad
+                    }
+                }
+            }
+
+
+
+            Server_text_chat {
+                id:server_t_anim
+                transform: Translate { id:trans3; y: 100}
+                opacity: 0
+
+                Component.onCompleted: SequentialAnimation {
+                    PauseAnimation { duration: 100}
+                    NumberAnimation {
+                        target: server_t_anim
+                        property: "opacity"
+                        to: 1
+                        duration: 250
+                        easing: Easing.InOutQuad
+                    }
+
+                    NumberAnimation {
+                        target: trans3
+                        property: "y"
+                        to: 0
+                        duration: 200
+                        easing: Easing.InOutQuad
+                    }
+                }
+            }
+        }
     }
 }

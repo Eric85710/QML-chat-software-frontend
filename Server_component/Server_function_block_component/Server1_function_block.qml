@@ -85,7 +85,7 @@ Column {
                 opacity: 0
 
                 Component.onCompleted: SequentialAnimation {
-                    PauseAnimation { duration: 50 } // 延遲 100ms
+                    PauseAnimation { duration: 40 } // 延遲 100ms
                     NumberAnimation {
                         target: server_g_v_anim
                         property: "opacity"
@@ -98,7 +98,7 @@ Column {
                         target: trans2
                         property: "y"
                         to: 0
-                        duration: 100
+                        duration: 200
                         easing: Easing.InOutQuad
                     }
                 }
@@ -125,7 +125,7 @@ Column {
                         target: trans3
                         property: "y"
                         to: 0
-                        duration: 100
+                        duration: 200
                         easing: Easing.InOutQuad
                     }
                 }
@@ -151,7 +151,7 @@ Column {
                         target: trans4
                         property: "y"
                         to: 0
-                        duration: 100
+                        duration: 200
                         easing: Easing.InOutQuad
                     }
                 }
