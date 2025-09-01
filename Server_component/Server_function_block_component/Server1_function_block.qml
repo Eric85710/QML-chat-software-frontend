@@ -67,17 +67,19 @@ Column {
                 transform: Translate { id: trans1; y: 100 }
 
                 Component.onCompleted: SequentialAnimation {
-                    ParallelAnimation {
-                        NumberAnimation {
-                            target: trans1
-                            property: "y"
-                            to: 0
-                            duration: 100
-                            easing: Easing.InOutQuad
-                        }
+                    NumberAnimation {
+                        target: trans1
+                        property: "y"
+                        to: 0
+                        duration: 300
+                        easing.type: Easing.InOutQuad
                     }
                 }
             }
+
+
+
+
 
             Server_gallery_and_video {
                 id:server_g_v_anim
@@ -85,24 +87,29 @@ Column {
                 opacity: 0
 
                 Component.onCompleted: SequentialAnimation {
-                    PauseAnimation { duration: 40 } // 延遲 100ms
-                    NumberAnimation {
-                        target: server_g_v_anim
-                        property: "opacity"
-                        to: 1
-                        duration: 250
-                        easing: Easing.InOutQuad
-                    }
+                    ParallelAnimation {
+                        NumberAnimation {
+                            target: server_g_v_anim
+                            property: "opacity"
+                            to: 1
+                            duration: 400
+                            easing.type: Easing.InOutQuad
+                        }
 
-                    NumberAnimation {
-                        target: trans2
-                        property: "y"
-                        to: 0
-                        duration: 200
-                        easing: Easing.InOutQuad
+                        NumberAnimation {
+                            target: trans2
+                            property: "y"
+                            to: 0
+                            duration: 260
+                            easing.type: Easing.InOutQuad
+                        }
                     }
                 }
             }
+
+
+
+
 
 
 
@@ -112,24 +119,30 @@ Column {
                 opacity: 0
 
                 Component.onCompleted: SequentialAnimation {
-                    PauseAnimation { duration: 100}
-                    NumberAnimation {
-                        target: server_t_anim
-                        property: "opacity"
-                        to: 1
-                        duration: 250
-                        easing: Easing.InOutQuad
-                    }
+                    PauseAnimation { duration: 40 }
+                    ParallelAnimation {
+                        NumberAnimation {
+                            target: server_t_anim
+                            property: "opacity"
+                            to: 1
+                            duration: 400
+                            easing.type: Easing.InOutQuad
+                        }
 
-                    NumberAnimation {
-                        target: trans3
-                        property: "y"
-                        to: 0
-                        duration: 200
-                        easing: Easing.InOutQuad
+                        NumberAnimation {
+                            target: trans3
+                            property: "y"
+                            to: 0
+                            duration: 200
+                            easing.type: Easing.InOutQuad
+                        }
                     }
                 }
             }
+
+
+
+
 
             Server_voice_channel{
                 id:server_v_anim
@@ -137,22 +150,23 @@ Column {
                 opacity: 0
 
                 Component.onCompleted: SequentialAnimation {
-                    PauseAnimation { duration: 150}
+                    PauseAnimation { duration: 80 }
+                    ParallelAnimation {
+                        NumberAnimation {
+                            target: server_v_anim
+                            property: "opacity"
+                            to: 1
+                            duration: 400
+                            easing.type: Easing.InOutQuad
+                        }
 
-                    NumberAnimation {
-                        target: server_v_anim
-                        property: "opacity"
-                        to: 1
-                        duration: 250
-                        easing: Easing.InOutQuad
-                    }
-
-                    NumberAnimation {
-                        target: trans4
-                        property: "y"
-                        to: 0
-                        duration: 200
-                        easing: Easing.InOutQuad
+                        NumberAnimation {
+                            target: trans4
+                            property: "y"
+                            to: 0
+                            duration: 200
+                            easing.type: Easing.InOutQuad
+                        }
                     }
                 }
             }
