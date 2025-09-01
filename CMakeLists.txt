@@ -31,13 +31,20 @@ qt_add_qml_module(appqrc_test
         QML_FILES Style_component/FrostedGlass.qml
         QML_FILES Server_component/Server_function_block_component/Server1_function_block.qml
         QML_FILES Server_component/Server_function_block_component/Server2_function_block.qml
+        RESOURCES svg_icon/gallery-svgrepo-com.svg
+        RESOURCES svg_icon/video-library-svgrepo-com.svg
+        RESOURCES svg_icon/search-svgrepo-com.svg
 )
 
 
 qt_add_resources(appqrc_test "icons"
     PREFIX "/"
     FILES img/after-sunset.jpg
-    FILES img/avatar.png
+    FILES
+        img/avatar.png
+        svg_icon/gallery-svgrepo-com.svg
+        svg_icon/video-library-svgrepo-com.svg
+        svg_icon/search-svgrepo-com.svg
 )
 
 

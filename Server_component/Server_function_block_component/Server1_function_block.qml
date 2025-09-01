@@ -1,11 +1,12 @@
 //Server1_function_block.qml
 import QtQuick
 import QtQuick.Layouts
+import QtQuick.Controls
 
 
 Column {
     anchors.fill: parent
-    spacing: 10
+    spacing: 20
 
 
 
@@ -18,7 +19,7 @@ Column {
             id: server_name_text
             text: qsTr("PC孤兒")
             font.bold: true
-            font.pixelSize: 32
+            font.pixelSize: 28
             anchors.top: parent.top
             anchors.left: parent.left
             anchors.topMargin: 10
@@ -38,13 +39,54 @@ Column {
         opacity: 0.2
     }
 
+
+
+
+
+    Rectangle {
+        id:server1_function_area_search_bar
+        width: parent.width-20
+        height: 40
+        radius: 12
+        color: "black"
+        opacity: 0.2
+        anchors.horizontalCenter: parent.horizontalCenter
+
+        Row {
+            anchors.fill: parent
+            spacing: 6
+            padding: 10
+
+            Image {
+                width: 30
+                height: 30
+                id: server1_function_area_search_bar_icon
+                source: "qrc:/svg_icon/search-svgrepo-com.svg"
+                anchors.verticalCenter: parent.verticalCenter
+            }
+
+            TextField {
+                id: server_searchInput
+                placeholderText: "Search server's function"
+                font.pixelSize: 16
+                anchors.verticalCenter: parent.verticalCenter
+            }
+        }
+    }
+
+
+
+
+
+
+
     //Gallery and Video
     Rectangle {
         id:gallery_and_video_Rect
         width: parent.width - 20
         height: 86
         radius: 12
-        color: "#555"
+        color: "#777"
         anchors.horizontalCenter: parent.horizontalCenter
 
         Row {
@@ -53,12 +95,34 @@ Column {
             padding: 10
 
 
+            //gallery
             Rectangle {
                 width: (gallery_and_video_Rect.width / 2) - 15
                 height: 70
                 radius: 12
                 anchors.verticalCenter: parent.verticalCenter
-                color: "gray"
+                color: Qt.rgba(180/255, 180/255, 180/255, 1.0)
+
+                Row {
+                    anchors.fill: parent
+                    spacing: 4
+                    padding: 10
+
+                    Image {
+                        width: 32
+                        height: 32
+                        id: server_gallery_icon
+                        source: "qrc:/svg_icon/gallery-svgrepo-com.svg"
+                        anchors.verticalCenter: parent.verticalCenter
+                    }
+
+                    Text {
+                        text: qsTr("Gallery")
+                        color: "black"
+                        anchors.verticalCenter: parent.verticalCenter
+                        font.pixelSize: 16
+                    }
+                }
             }
 
             Rectangle {
@@ -66,16 +130,47 @@ Column {
                 height: 70
                 radius: 12
                 anchors.verticalCenter: parent.verticalCenter
-                color: "gray"
+                color: Qt.rgba(180/255, 180/255, 180/255, 1.0)
+
+                Row {
+                    anchors.fill: parent
+                    spacing: 4
+                    padding: 10
+
+                    Image {
+                        width: 32
+                        height: 32
+                        id: server_video_icon
+                        source: "qrc:/svg_icon/video-library-svgrepo-com.svg"
+                        anchors.verticalCenter: parent.verticalCenter
+                    }
+
+                    Text {
+                        text: qsTr("Video")
+                        color: "black"
+                        anchors.verticalCenter: parent.verticalCenter
+                        font.pixelSize: 16
+                    }
+                }
             }
         }
     }
 
     Rectangle {
-        width: 60
-        height: 40
+        width: parent.width - 20
+        height: 60
         radius: 12
         color: "#777"
         anchors.horizontalCenter: parent.horizontalCenter
+
+        Rectangle {
+            width: parent.width
+            height: 20
+
+            Text {
+                id: text_chaanel_title
+                text: qsTr("text")
+            }
+        }
     }
 }
