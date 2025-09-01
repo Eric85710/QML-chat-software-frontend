@@ -35,6 +35,11 @@ qt_add_qml_module(appqrc_test
         RESOURCES svg_icon/video-library-svgrepo-com.svg
         RESOURCES svg_icon/search-svgrepo-com.svg
         RESOURCES svg_icon/text-square-svgrepo-com.svg
+        QML_FILES Server_component/Server_function_block_component/Server_additional_block/Server_voice_channel.qml
+        QML_FILES Server_component/Server_function_block_component/Server_additional_block/Server_text_chat.qml
+        QML_FILES Server_component/Server_function_block_component/Server_additional_block/Server_gallery_and_video.qml
+        QML_FILES Server_component/Server_function_block_component/Server_additional_block/Server_function_search_bar.qml
+        RESOURCES svg_icon/sound-loud-svgrepo-com.svg
 )
 
 
@@ -47,6 +52,7 @@ qt_add_resources(appqrc_test "icons"
         svg_icon/video-library-svgrepo-com.svg
         svg_icon/search-svgrepo-com.svg
         svg_icon/text-square-svgrepo-com.svg
+        svg_icon/sound-loud-svgrepo-com.svg
 )
 
 

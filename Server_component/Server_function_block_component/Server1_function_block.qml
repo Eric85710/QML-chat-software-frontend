@@ -2,11 +2,12 @@
 import QtQuick
 import QtQuick.Layouts
 import QtQuick.Controls
+import "Server_additional_block"
 
 
 Column {
     anchors.fill: parent
-    spacing: 20
+    spacing: 10
 
 
 
@@ -43,191 +44,116 @@ Column {
 
 
 
-    Rectangle {
-        id:server1_function_area_search_bar
-        width: parent.width-20
-        height: 40
-        radius: 12
-        color: "black"
-        opacity: 0.2
-        anchors.horizontalCenter: parent.horizontalCenter
-
-        Row {
-            anchors.fill: parent
-            spacing: 6
-            padding: 10
-
-            Image {
-                width: 30
-                height: 30
-                id: server1_function_area_search_bar_icon
-                source: "qrc:/svg_icon/search-svgrepo-com.svg"
-                anchors.verticalCenter: parent.verticalCenter
-            }
-
-            TextField {
-                id: server_searchInput
-                placeholderText: "Search server's function"
-                font.pixelSize: 16
-                anchors.verticalCenter: parent.verticalCenter
-            }
-        }
-    }
 
 
+    //scrollable area
+    ScrollView {
+        width: parent.width
+        height: parent.height
+        ScrollBar.horizontal.policy: ScrollBar.AlwaysOff
 
-
-
-
-
-    //Gallery and Video
-    Rectangle {
-        id:gallery_and_video_Rect
-        width: parent.width - 20
-        height: 86
-        radius: 12
-        color: "#777"
-        anchors.horizontalCenter: parent.horizontalCenter
-
-        Row {
-            anchors.fill: parent
-            spacing: 10
-            padding: 10
-
-
-            //gallery
-            Rectangle {
-                width: (gallery_and_video_Rect.width / 2) - 15
-                height: 70
-                radius: 12
-                anchors.verticalCenter: parent.verticalCenter
-                color: Qt.rgba(180/255, 180/255, 180/255, 1.0)
-
-                Row {
-                    anchors.fill: parent
-                    spacing: 4
-                    padding: 10
-
-                    Image {
-                        width: 32
-                        height: 32
-                        id: server_gallery_icon
-                        source: "qrc:/svg_icon/gallery-svgrepo-com.svg"
-                        anchors.verticalCenter: parent.verticalCenter
-                    }
-
-                    Text {
-                        text: qsTr("Gallery")
-                        color: "black"
-                        anchors.verticalCenter: parent.verticalCenter
-                        font.pixelSize: 16
-                    }
-                }
-            }
-
-            Rectangle {
-                width: (gallery_and_video_Rect.width / 2) - 15
-                height: 70
-                radius: 12
-                anchors.verticalCenter: parent.verticalCenter
-                color: Qt.rgba(180/255, 180/255, 180/255, 1.0)
-
-                Row {
-                    anchors.fill: parent
-                    spacing: 4
-                    padding: 10
-
-                    Image {
-                        width: 32
-                        height: 32
-                        id: server_video_icon
-                        source: "qrc:/svg_icon/video-library-svgrepo-com.svg"
-                        anchors.verticalCenter: parent.verticalCenter
-                    }
-
-                    Text {
-                        text: qsTr("Video")
-                        color: "black"
-                        anchors.verticalCenter: parent.verticalCenter
-                        font.pixelSize: 16
-                    }
-                }
-            }
-        }
-    }
-
-
-
-
-
-
-
-
-    Rectangle {
-        id: text_chaanel_rect
-        width: parent.width - 20
-        radius: 12
-        color: "#777"
-        anchors.horizontalCenter: parent.horizontalCenter
-        implicitHeight: text_chaanel_content.implicitHeight + 2
-
+        //all the scrollable function in here
         Column {
-            anchors.fill: parent
-            id:text_chaanel_content
+            width: parent.width
+            spacing: 20
+            padding: 10
 
-            //text function title
-            Row {
-                width: parent.width
-                height: 32
-                padding: 10
-                spacing: 2
 
-                Image {
-                    width: 20
-                    height: 20
-                    id: text_chaanel_icon
-                    source: "qrc:/svg_icon/text-square-svgrepo-com.svg"
-                    anchors.verticalCenter: parent.verticalCenter
+
+
+
+            Server_function_search_bar {
+                id:server_fun_searchBar_anim
+                transform: Translate { id: trans1; y: 100 }
+
+                Component.onCompleted: SequentialAnimation {
+                    ParallelAnimation {
+                        NumberAnimation {
+                            target: trans1
+                            property: "y"
+                            to: 0
+                            duration: 100
+                            easing: Easing.InOutQuad
+                        }
+                    }
                 }
+            }
 
-                Text {
-                    id: text_chaanel_title
-                    text: qsTr("文字頻道")
-                    anchors.verticalCenter: parent.verticalCenter
+            Server_gallery_and_video {
+                id:server_g_v_anim
+                transform: Translate { id: trans2; y: 100 }
+                opacity: 0
+
+                Component.onCompleted: SequentialAnimation {
+                    PauseAnimation { duration: 50 } // 延遲 100ms
+                    NumberAnimation {
+                        target: server_g_v_anim
+                        property: "opacity"
+                        to: 1
+                        duration: 250
+                        easing: Easing.InOutQuad
+                    }
+
+                    NumberAnimation {
+                        target: trans2
+                        property: "y"
+                        to: 0
+                        duration: 100
+                        easing: Easing.InOutQuad
+                    }
                 }
             }
 
 
-            //seperate_line
-            Rectangle {
-                width: parent.width
-                height: 2
+
+            Server_text_chat {
+                id:server_t_anim
+                transform: Translate { id:trans3; y: 100}
+                opacity: 0
+
+                Component.onCompleted: SequentialAnimation {
+                    PauseAnimation { duration: 100}
+                    NumberAnimation {
+                        target: server_t_anim
+                        property: "opacity"
+                        to: 1
+                        duration: 250
+                        easing: Easing.InOutQuad
+                    }
+
+                    NumberAnimation {
+                        target: trans3
+                        property: "y"
+                        to: 0
+                        duration: 100
+                        easing: Easing.InOutQuad
+                    }
+                }
             }
 
-            Column {
-                width: parent.width
-                spacing: 8
-                padding: 10
+            Server_voice_channel{
+                id:server_v_anim
+                transform: Translate { id:trans4; y: 100}
+                opacity: 0
 
-                Rectangle {
-                    width: parent.width - 36
-                    height: 30
-                    radius: 8
-                    anchors.horizontalCenter: parent.horizontalCenter
-                }
+                Component.onCompleted: SequentialAnimation {
+                    PauseAnimation { duration: 150}
 
-                Rectangle {
-                    width: parent.width - 36
-                    height: 30
-                    radius: 8
-                    anchors.horizontalCenter: parent.horizontalCenter
-                }
+                    NumberAnimation {
+                        target: server_v_anim
+                        property: "opacity"
+                        to: 1
+                        duration: 250
+                        easing: Easing.InOutQuad
+                    }
 
-                Rectangle {
-                    width: parent.width - 36
-                    height: 30
-                    radius: 8
-                    anchors.horizontalCenter: parent.horizontalCenter
+                    NumberAnimation {
+                        target: trans4
+                        property: "y"
+                        to: 0
+                        duration: 100
+                        easing: Easing.InOutQuad
+                    }
                 }
             }
         }
