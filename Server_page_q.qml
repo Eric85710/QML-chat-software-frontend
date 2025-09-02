@@ -195,6 +195,8 @@ Component {
                         x:100
                         y:100
                     }
+
+                    Server_members_list_block {}
                 }
             }
         }

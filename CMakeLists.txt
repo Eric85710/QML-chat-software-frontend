@@ -40,6 +40,7 @@ qt_add_qml_module(appqrc_test
         QML_FILES Server_component/Server_function_block_component/Server_additional_block/Server_gallery_and_video.qml
         QML_FILES Server_component/Server_function_block_component/Server_additional_block/Server_function_search_bar.qml
         RESOURCES svg_icon/sound-loud-svgrepo-com.svg
+        QML_FILES Server_component/Server_members_list_block.qml
 )
 
 
