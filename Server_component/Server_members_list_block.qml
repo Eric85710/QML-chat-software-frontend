@@ -1,5 +1,5 @@
-import QtQuick 2.15
-import QtQuick.Controls 2.15
+import QtQuick
+import QtQuick.Controls
 
 Item {
     width: 160
@@ -20,11 +20,17 @@ Item {
         spacing: 6
         clip: true
 
+
+        header: Item {
+            width: 160
+            height: 16 // 你想要的間距高度
+        }
+
         delegate: Rectangle {
             width: 160
             height: 48
-            color: index % 2 === 0 ? "#f8f8f8" : "#ffffff"
-            radius: 3
+            color: "transparent"
+            radius: 6
 
 
 
@@ -45,17 +51,17 @@ Item {
                 Column {
                     anchors.verticalCenter: parent.verticalCenter
                     Text {
-                        text: role
+                        text: name
                         font.bold: true
                         font.pointSize: 14
-                        color: "#333"
+                        color: "#90b0e0f0"
                         elide: Text.ElideRight
                     }
 
                     Text {
-                        text: name
+                        text: role
                         font.pointSize: 10
-                        color: "#333"
+                        color: "#90b0e0f0"
                         elide: Text.ElideRight
                     }
                 }
@@ -65,8 +71,8 @@ Item {
                 anchors.fill: parent
                 onClicked: console.log("Clicked:", name)
                 hoverEnabled: true
-                onEntered: parent.color = "#d0eaff"
-                onExited: parent.color = index % 2 === 0 ? "#f8f8f8" : "#ffffff"
+                onEntered: parent.color = "#90a3d5e5"
+                onExited: parent.color = "transparent"
             }
         }
     }
