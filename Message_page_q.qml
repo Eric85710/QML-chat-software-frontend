@@ -2,6 +2,7 @@
 import QtQuick
 import QtQuick.Layouts
 import QtQuick.Controls
+import "Message_component/"
 
 Component {
     Item {
@@ -93,6 +94,10 @@ Component {
                         id:friends_list_loadin_animation
                         x:-100
                         y:100
+                    }
+
+                    Friends_chat_list_v1 {
+                        id:friends_chat_list_block
                     }
 
                 }
