@@ -76,7 +76,7 @@ ApplicationWindow {
                 case "message": return message_Page
                 case "server": return server_Page
                 case "marketplace": return marketplace_Page
-                case "setting": return setting_Page
+                case "setting": return setting_page
                 case "workspace": return workspace_Page
                 default: return server_Page
             }
@@ -99,7 +99,11 @@ ApplicationWindow {
 
     //marketplace
     Marketplace_page_q{
-        id:marketplace_Page
+        id: marketplace_Page
+    }
+
+    Setting_page_q {
+        id: setting_page
     }
 
 

@@ -43,6 +43,7 @@ qt_add_qml_module(appqrc_test
         QML_FILES Server_component/Server_members_list_block.qml
         RESOURCES Message_component/Friends_message_chat_list
         QML_FILES Message_component/Friends_chat_list_v1.qml
+        QML_FILES Setting_page_q.qml
 )
 
 
