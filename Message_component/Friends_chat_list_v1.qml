@@ -19,20 +19,34 @@ Item {
         anchors.fill: parent
         model: memberModel
         orientation: ListView.Vertical
-        spacing: 10
         clip: true
 
 
         header: Item {
             width: whole_friends_chat_list.width
-            height: 8 // 你想要的間距高度
-        }
+            height: 60 // 你想要的間距高度
 
-        Rectangle {
-            id: friends_chat_searchBar
-            width: whole_friends_chat_list.width - 20
-            height: 40
-            radius: 6
+            Rectangle {
+                id: friends_chat_searchBar
+                width: parent.width - 20
+                height: 40
+                radius: 6
+                anchors.centerIn: parent
+                opacity: 0.4
+
+                Row {
+                    anchors.fill: parent
+                    padding: 10
+                    Image {
+                        id: friends_chat_list_searchBar_icon
+                        width: 28
+                        height: 28
+                        source: "qrc:/svg_icon/search-svgrepo-com.svg"
+                        anchors.verticalCenter: parent.verticalCenter
+                    }
+                }
+
+            }
         }
 
         delegate: Rectangle {
@@ -74,6 +88,12 @@ Item {
                         elide: Text.ElideRight
                     }
                 }
+            }
+
+            Rectangle {
+                width: parent.width
+                height: 2
+                opacity: 0.1
             }
 
             MouseArea {
