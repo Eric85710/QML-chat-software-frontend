@@ -2,6 +2,7 @@
 import QtQuick
 import QtQuick.Layouts
 import QtQuick.Controls
+import "Setting_page_component"
 
 Component {
     Item {
@@ -94,6 +95,8 @@ Component {
                         x:-100
                         y:100
                     }
+
+                    Setting_list_v2 {}
 
                 }
 

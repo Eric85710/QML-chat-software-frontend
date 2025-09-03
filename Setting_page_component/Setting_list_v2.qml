@@ -7,31 +7,38 @@ Item {
     height: parent.height
 
     ListModel {
-        id: memberModel
-        ListElement { name: "Alice"; role: "Designer" }
-        ListElement { name: "Bob"; role: "Developer" }
-        ListElement { name: "Charlie"; role: "Manager" }
-        ListElement { name: "Diana"; role: "QA" }
+        id: setting_optionModel
+        ListElement { setting_option: "profile" }
+        ListElement { setting_option: "theme" }
+        ListElement { setting_option: "devices" }
+        ListElement { setting_option: "marketplace" }
+        ListElement { setting_option: "subscribetion" }
+        ListElement { setting_option: "hardware" }
+        ListElement { setting_option: "shortcut" }
+        ListElement { setting_option: "language" }
+        ListElement { setting_option: "payment" }
     }
 
     ListView {
-        anchors.fill: parent
-        model: memberModel
+        height: parent.height
+        width: parent.width - 20
+        model: setting_optionModel
         orientation: ListView.Vertical
         clip: true
+        anchors.horizontalCenter: parent.horizontalCenter
 
 
         header: Item {
-            width: whole_friends_chat_list.width
+            width: parent.width
             height: 60 // 你想要的間距高度
 
             Rectangle {
-                id: friends_chat_searchBar
+                id: setting_option_searchBar
                 width: parent.width - 20
                 height: 40
                 radius: 6
-                anchors.centerIn: parent
                 opacity: 0.4
+                anchors.verticalCenter: parent.verticalCenter
 
                 Row {
                     anchors.fill: parent
@@ -50,41 +57,29 @@ Item {
 
         delegate: Rectangle {
             width: whole_friends_chat_list.width
-            height: 64
+            height: 72
             color: "transparent"
             radius: 6
 
 
 
-            Row {
-                id:member_info
-                spacing: 6
-                anchors.fill: parent
-                padding: 10
+            Rectangle {
+                width: whole_friends_chat_list.width - 40
+                height: 64
+                color: "#08FFFFFF"
+                radius: 12
 
-                Column {
+                Row {
                     anchors.verticalCenter: parent.verticalCenter
+                    padding: 10
                     Text {
-                        text: name
+                        text: setting_option
                         font.bold: true
-                        font.pointSize: 14
-                        color: "#90b0e0f0"
-                        elide: Text.ElideRight
-                    }
-
-                    Text {
-                        text: role
-                        font.pointSize: 10
+                        font.pointSize: 24
                         color: "#90b0e0f0"
                         elide: Text.ElideRight
                     }
                 }
-            }
-
-            Rectangle {
-                width: parent.width
-                height: 2
-                opacity: 0.1
             }
 
             MouseArea {
