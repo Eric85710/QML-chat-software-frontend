@@ -82,6 +82,17 @@ RowLayout{
             OpacityAnimator { target: server_function_block_bg_color; from: 0; to: 1; duration: 300 }
         }
 
+
+
+
+
+
+
+
+
+
+
+
         Loader {
             id: server_function_ContentLoader
             anchors.fill: parent

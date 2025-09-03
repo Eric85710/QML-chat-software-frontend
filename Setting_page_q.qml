@@ -3,9 +3,11 @@ import QtQuick
 import QtQuick.Layouts
 import QtQuick.Controls
 import "Setting_page_component"
+import "Setting_page_component/Settting_option_pages"
 
 Component {
     Item {
+        property string currentSettingOption: ""
         Rectangle {
             id: message_block
             anchors.fill: parent
@@ -96,9 +98,33 @@ Component {
                         y:100
                     }
 
-                    Setting_list_v2 {}
+                    Setting_list_v2 {
+                        onOptionSelected: function(option) {
+                            currentSettingOption = option
+                        }
+                    }
 
                 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
                 Rectangle {
@@ -114,6 +140,30 @@ Component {
                         id:message_chat_block_loadin_animation
                         x:100
                         y:100
+                    }
+
+                    Loader {
+                        id: setting_option_loader
+                        anchors.fill: parent
+                        sourceComponent: {
+                            switch (currentSettingOption) {
+                            case "profile": return profilesetting_page
+                            case "theme": return theme_page
+                            case "server3": return Server3Content
+                            default: return DefaultServerContent
+                            }
+                        }
+                    }
+
+                    Component {
+                        id: profilesetting_page
+                        Profile_setting{}
+                    }
+
+
+                    Component {
+                        id: theme_page
+                        Theme_page_q {}
                     }
                 }
             }

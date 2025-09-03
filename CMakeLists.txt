@@ -44,6 +44,8 @@ qt_add_qml_module(appqrc_test
         QML_FILES Message_component/Friends_chat_list_v1.qml
         QML_FILES Setting_page_q.qml
         QML_FILES Setting_page_component/Setting_list_v2.qml
+        QML_FILES Setting_page_component/Settting_option_pages/Profile_setting.qml
+        QML_FILES Setting_page_component/Settting_option_pages/Theme_page_q.qml
 )
 
 

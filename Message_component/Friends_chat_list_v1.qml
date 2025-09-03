@@ -90,10 +90,11 @@ Item {
                 }
             }
 
+            //seperate_line
             Rectangle {
                 width: parent.width
                 height: 2
-                opacity: 0.1
+                opacity: 0.2
             }
 
             MouseArea {

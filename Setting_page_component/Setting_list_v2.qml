@@ -5,6 +5,8 @@ Item {
     id:whole_friends_chat_list
     width: parent.width
     height: parent.height
+    
+    signal optionSelected(string option)
 
     ListModel {
         id: setting_optionModel
@@ -64,9 +66,10 @@ Item {
 
 
             Rectangle {
+                id:setting_button_block
                 width: whole_friends_chat_list.width - 40
                 height: 64
-                color: "#08FFFFFF"
+                color: "#10FFFFFF"
                 radius: 12
 
                 Row {
@@ -80,14 +83,18 @@ Item {
                         elide: Text.ElideRight
                     }
                 }
-            }
 
-            MouseArea {
-                anchors.fill: parent
-                onClicked: console.log("Clicked:", name)
-                hoverEnabled: true
-                onEntered: parent.color = "#90a3d5e5"
-                onExited: parent.color = "transparent"
+                MouseArea {
+                    anchors.fill: parent
+                    onClicked: {
+                        console.log("Clicked:", setting_option)
+                        whole_friends_chat_list.optionSelected(setting_option)
+                        currentSettingOption = setting_option
+                    }
+                    hoverEnabled: true
+                    onEntered: parent.color = "#90a3d5e5"
+                    onExited: parent.color = "#10FFFFFF"
+                }
             }
         }
     }
