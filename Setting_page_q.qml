@@ -82,7 +82,7 @@ Component {
                 Rectangle {
                     id: chat_room_list
                     color: "#44000000"
-                    Layout.preferredWidth: 320
+                    Layout.preferredWidth: 360
                     Layout.fillHeight: true
                     radius: 12
 
