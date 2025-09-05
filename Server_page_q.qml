@@ -187,6 +187,10 @@ Component {
                     Layout.preferredWidth: 160
                     Layout.fillHeight: true
                     radius: 12
+                    clip: true
+
+
+
 
                     OpacityAnimator { target: server_member_list; from: 0; to: 1; duration: 300 }
 

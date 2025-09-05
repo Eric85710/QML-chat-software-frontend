@@ -67,12 +67,13 @@ Item {
 
             Rectangle {
                 id:setting_button_block
-                width: whole_friends_chat_list.width - 40
+                implicitWidth: option_r.implicitWidth
                 height: 64
                 color: "#10FFFFFF"
                 radius: 12
 
                 Row {
+                    id: option_r
                     anchors.verticalCenter: parent.verticalCenter
                     padding: 10
                     Text {
