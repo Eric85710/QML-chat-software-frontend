@@ -22,6 +22,8 @@ Item {
         blurEnabled: true
         blurMax: 32
         blur: 0.6
+        colorization: 0.3
+        colorizationColor: "#000000"
     }
 
 }

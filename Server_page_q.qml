@@ -105,18 +105,9 @@ Component {
                 //choosing the server here
                 Rectangle {
                     id: server_list
-                    color: "transparent"
-                    Rectangle {
-                        id:server_list_bg_color
-                        anchors.fill: parent
-                        gradient: Gradient {
-                            GradientStop { position: 0.0; color: "gray" }
-                            GradientStop { position: 1.0; color: "black" }
-                        }
-                        opacity: 0.4
-                        radius: server_list.radius
-                        // 淡入動畫
-                        OpacityAnimator { target: server_list_bg_color; from: 0; to: 1; duration: 300 }
+                    gradient: Gradient {
+                        GradientStop { position: 0.0; color: Qt.rgba(0.4, 0.4, 0.4, 0.4) }
+                        GradientStop { position: 1.0; color: Qt.rgba(0.4, 0.4, 0.4, 0.2) }
                     }
 
                     Layout.preferredWidth: 340
@@ -183,7 +174,10 @@ Component {
                 //all of the members will shows in here
                 Rectangle {
                     id: server_member_list
-                    color: "#44000000"
+                    gradient: Gradient {
+                        GradientStop { position: 0.0; color: Qt.rgba(0.2, 0.2, 0.2, 0.4) }
+                        GradientStop { position: 1.0; color: Qt.rgba(0.2, 0.2, 0.2, 0.2) }
+                    }
                     Layout.preferredWidth: 160
                     Layout.fillHeight: true
                     radius: 12

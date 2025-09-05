@@ -82,7 +82,10 @@ Component {
 
                 Rectangle {
                     id: chat_room_list
-                    color: "#44000000"
+                    gradient: Gradient {
+                        GradientStop { position: 0.0; color: Qt.rgba(0.2, 0.2, 0.2, 0.4) }
+                        GradientStop { position: 1.0; color: Qt.rgba(0.2, 0.2, 0.2, 0.2) }
+                    }
                     Layout.preferredWidth: 320
                     Layout.fillHeight: true
                     radius: 12

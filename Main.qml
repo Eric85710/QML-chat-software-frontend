@@ -32,11 +32,6 @@ ApplicationWindow {
         background: Item {
             anchors.fill: parent
 
-            FrostedGlass {
-                anchors.fill: parent
-                sourceItem: bg1
-            }
-
 
             Rectangle {
                 id:nav_color

@@ -37,6 +37,10 @@ RowLayout{
                     current_server = model.serverID
                     serverSelected(model.serverID)
                 }
+
+                hoverEnabled: true
+                onEntered: parent.width = 58
+                onExited: parent.width = 56
             }
         }
 
