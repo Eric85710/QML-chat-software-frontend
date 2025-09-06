@@ -80,6 +80,7 @@ RowLayout{
         Shape {
             width: parent.width
             height: parent.height
+            FrostedGlass_V2{}
 
 
             ShapePath {
