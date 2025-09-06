@@ -2,6 +2,7 @@
 import QtQuick 2.15
 import QtQuick.Layouts
 import QtQuick.Effects
+import QtQuick.Shapes
 import "../Style_component"
 import "Server_function_block_component"
 
@@ -44,7 +45,7 @@ RowLayout{
             }
         }
 
-        spacing: 16
+        spacing: 20
         orientation: ListView.Vertical
         clip: true
 
@@ -76,16 +77,63 @@ RowLayout{
 
 
         //background color
-        Rectangle {
-            id:server_function_block_bg_color
-            anchors.fill: parent
-            color: "black"
-            opacity: 0.2
-            radius: server_function_block.radius
-            // 淡入動畫
-            OpacityAnimator { target: server_function_block_bg_color; from: 0; to: 1; duration: 300 }
-        }
+        Shape {
+            width: parent.width
+            height: parent.height
 
+
+            ShapePath {
+                strokeWidth: 2
+                strokeColor: Qt.rgba(0.2, 0.2, 0.4, 0.4)
+                fillColor: Qt.rgba(0.2, 0.2, 0.2, 0.4)
+
+                startX: 12; startY: 0
+
+                //right
+                PathLine { x:server_function_block.width - 12;  y:0}
+
+                //radius top right
+                PathQuad {
+                    x:server_function_block.width
+                    y:12
+                    relativeControlX: 12
+                    relativeControlY: 0
+                }
+
+                //down
+                PathLine { x:server_function_block.width; y:server_function_block.height -12}
+
+                //radius bottom right
+                PathQuad {
+                    relativeX: -12
+                    relativeY: 12
+                    relativeControlY: 12
+                    relativeControlX: 0
+                }
+
+                //left
+                PathLine { x: 12; y: server_function_block.height }
+
+                //radius bottom left
+                PathQuad {
+                    relativeX: -12
+                    relativeY: -12
+                    relativeControlX: -12
+                    relativeControlY: 0
+                }
+
+                //up
+                PathLine { x: 0; y: 12}
+
+                //radius
+                PathQuad {
+                    relativeX: 12
+                    y: 0
+                    relativeControlX: 0
+                    relativeControlY: -12
+                }
+            }
+        }
 
 
 
