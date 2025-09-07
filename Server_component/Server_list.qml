@@ -10,6 +10,7 @@ RowLayout{
     anchors.fill: parent
     signal serverSelected(string serverID)
     property string current_server: ""
+    property var current_server_position
 
 
 
@@ -37,6 +38,10 @@ RowLayout{
                     console.log("你點了：", model.name, model.serverID)
                     current_server = model.serverID
                     serverSelected(model.serverID)
+
+
+                    current_server_position = Qt.point(parent.x, parent.y + 130)
+                    console.log("座標是：", current_server_position)
                 }
 
                 hoverEnabled: true
@@ -125,7 +130,8 @@ RowLayout{
 
 
                 //line to wave
-                PathLine { relativeX: 0; relativeY: -360 }
+                //define wave position in here
+                PathLine { relativeX: 0; y: current_server_position.y }
 
 
 
