@@ -78,9 +78,9 @@ RowLayout{
 
         //background color
         Shape {
+            id: wave_sh
             width: parent.width
-            height: parent.height
-            FrostedGlass_V2{}
+            height: parent.heights
 
 
             ShapePath {
@@ -124,16 +124,51 @@ RowLayout{
                 }
 
 
-                PathLine { relativeX: 0; relativeY: -120 }
+                //line to wave
+                PathLine { relativeX: 0; relativeY: -360 }
 
+
+
+
+
+
+
+
+
+
+                //wave_path1
                 PathQuad {
-                    relativeX: 0
-                    //wave width
-                    relativeY: -68
-
-                    relativeControlX: -80
-                    relativeControlY: -32
+                    relativeX: -12
+                    relativeY: -44
+                    relativeControlX: 0
+                    relativeControlY: -12
                 }
+
+                //wave center
+                PathCubic {
+                    relativeX: 0
+                    relativeY: -80
+                    relativeControl1X: -68
+                    relativeControl2X: -68
+                    relativeControl1Y: 0
+                    relativeControl2Y: -80
+                }
+
+                //wave_path2
+                PathQuad {
+                    relativeX: 12
+                    relativeY: -44
+                    relativeControlX: 12
+                    relativeControlY: -6
+                }
+
+
+
+
+
+
+
+
 
 
 
