@@ -85,7 +85,7 @@ RowLayout{
 
             ShapePath {
                 strokeWidth: 2
-                strokeColor: Qt.rgba(0.2, 0.2, 0.4, 0.4)
+                strokeColor: Qt.rgba(0.2, 0.2, 0.4, 0.6)
                 fillColor: Qt.rgba(0.2, 0.2, 0.2, 0.4)
 
                 startX: 12; startY: 0
@@ -123,12 +123,27 @@ RowLayout{
                     relativeControlY: 0
                 }
 
+
+                PathLine { relativeX: 0; relativeY: -120 }
+
+                PathQuad {
+                    relativeX: 0
+                    //wave width
+                    relativeY: -60
+
+
+                    relativeControlX: -40
+                    relativeControlY: -24
+                }
+
+
+
                 //up
                 PathLine { x: 0; y: 12}
 
                 //radius
                 PathQuad {
-                    relativeX: 12
+                    x: 12
                     y: 0
                     relativeControlX: 0
                     relativeControlY: -12
