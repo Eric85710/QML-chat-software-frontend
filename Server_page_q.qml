@@ -106,8 +106,8 @@ Component {
                 Rectangle {
                     id: server_list
                     gradient: Gradient {
-                        GradientStop { position: 0.0; color: Qt.rgba(0.4, 0.4, 0.4, 0.4) }
-                        GradientStop { position: 1.0; color: Qt.rgba(0.4, 0.4, 0.4, 0.2) }
+                        GradientStop { position: 0.0; color: Qt.rgba(0.2, 0.2, 0.2, 0.4) }
+                        GradientStop { position: 1.0; color: Qt.rgba(0.2, 0.2, 0.2, 0.2) }
                     }
 
                     Layout.preferredWidth: 340
