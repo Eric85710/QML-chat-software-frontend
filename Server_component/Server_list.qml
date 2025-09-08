@@ -33,8 +33,8 @@ RowLayout{
             source: model.icon
 
             x: current_server === model.serverID
-                ? (servers_icon_list.width - width) / 2
-                : (servers_icon_list.width - width)
+                ? 18
+                : (servers_icon_list.width - width) / 2
 
 
             Behavior on x {
@@ -55,16 +55,6 @@ RowLayout{
                     serverSelected(model.serverID)
 
                     current_server_position = Qt.point(per_avatar.x, per_avatar.y + 128)
-                    console.log("座標是：", current_server_position)
-                }
-                hoverEnabled: true
-                onEntered: {
-                    parent.width = 58
-                    parent.height = 58
-                }
-                onExited: {
-                    parent.width = 56
-                    parent.height = 56
                 }
             }
         }
@@ -179,8 +169,8 @@ RowLayout{
                 PathCubic {
                     relativeX: 0
                     relativeY: -80
-                    relativeControl1X: -68
-                    relativeControl2X: -68
+                    relativeControl1X: -60
+                    relativeControl2X: -60
                     relativeControl1Y: 0
                     relativeControl2Y: -80
                 }
