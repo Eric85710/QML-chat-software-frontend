@@ -26,11 +26,26 @@ RowLayout{
         }
 
         delegate: Round_img_avatar {
+            id: per_avatar
             width: 56
             height: 56
             radius: width / 2
             source: model.icon
-            anchors.horizontalCenter: parent.horizontalCenter
+
+            x: current_server === model.serverID
+                ? (servers_icon_list.width - width) / 2
+                : (servers_icon_list.width - width)
+
+
+            Behavior on x {
+                NumberAnimation { duration: 200; easing.type: Easing.InOutQuad }
+            }
+            Behavior on width {
+                NumberAnimation { duration: 150; easing.type: Easing.InOutQuad }
+            }
+            Behavior on height {
+                NumberAnimation { duration: 150; easing.type: Easing.InOutQuad }
+            }
 
             MouseArea {
                 anchors.fill: parent
@@ -39,16 +54,21 @@ RowLayout{
                     current_server = model.serverID
                     serverSelected(model.serverID)
 
-
-                    current_server_position = Qt.point(parent.x, parent.y + 130)
+                    current_server_position = Qt.point(per_avatar.x, per_avatar.y + 128)
                     console.log("座標是：", current_server_position)
                 }
-
                 hoverEnabled: true
-                onEntered: parent.width = 58
-                onExited: parent.width = 56
+                onEntered: {
+                    parent.width = 58
+                    parent.height = 58
+                }
+                onExited: {
+                    parent.width = 56
+                    parent.height = 56
+                }
             }
         }
+
 
         spacing: 20
         orientation: ListView.Vertical
@@ -59,6 +79,11 @@ RowLayout{
             height: 16 // 你想要的間距高度
         }
     }
+
+
+
+
+
 
 
 
