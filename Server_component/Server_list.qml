@@ -25,39 +25,49 @@ RowLayout{
             ListElement { serverID: "server3"; name: "開發群組"; icon: "qrc:/img/after-sunset.jpg"; unread: 12 }
         }
 
-        delegate: Round_img_avatar {
-            id: per_avatar
+        delegate: Item {
             width: 56
             height: 56
-            radius: width / 2
-            source: model.icon
 
-            x: current_server === model.serverID
-                ? 18
-                : (servers_icon_list.width - width) / 2
+            Round_img_avatar {
+                id: per_avatar
+                anchors.centerIn: parent
+                width: parent.width
+                height: parent.height
+                radius: width / 2
+                source: model.icon
 
+                transform: Scale {
+                    id: avatarScale
+                    origin.x: per_avatar.width / 2
+                    origin.y: per_avatar.height / 2
+                    xScale: current_server === model.serverID ? 0.714 : 1.0
+                    yScale: current_server === model.serverID ? 0.714 : 1.0
+                }
+
+                Behavior on transform {
+                    NumberAnimation { duration: 150; easing.type: Easing.InOutQuad }
+                }
+
+                MouseArea {
+                    anchors.fill: parent
+                    onClicked: {
+                        current_server = model.serverID
+                        serverSelected(model.serverID)
+                        current_server_position = Qt.point(per_avatar.x, per_avatar.y + 128)
+                    }
+                }
+            }
+
+            // x 偏移控制在外層 Item
+            x: current_server === model.serverID ? 14 : (servers_icon_list.width - width) / 2
 
             Behavior on x {
                 NumberAnimation { duration: 200; easing.type: Easing.InOutQuad }
             }
-            Behavior on width {
-                NumberAnimation { duration: 150; easing.type: Easing.InOutQuad }
-            }
-            Behavior on height {
-                NumberAnimation { duration: 150; easing.type: Easing.InOutQuad }
-            }
-
-            MouseArea {
-                anchors.fill: parent
-                onClicked: {
-                    console.log("你點了：", model.name, model.serverID)
-                    current_server = model.serverID
-                    serverSelected(model.serverID)
-
-                    current_server_position = Qt.point(per_avatar.x, per_avatar.y + 128)
-                }
-            }
         }
+
+
 
 
         spacing: 20
@@ -68,6 +78,7 @@ RowLayout{
             width: servers_icon_list.width
             height: 16 // 你想要的間距高度
         }
+
     }
 
 
