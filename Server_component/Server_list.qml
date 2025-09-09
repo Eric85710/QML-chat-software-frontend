@@ -13,17 +13,31 @@ RowLayout{
     property var current_server_position
     property real waveY: 0   // 最终目标
     property real animWaveY: 0 // 实际动画用的值
+    property real wave_end: 12
+    property real have_radi: -12
+    property real have_end_wave: -44
 
     Behavior on animWaveY {
         NumberAnimation { duration: 300; easing.type: Easing.InOutQuad }
     }
 
+    // 只有超過 150 才更新目標位置
     onCurrent_server_positionChanged: {
         if (current_server_position.y >= 150) {
-            // 只有超過 150 才更新目標位置
+            have_end_wave = -44
+            have_radi = -12
+            wave_end = 12
             waveY = current_server_position.y
             animWaveY = waveY
         }
+        else{
+            have_end_wave = 0
+            have_radi = 0
+            wave_end = 0
+            waveY = current_server_position.y
+            animWaveY = waveY
+        }
+
         // 否則什麼都不做，animWaveY 保持原值
     }
 
@@ -230,7 +244,7 @@ RowLayout{
                 //wave_path2
                 PathQuad {
                     relativeX: 12
-                    relativeY: -44
+                    relativeY: have_end_wave
                     relativeControlX: 12
                     relativeControlY: -6
                 }
@@ -246,14 +260,14 @@ RowLayout{
 
 
                 //up
-                PathLine { x: 0; y: 12}
+                PathLine { x: 0; y: wave_end}
 
                 //radius
                 PathQuad {
                     x: 12
                     y: 0
                     relativeControlX: 0
-                    relativeControlY: -12
+                    relativeControlY: have_radi
                 }
             }
         }
