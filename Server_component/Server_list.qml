@@ -39,6 +39,10 @@ RowLayout{
                 height: parent.height
                 radius: width / 2
                 source: model.icon
+                x: current_server === model.serverID ? 14 : (servers_icon_list.width - width) / 2
+                Behavior on x {
+                    NumberAnimation { duration: 200; easing.type: Easing.InOutQuad }
+                }
 
                 transform: Scale {
                     id: avatarScale
@@ -66,13 +70,6 @@ RowLayout{
                     }
                 }
             }
-
-            // x 偏移控制在外層 Item
-            x: current_server === model.serverID ? 14 : (servers_icon_list.width - width) / 2
-
-            Behavior on x {
-                NumberAnimation { duration: 200; easing.type: Easing.InOutQuad }
-            }
         }
 
 
@@ -89,12 +86,21 @@ RowLayout{
 
         Component.onCompleted: {
             if (servers_icon_list.model.count > 0) {
-                const firstServer = servers_icon_list.model.get(0)
-                current_server = firstServer.serverID
-                current_server_position = Qt.point(14, 128)
-                serverSelected(firstServer.serverID)
+                Qt.callLater(function() {
+                    const firstServer = servers_icon_list.model.get(0)
+                    current_server = firstServer.serverID
+
+                    let firstDelegate = servers_icon_list.contentItem.children[0]
+                    if (firstDelegate) {
+                        let mappedPos = firstDelegate.mapToItem(servers_icon_list, 0, 0)
+                        current_server_position = Qt.point(mappedPos.x, mappedPos.y + 105)
+                    }
+
+                    serverSelected(firstServer.serverID)
+                })
             }
         }
+
     }
 
 
