@@ -19,9 +19,14 @@ RowLayout{
     }
 
     onCurrent_server_positionChanged: {
-        waveY = current_server_position.y
-        animWaveY = waveY
+        if (current_server_position.y >= 150) {
+            // 只有超過 150 才更新目標位置
+            waveY = current_server_position.y
+            animWaveY = waveY
+        }
+        // 否則什麼都不做，animWaveY 保持原值
     }
+
 
 
 
@@ -51,7 +56,8 @@ RowLayout{
                 height: parent.height
                 radius: width / 2
                 source: model.icon
-                x: current_server === model.serverID ? 15 : (servers_icon_list.width - width) / 2
+                x: current_server === model.serverID ? 14 : (servers_icon_list.width - width) / 2
+
 
                 Behavior on x {
                     NumberAnimation { duration: 200; easing.type: Easing.InOutQuad }
