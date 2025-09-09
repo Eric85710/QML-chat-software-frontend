@@ -20,18 +20,21 @@ RowLayout{
         Layout.preferredWidth: 68
         Layout.fillHeight: true
         model: ListModel {
+            ListElement { serverID: "add_server"; name: "日落伺服器"; icon: "qrc:/svg_icon/plus-circle-svgrepo-com.svg"; unread: 3 }
             ListElement { serverID: "server1"; name: "日落伺服器"; icon: "qrc:/img/after-sunset.jpg"; unread: 3 }
             ListElement { serverID: "server2"; name: "個人空間"; icon: "qrc:/img/avatar.png"; unread: 0 }
             ListElement { serverID: "server3"; name: "開發群組"; icon: "qrc:/img/after-sunset.jpg"; unread: 12 }
         }
 
+
+
         delegate: Item {
             width: 56
             height: 56
 
+
             Round_img_avatar {
                 id: per_avatar
-                anchors.centerIn: parent
                 width: parent.width
                 height: parent.height
                 radius: width / 2
@@ -54,7 +57,12 @@ RowLayout{
                     onClicked: {
                         current_server = model.serverID
                         serverSelected(model.serverID)
-                        current_server_position = Qt.point(per_avatar.x, per_avatar.y + 128)
+
+
+
+                        let mappedPos = per_avatar.mapToItem(servers_icon_list, 0, 0)
+                        current_server_position = Qt.point(mappedPos.x, mappedPos.y + 105)
+                        console.log("Mapped Y:", current_server_position.y)
                     }
                 }
             }
@@ -79,6 +87,14 @@ RowLayout{
             height: 16 // 你想要的間距高度
         }
 
+        Component.onCompleted: {
+            if (servers_icon_list.model.count > 0) {
+                const firstServer = servers_icon_list.model.get(0)
+                current_server = firstServer.serverID
+                current_server_position = Qt.point(14, 128)
+                serverSelected(firstServer.serverID)
+            }
+        }
     }
 
 

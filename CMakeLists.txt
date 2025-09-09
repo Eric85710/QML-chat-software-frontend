@@ -47,6 +47,8 @@ qt_add_qml_module(appqrc_test
         QML_FILES Setting_page_component/Settting_option_pages/Profile_setting.qml
         QML_FILES Setting_page_component/Settting_option_pages/Theme_page_q.qml
         QML_FILES Style_component/FrostedGlass_V2.qml
+        RESOURCES svg_icon/plus-svgrepo-com.svg
+        RESOURCES svg_icon/plus-circle-svgrepo-com.svg
 )
 
 
@@ -60,6 +62,8 @@ qt_add_resources(appqrc_test "icons"
         svg_icon/search-svgrepo-com.svg
         svg_icon/text-square-svgrepo-com.svg
         svg_icon/sound-loud-svgrepo-com.svg
+        svg_icon/plus-svgrepo-com.svg
+        svg_icon/plus-circle-svgrepo-com.svg
 )
 
 
