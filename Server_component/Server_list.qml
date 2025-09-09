@@ -11,6 +11,18 @@ RowLayout{
     signal serverSelected(string serverID)
     property string current_server: ""
     property var current_server_position
+    property real waveY: 0   // 最终目标
+    property real animWaveY: 0 // 实际动画用的值
+
+    Behavior on animWaveY {
+        NumberAnimation { duration: 300; easing.type: Easing.InOutQuad }
+    }
+
+    onCurrent_server_positionChanged: {
+        waveY = current_server_position.y
+        animWaveY = waveY
+    }
+
 
 
 
@@ -39,7 +51,8 @@ RowLayout{
                 height: parent.height
                 radius: width / 2
                 source: model.icon
-                x: current_server === model.serverID ? 14 : (servers_icon_list.width - width) / 2
+                x: current_server === model.serverID ? 15 : (servers_icon_list.width - width) / 2
+
                 Behavior on x {
                     NumberAnimation { duration: 200; easing.type: Easing.InOutQuad }
                 }
@@ -179,7 +192,7 @@ RowLayout{
 
                 //line to wave
                 //define wave position in here
-                PathLine { relativeX: 0; y: current_server_position.y }
+                PathLine { relativeX: 0; y: animWaveY }
 
 
 
