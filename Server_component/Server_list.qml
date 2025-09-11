@@ -12,34 +12,101 @@ RowLayout{
     property string current_server: ""
     property var current_server_position
     property real waveY: 0   // 最终目标
-    property real animWaveY: 0 // 实际动画用的值
+    property real animWaveY: 200 // 实际动画用的值
     property real wave_end: 12
     property real have_radi: -12
-    property real have_end_wave: -44
+    property real have_end_wave: 0
+    property real have_cen_wave1x: 0
+    property real have_cen_wave2x: 0
+    property real have_cen_control2y: 0
+
+    property real have_wavePath1_x: 0
+    property real have_wavePath1_y: -44
+    property real have_wavePath1_controlx: 0
+    property real have_wavePath1_controly: 0
+
+    property real have_wavePath2_x: 0
+    property real have_wavePath2_controlx: 0
+    property real have_wavePath2_controly: 0
+
+
+    property bool waveAnimated: false
+
 
     Behavior on animWaveY {
+        NumberAnimation { duration: 300; easing.type: Easing.InOutQuad }
+    }
+    Behavior on have_end_wave {
+        NumberAnimation { duration: 300; easing.type: Easing.InOutQuad }
+    }
+    Behavior on have_radi {
+        NumberAnimation { duration: 300; easing.type: Easing.InOutQuad }
+    }
+    Behavior on wave_end {
         NumberAnimation { duration: 300; easing.type: Easing.InOutQuad }
     }
 
     // 只有超過 150 才更新目標位置
     onCurrent_server_positionChanged: {
+        if (!waveAnimated) {
+            // waveAnimated 為 false 時，只更新數值，不做動畫
+            have_cen_wave1x = 0
+            have_cen_wave2x = 0
+            have_cen_control2y = 0
+            have_wavePath1_x = 0
+            have_wavePath1_y = -44
+            have_wavePath1_controlx = 0
+            have_wavePath1_controly = 0
+
+            have_wavePath2_x = 0
+            have_wavePath2_controlx = 0
+            have_wavePath2_controly = 0
+
+            return
+        }
+
+        // waveAnimated 為 true 時，開啟動畫
         if (current_server_position.y >= 150) {
             have_end_wave = -44
             have_radi = -12
             wave_end = 12
             waveY = current_server_position.y
             animWaveY = waveY
-        }
-        else{
+
+            have_cen_wave1x = -60
+            have_cen_wave2x = -60
+            have_cen_control2y = -80
+
+            have_wavePath1_x = -12
+            have_wavePath1_y = -44
+            have_wavePath1_controlx = 0
+            have_wavePath1_controly = -12
+
+            have_wavePath2_x = 12
+            have_wavePath2_controlx = 12
+            have_wavePath2_controly = -6
+        } else {
             have_end_wave = 0
             have_radi = 0
             wave_end = 0
             waveY = current_server_position.y
             animWaveY = waveY
-        }
 
-        // 否則什麼都不做，animWaveY 保持原值
+            have_cen_wave1x = -60
+            have_cen_wave2x = -60
+            have_cen_control2y = -80
+
+            have_wavePath1_x = -12
+            have_wavePath1_y = -44
+            have_wavePath1_controlx = 0
+            have_wavePath1_controly = -12
+
+            have_wavePath2_x = 12
+            have_wavePath2_controlx = 12
+            have_wavePath2_controly = -6
+        }
     }
+
 
 
 
@@ -94,6 +161,7 @@ RowLayout{
                     onClicked: {
                         current_server = model.serverID
                         serverSelected(model.serverID)
+                        waveAnimated = true
 
 
 
@@ -225,28 +293,28 @@ RowLayout{
 
                 //wave_path1
                 PathQuad {
-                    relativeX: -12
-                    relativeY: -44
+                    relativeX: have_wavePath1_x
+                    relativeY: have_wavePath1_y
                     relativeControlX: 0
-                    relativeControlY: -12
+                    relativeControlY: have_wavePath1_controly
                 }
 
                 //wave center
                 PathCubic {
                     relativeX: 0
                     relativeY: -80
-                    relativeControl1X: -60
-                    relativeControl2X: -60
+                    relativeControl1X: have_cen_wave1x
+                    relativeControl2X: have_cen_wave2x
                     relativeControl1Y: 0
-                    relativeControl2Y: -80
+                    relativeControl2Y: have_cen_control2y
                 }
 
                 //wave_path2
                 PathQuad {
-                    relativeX: 12
+                    relativeX: have_wavePath2_x
                     relativeY: have_end_wave
-                    relativeControlX: 12
-                    relativeControlY: -6
+                    relativeControlX: have_wavePath2_controlx
+                    relativeControlY: have_wavePath2_controly
                 }
 
 
