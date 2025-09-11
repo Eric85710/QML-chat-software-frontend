@@ -45,6 +45,37 @@ RowLayout{
     Behavior on wave_end {
         NumberAnimation { duration: 300; easing.type: Easing.InOutQuad }
     }
+    Behavior on have_cen_wave1x {
+        NumberAnimation { duration: 300; easing.type: Easing.InOutQuad }
+    }
+    Behavior on have_cen_wave2x {
+        NumberAnimation { duration: 300; easing.type: Easing.InOutQuad }
+    }
+    Behavior on have_cen_control2y {
+        NumberAnimation { duration: 300; easing.type: Easing.InOutQuad }
+    }
+    Behavior on have_wavePath1_x {
+        NumberAnimation { duration: 300; easing.type: Easing.InOutQuad }
+    }
+    Behavior on have_wavePath1_y {
+        NumberAnimation { duration: 300; easing.type: Easing.InOutQuad }
+    }
+    Behavior on have_wavePath1_controlx {
+        NumberAnimation { duration: 300; easing.type: Easing.InOutQuad }
+    }
+    Behavior on have_wavePath1_controly {
+        NumberAnimation { duration: 300; easing.type: Easing.InOutQuad }
+    }
+    Behavior on have_wavePath2_x {
+        NumberAnimation { duration: 300; easing.type: Easing.InOutQuad }
+    }
+    Behavior on have_wavePath2_controlx {
+        NumberAnimation { duration: 300; easing.type: Easing.InOutQuad }
+    }
+    Behavior on have_wavePath2_controly {
+        NumberAnimation { duration: 300; easing.type: Easing.InOutQuad }
+    }
+
 
     // 只有超過 150 才更新目標位置
     onCurrent_server_positionChanged: {
@@ -53,6 +84,7 @@ RowLayout{
             have_cen_wave1x = 0
             have_cen_wave2x = 0
             have_cen_control2y = 0
+
             have_wavePath1_x = 0
             have_wavePath1_y = -44
             have_wavePath1_controlx = 0
