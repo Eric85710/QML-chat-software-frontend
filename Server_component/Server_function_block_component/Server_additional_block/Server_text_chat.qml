@@ -7,6 +7,8 @@ Rectangle {
     color: Qt.rgba(0.8, 0.8, 0.8, 0.4)
     anchors.horizontalCenter: parent.horizontalCenter
     implicitHeight: text_chaanel_content.implicitHeight + 2
+    signal chatRoomClicked(string name)
+
 
     Column {
         anchors.fill: parent
@@ -56,9 +58,9 @@ Rectangle {
                 clip: true
 
                 model: ListModel {
-                    ListElement { name: "聊天室 A" }
-                    ListElement { name: "聊天室 B" }
-                    ListElement { name: "聊天室 C" }
+                    ListElement { name: "聊天室 A"; text_chat_room_id:"text_chat_room1" }
+                    ListElement { name: "聊天室 B"; text_chat_room_id:"text_chat_room2" }
+                    ListElement { name: "聊天室 C"; text_chat_room_id:"text_chat_room3" }
                 }
 
                 delegate: Rectangle {
@@ -74,6 +76,13 @@ Rectangle {
                         font.pixelSize: 14
                     }
 
+                    MouseArea {
+                        anchors.fill: parent
+                        onClicked: {
+                            text_chaanel_rect.chatRoomClicked(model.text_chat_room_id)
+                            console.log(text_chat_room_id)
+                        }
+                    }
 
                 }
             }
