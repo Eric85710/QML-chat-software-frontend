@@ -49,6 +49,10 @@ qt_add_qml_module(appqrc_test
         QML_FILES Style_component/FrostedGlass_V2.qml
         RESOURCES svg_icon/plus-svgrepo-com.svg
         RESOURCES svg_icon/plus-circle-svgrepo-com.svg
+        QML_FILES Server_component/Server_function_windows/Group_text_chat.qml
+        QML_FILES Server_component/Server_function_windows/Server_function_windows_component/Gallery_filter.qml
+        QML_FILES Server_component/Server_function_windows/Server_function_windows_component/Server_chat_block.qml Server_component/Server_function_windows/Server_function_windows_component/Server_members_list_block.qml
+        QML_FILES Server_component/Server_function_windows/Server_function_windows_component/Round_img_avatar.qml
 )
 
 
