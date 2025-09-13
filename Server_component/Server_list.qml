@@ -112,11 +112,13 @@ RowLayout{
             have_wavePath1_x = -12
             have_wavePath1_y = -44
             have_wavePath1_controlx = 0
-            have_wavePath1_controly = -12
+            have_wavePath1_controly = -38
 
             have_wavePath2_x = 12
             have_wavePath2_controlx = 12
             have_wavePath2_controly = -6
+
+        //Don't have end wave
         } else {
             have_end_wave = 0
             have_radi = 0
@@ -131,7 +133,7 @@ RowLayout{
             have_wavePath1_x = -12
             have_wavePath1_y = -44
             have_wavePath1_controlx = 0
-            have_wavePath1_controly = -12
+            have_wavePath1_controly = -38
 
             have_wavePath2_x = 12
             have_wavePath2_controlx = 12
@@ -169,7 +171,7 @@ RowLayout{
                 height: parent.height
                 radius: width / 2
                 source: model.icon
-                x: current_server === model.serverID ? 14 : (servers_icon_list.width - width) / 2
+                x: current_server === model.serverID ? 18 : (servers_icon_list.width - width) / 2
 
 
                 Behavior on x {
