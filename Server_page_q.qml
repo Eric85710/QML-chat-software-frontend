@@ -135,7 +135,14 @@ Component {
 
 
 
-                Group_text_chat {}
+                RowLayout {
+                    Layout.fillWidth: true
+                    Layout.fillHeight: true
+
+
+
+                    Group_text_chat {}
+                }
 
 
 
