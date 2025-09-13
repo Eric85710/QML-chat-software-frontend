@@ -137,64 +137,72 @@ Component {
 
 
 
-                //chat with your son in here
-                Rectangle {
-                    id: server_chat_block
-                    color: "transparent"
+                RowLayout {
                     Layout.fillWidth: true
                     Layout.fillHeight: true
-                    radius: 12
 
-                    OpacityAnimator { target: server_chat_block; from: -100; to: 1; duration: 300 }
 
-                    transform: Translate{
-                        id:server_chat_block_loadin_animation
-                        y:100
+
+
+                    //chat with your son in here
+                    Rectangle {
+                        id: server_chat_block
+                        color: "transparent"
+                        Layout.fillWidth: true
+                        Layout.fillHeight: true
+                        radius: 12
+
+                        OpacityAnimator { target: server_chat_block; from: -100; to: 1; duration: 300 }
+
+                        transform: Translate{
+                            id:server_chat_block_loadin_animation
+                            y:100
+                        }
+
+                        Server_chat_block {
+                            id:server_message_chat_block
+                        }
                     }
 
-                    Server_chat_block {
-                        id:server_message_chat_block
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                    //all of the members will shows in here
+                    Rectangle {
+                        id: server_member_list
+                        gradient: Gradient {
+                            GradientStop { position: 0.0; color: Qt.rgba(0.2, 0.2, 0.2, 0.4) }
+                            GradientStop { position: 1.0; color: Qt.rgba(0.2, 0.2, 0.2, 0.2) }
+                        }
+                        Layout.preferredWidth: 160
+                        Layout.fillHeight: true
+                        radius: 12
+                        clip: true
+
+
+
+
+                        OpacityAnimator { target: server_member_list; from: 0; to: 1; duration: 300 }
+
+                        transform: Translate{
+                            id:server_member_list_loadin_animation
+                            x:100
+                            y:100
+                        }
+
+                        Server_members_list_block {}
                     }
-                }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                //all of the members will shows in here
-                Rectangle {
-                    id: server_member_list
-                    gradient: Gradient {
-                        GradientStop { position: 0.0; color: Qt.rgba(0.2, 0.2, 0.2, 0.4) }
-                        GradientStop { position: 1.0; color: Qt.rgba(0.2, 0.2, 0.2, 0.2) }
-                    }
-                    Layout.preferredWidth: 160
-                    Layout.fillHeight: true
-                    radius: 12
-                    clip: true
-
-
-
-
-                    OpacityAnimator { target: server_member_list; from: 0; to: 1; duration: 300 }
-
-                    transform: Translate{
-                        id:server_member_list_loadin_animation
-                        x:100
-                        y:100
-                    }
-
-                    Server_members_list_block {}
                 }
             }
         }
