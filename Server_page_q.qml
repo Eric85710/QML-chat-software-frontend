@@ -141,7 +141,11 @@ Component {
 
 
 
-                    Group_text_chat {}
+
+                    //text_chat
+                    Group_text_chat {
+                        id: group_text_chat_q
+                    }
                 }
 
 

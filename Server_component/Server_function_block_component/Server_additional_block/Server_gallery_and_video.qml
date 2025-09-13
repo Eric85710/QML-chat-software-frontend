@@ -6,7 +6,7 @@ Rectangle {
     width: parent.width - 20
     height: 86
     radius: 12
-    color: "#777"
+    color: Qt.rgba(0.8, 0.8, 0.8, 0.4)
     anchors.horizontalCenter: parent.horizontalCenter
 
     Row {

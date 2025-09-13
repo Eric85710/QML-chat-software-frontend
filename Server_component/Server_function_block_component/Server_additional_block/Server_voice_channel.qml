@@ -4,7 +4,7 @@ Rectangle {
     id: text_chaanel_rect
     width: parent.width - 20
     radius: 12
-    color: "#777"
+    color: Qt.rgba(0.8, 0.8, 0.8, 0.4)
     anchors.horizontalCenter: parent.horizontalCenter
     implicitHeight: text_chaanel_content.implicitHeight + 2
 

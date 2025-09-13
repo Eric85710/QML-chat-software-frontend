@@ -4,7 +4,7 @@ Rectangle {
     id: text_chaanel_rect
     width: parent.width - 20
     radius: 12
-    color: "#777"
+    color: Qt.rgba(0.8, 0.8, 0.8, 0.4)
     anchors.horizontalCenter: parent.horizontalCenter
     implicitHeight: text_chaanel_content.implicitHeight + 2
 
@@ -41,31 +41,43 @@ Rectangle {
             height: 2
         }
 
+        //chat_room_column
         Column {
             width: parent.width
-            spacing: 8
-            padding: 10
+            topPadding: 10
+            bottomPadding: 10
 
-            Rectangle {
-                width: parent.width - 36
-                height: 30
-                radius: 8
-                anchors.horizontalCenter: parent.horizontalCenter
+            // 假設你在 text_chaanel_content 裡面
+            ListView {
+                id: chatRoomListView
+                width: parent.width
+                height: contentHeight
+                spacing: 8
+                clip: true
+
+                model: ListModel {
+                    ListElement { name: "聊天室 A" }
+                    ListElement { name: "聊天室 B" }
+                    ListElement { name: "聊天室 C" }
+                }
+
+                delegate: Rectangle {
+                    width: chatRoomListView.width - 36
+                    height: 30
+                    radius: 8
+                    color: Qt.rgba(0.8, 0.8, 0.8, 0.6)
+                    anchors.horizontalCenter: parent.horizontalCenter
+
+                    Text {
+                        anchors.centerIn: parent
+                        text: model.name
+                        font.pixelSize: 14
+                    }
+
+
+                }
             }
 
-            Rectangle {
-                width: parent.width - 36
-                height: 30
-                radius: 8
-                anchors.horizontalCenter: parent.horizontalCenter
-            }
-
-            Rectangle {
-                width: parent.width - 36
-                height: 30
-                radius: 8
-                anchors.horizontalCenter: parent.horizontalCenter
-            }
         }
     }
 }
