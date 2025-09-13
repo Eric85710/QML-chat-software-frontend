@@ -174,6 +174,7 @@ RowLayout{
                 x: current_server === model.serverID ? 18 : (servers_icon_list.width - width) / 2
 
 
+
                 Behavior on x {
                     NumberAnimation { duration: 200; easing.type: Easing.InOutQuad }
                 }
@@ -223,7 +224,7 @@ RowLayout{
             if (servers_icon_list.model.count > 0) {
                 Qt.callLater(function() {
                     const firstServer = servers_icon_list.model.get(0)
-                    current_server = firstServer.serverID
+                    current_server = ""
 
                     let firstDelegate = servers_icon_list.contentItem.children[0]
                     if (firstDelegate) {
