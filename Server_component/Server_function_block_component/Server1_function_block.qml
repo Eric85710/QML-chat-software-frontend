@@ -9,8 +9,6 @@ Column {
     anchors.fill: parent
     spacing: 10
 
-
-
     Rectangle {
         width: parent.width
         height: server_name_text.height + 10  // 高度略加 margin 空間
@@ -57,6 +55,9 @@ Column {
             width: parent.width
             spacing: 20
             padding: 10
+
+
+            signal chatRoomClicked(string text_chat_room_id)
 
 
 

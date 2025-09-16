@@ -1,4 +1,5 @@
 import QtQuick
+import "../../../Server_Page_status"
 
 Rectangle {
     id: text_chaanel_rect
@@ -7,7 +8,6 @@ Rectangle {
     color: Qt.rgba(0.8, 0.8, 0.8, 0.4)
     anchors.horizontalCenter: parent.horizontalCenter
     implicitHeight: text_chaanel_content.implicitHeight + 2
-    signal chatRoomClicked(string name)
 
 
     Column {
@@ -79,8 +79,7 @@ Rectangle {
                     MouseArea {
                         anchors.fill: parent
                         onClicked: {
-                            text_chaanel_rect.chatRoomClicked(model.text_chat_room_id)
-                            console.log(text_chat_room_id)
+                            Chat_room_status.current_chat_ch(model.text_chat_room_id)
                         }
                     }
 

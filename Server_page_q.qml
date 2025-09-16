@@ -4,8 +4,10 @@ import QtQuick.Layouts
 import QtQuick.Controls
 import QtQuick.Effects
 import "Server_component"
+import "Server_component/Server_function_block_component/Server_additional_block"
 import "Style_component"
 import "Server_component/Server_function_windows"
+import "Server_Page_status"
 
 
 Component {
@@ -142,9 +144,34 @@ Component {
 
 
 
+                    Connections {
+                        target: Chat_room_status
+                        onCurrent_chat_ch: (roomID) => {
+                            console.log("hey", roomID)
+                        }
+
+                    }
+
+
+                    Loader {
+                        id: server_function_windows_loader
+                        Layout.fillWidth: true
+                        Layout.fillHeight: true
+                        sourceComponent: {
+                            switch (text_chat_room_id) {
+                                case "text_chat_room1": return group_text_chat_q
+                                case "text_chat_room2": return server2_function_area
+                                case "text_chat_room3": return Server3Content
+                                default: return DefaultServerContent
+                            }
+                        }
+                    }
+
+
                     //text_chat
-                    Group_text_chat {
+                    Component {
                         id: group_text_chat_q
+                        Group_text_chat {}
                     }
                 }
 

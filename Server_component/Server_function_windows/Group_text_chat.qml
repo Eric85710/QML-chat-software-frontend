@@ -13,8 +13,8 @@ import "Server_function_windows_component"
 
 RowLayout {
     id:server_text_chat_area
-    Layout.fillHeight: true
-    Layout.fillWidth: true
+    width: parent.width
+    height: parent.height
     Component {
         id: slideInAnimation
         ParallelAnimation {
