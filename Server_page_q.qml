@@ -146,10 +146,10 @@ Component {
 
                     Connections {
                         target: Chat_room_status
-                        onCurrent_chat_ch: (roomID) => {
-                            console.log("hey", roomID)
-                        }
+                        onCurrent_chat_ch: {
+                            console.log()
 
+                        }
                     }
 
 
