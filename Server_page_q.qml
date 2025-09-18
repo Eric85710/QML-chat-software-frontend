@@ -8,6 +8,7 @@ import "Server_component/Server_function_block_component/Server_additional_block
 import "Style_component"
 import "Server_component/Server_function_windows"
 import "Server_Page_status"
+import App 1.0
 
 
 Component {
@@ -144,15 +145,10 @@ Component {
                     Layout.fillWidth: true
                     Layout.fillHeight: true
 
-                    // Loader 那邊
                     Connections {
-                        target: Chat_room_status
-                        onPageChanged: key => {
-                                           console.log("收到 pageChanged 訊號:", key)
-                            switch (key) {
-                            case "text_chat_room1": contentLoader.source = group_text_chat_q; break
-                            case "text_chat_room2": contentLoader.source = "Page2.qml"; break
-                            }
+                        target: EventBus
+                        function onSendMessage(msg) {
+                            console.log("Received message in QML:", msg)
                         }
                     }
 

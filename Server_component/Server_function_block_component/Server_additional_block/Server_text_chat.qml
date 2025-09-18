@@ -1,5 +1,6 @@
 import QtQuick
 import "../../../Server_Page_status"
+import App 1.0
 
 Rectangle {
     id: text_chaanel_rect
@@ -86,7 +87,7 @@ Rectangle {
                     MouseArea {
                         anchors.fill: parent
                         onClicked: {
-                            Chat_room_status.changePage("page1")
+                            EventBus.postMessage(model.text_chat_room_id)
                         }
                     }
 
