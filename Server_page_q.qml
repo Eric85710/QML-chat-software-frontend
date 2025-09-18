@@ -17,6 +17,8 @@ Component {
             anchors.fill: parent
             color: "transparent"
 
+            property string current_function_display :"text_chat_room1"
+
             //sliding animation
             Component {
                 id: slideInAnimation
@@ -138,34 +140,22 @@ Component {
 
 
                 RowLayout {
+                    id:server_function_display_area
                     Layout.fillWidth: true
                     Layout.fillHeight: true
 
-
-
-
+                    // Loader 那邊
                     Connections {
                         target: Chat_room_status
-                        onCurrent_chat_ch: {
-                            console.log()
-
-                        }
-                    }
-
-
-                    Loader {
-                        id: server_function_windows_loader
-                        Layout.fillWidth: true
-                        Layout.fillHeight: true
-                        sourceComponent: {
-                            switch (text_chat_room_id) {
-                                case "text_chat_room1": return group_text_chat_q
-                                case "text_chat_room2": return server2_function_area
-                                case "text_chat_room3": return Server3Content
-                                default: return DefaultServerContent
+                        onPageChanged: key => {
+                                           console.log("收到 pageChanged 訊號:", key)
+                            switch (key) {
+                            case "text_chat_room1": contentLoader.source = group_text_chat_q; break
+                            case "text_chat_room2": contentLoader.source = "Page2.qml"; break
                             }
                         }
                     }
+
 
 
                     //text_chat
@@ -174,9 +164,6 @@ Component {
                         Group_text_chat {}
                     }
                 }
-
-
-
 
             }
         }

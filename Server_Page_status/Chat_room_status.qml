@@ -1,7 +1,12 @@
-//Chat_room_status.qml
+// Chat_room_status.qml
 pragma Singleton
 import QtQuick
 
 QtObject {
-    signal current_chat_ch(var text_chat_room_id)
+    signal pageChanged(string key)
+
+    function changePage(key) {
+        console.log("Chat_room_status 發送:", key)
+        pageChanged(key)   // ✅ 直接呼叫 signal（這裡才可以）
+    }
 }

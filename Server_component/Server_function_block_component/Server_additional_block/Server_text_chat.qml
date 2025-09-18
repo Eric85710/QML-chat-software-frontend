@@ -9,6 +9,13 @@ Rectangle {
     anchors.horizontalCenter: parent.horizontalCenter
     implicitHeight: text_chaanel_content.implicitHeight + 2
 
+    signal chatRoomSelected(var text_chat_room_id)
+
+
+    onChatRoomSelected: {
+        console.log(text_chat_room_id)
+    }
+
 
     Column {
         anchors.fill: parent
@@ -79,7 +86,7 @@ Rectangle {
                     MouseArea {
                         anchors.fill: parent
                         onClicked: {
-                            Chat_room_status.current_chat_ch(model.text_chat_room_id)
+                            Chat_room_status.pageChanged(model.text_chat_room_id)
                         }
                     }
 
