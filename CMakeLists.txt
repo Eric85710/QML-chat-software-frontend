@@ -55,7 +55,7 @@ qt_add_qml_module(appqrc_test
         QML_FILES Server_component/Server_function_windows/Server_function_windows_component/Server_chat_block.qml Server_component/Server_function_windows/Server_function_windows_component/Server_members_list_block.qml
         QML_FILES Server_component/Server_function_windows/Server_function_windows_component/Round_img_avatar.qml
         QML_FILES Server_Page_status/Chat_room_status.qml
-        SOURCES Server_Page_status/eventbus.h Server_Page_status/eventbus.cpp
+        SOURCES Server_Page_status/eventbus.h
 )
 
 

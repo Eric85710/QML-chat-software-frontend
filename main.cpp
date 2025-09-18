@@ -1,11 +1,17 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
+#include "Server_Page_status/eventbus.h"
+
 
 int main(int argc, char *argv[])
 {
     QGuiApplication app(argc, argv);
 
     QQmlApplicationEngine engine;
+
+     qmlRegisterSingletonInstance("App", 1, 0, "EventBus", EventBus::instance());
+
+
     QObject::connect(
         &engine,
         &QQmlApplicationEngine::objectCreationFailed,
