@@ -5,6 +5,7 @@ project(qrc_test VERSION 0.1 LANGUAGES CXX)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 find_package(Qt6 REQUIRED COMPONENTS Quick)
+find_package(Qt6 REQUIRED COMPONENTS Core)
 
 qt_standard_project_setup(REQUIRES 6.8)
 
@@ -54,6 +55,7 @@ qt_add_qml_module(appqrc_test
         QML_FILES Server_component/Server_function_windows/Server_function_windows_component/Server_chat_block.qml Server_component/Server_function_windows/Server_function_windows_component/Server_members_list_block.qml
         QML_FILES Server_component/Server_function_windows/Server_function_windows_component/Round_img_avatar.qml
         QML_FILES Server_Page_status/Chat_room_status.qml
+        SOURCES Server_Page_status/eventbus.h Server_Page_status/eventbus.cpp
 )
 
 
@@ -86,6 +88,7 @@ set_target_properties(appqrc_test PROPERTIES
 target_link_libraries(appqrc_test
     PRIVATE Qt6::Quick
 )
+target_link_libraries(appqrc_test PRIVATE Qt6::Core)
 
 include(GNUInstallDirs)
 install(TARGETS appqrc_test
