@@ -86,7 +86,7 @@ Rectangle {
                     MouseArea {
                         anchors.fill: parent
                         onClicked: {
-                            Chat_room_status.pageChanged(model.text_chat_room_id)
+                            Chat_room_status.changePage("page1")
                         }
                     }
 
