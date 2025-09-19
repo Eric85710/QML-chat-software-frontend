@@ -140,6 +140,9 @@ Component {
 
 
 
+
+
+
                 RowLayout {
                     id:server_function_display_area
                     Layout.fillWidth: true
@@ -157,12 +160,13 @@ Component {
 
                     Loader {
                         id: server_function_display_loader
-                        anchors.fill: parent
+                        Layout.fillWidth: true
+                        Layout.fillHeight: true
                         sourceComponent: {
                             switch (server_function_display_area.currentServerFun) {
                                 case "text_chat_room1": return group_text_chat_q
-                                case "server2": return server2_function_area
-                                case "server3": return Server3Content
+                                case "text_chat_room2": return group_text_chat_q
+                                case "text_chat_room3": return Server3Content
                                 default: return DefaultServerContent
                             }
                         }
