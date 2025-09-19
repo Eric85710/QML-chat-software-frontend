@@ -26,6 +26,9 @@ ColumnLayout {
 
             Text {
                 text: qsTr("2025-8-12")
+                font.pointSize: 18
+                font.bold: true
+                color: Qt.rgba(0.8, 0.8, 0.8, 0.8)
             }
         }
 
@@ -49,52 +52,6 @@ ColumnLayout {
                     height: row.rectSize
                     color: Qt.rgba(Math.random(), Math.random(), Math.random(), 1)
                 }
-            }
-        }
-    }
-
-    RowLayout {
-        id: row2
-        Layout.fillWidth: true
-        Layout.preferredHeight: 168
-
-        property int rectSize: 160
-        property int spacingSize: 4
-
-        // 根據 RowLayout 的寬度計算可放多少個
-        property int rectCount: Math.floor((width + spacingSize) / (rectSize + spacingSize))
-
-        onRectCountChanged: console.log("rectCount =", rectCount)
-
-        Repeater {
-            model: row2.rectCount
-            Rectangle {
-                width: row2.rectSize
-                height: row2.rectSize
-                color: Qt.rgba(Math.random(), Math.random(), Math.random(), 1)
-            }
-        }
-    }
-
-    RowLayout {
-        id: row3
-        Layout.fillWidth: true
-        Layout.preferredHeight: 168
-
-        property int rectSize: 160
-        property int spacingSize: 4
-
-        // 根據 RowLayout 的寬度計算可放多少個
-        property int rectCount: Math.floor((width + spacingSize) / (rectSize + spacingSize))
-
-        onRectCountChanged: console.log("rectCount =", rectCount)
-
-        Repeater {
-            model: row3.rectCount
-            Rectangle {
-                width: row3.rectSize
-                height: row3.rectSize
-                color: Qt.rgba(Math.random(), Math.random(), Math.random(), 1)
             }
         }
     }
