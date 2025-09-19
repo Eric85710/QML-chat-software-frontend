@@ -4,12 +4,13 @@ import QtQuick.Controls 2.15
 
 ColumnLayout {
     anchors.fill: parent
+    spacing: 0
 
 
     RowLayout {
         id: row
         Layout.fillWidth: true
-        Layout.preferredHeight: 180
+        Layout.preferredHeight: 160
 
         property int rectSize: 160
         property int spacingSize: 4
@@ -32,7 +33,7 @@ ColumnLayout {
     RowLayout {
         id: row2
         Layout.fillWidth: true
-        Layout.preferredHeight: 180
+        Layout.preferredHeight: 160
 
         property int rectSize: 160
         property int spacingSize: 4
