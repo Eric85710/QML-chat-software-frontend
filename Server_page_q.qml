@@ -145,10 +145,26 @@ Component {
                     Layout.fillWidth: true
                     Layout.fillHeight: true
 
+                    property string currentServerFun: ""
+
                     Connections {
                         target: EventBus
                         function onSendMessage(msg) {
-                            console.log("Received message in QML:", msg)
+                            server_function_display_area.currentServerFun = msg
+                            console.log(server_function_display_area.currentServerFun)
+                        }
+                    }
+
+                    Loader {
+                        id: server_function_display_loader
+                        anchors.fill: parent
+                        sourceComponent: {
+                            switch (server_function_display_area.currentServerFun) {
+                                case "text_chat_room1": return group_text_chat_q
+                                case "server2": return server2_function_area
+                                case "server3": return Server3Content
+                                default: return DefaultServerContent
+                            }
                         }
                     }
 
