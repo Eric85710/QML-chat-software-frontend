@@ -4,5 +4,6 @@
         <file>nav_bar.qml</file>
         <file>Style_component/FrostedGlass.qml</file>
         <file>Server_component/Server_function_block_component/Server_additional_block/Server_function_search_bar.qml</file>
+        <file>Server_component/Server_function_windows/Group_gallery.qml</file>
     </qresource>
 </RCC>

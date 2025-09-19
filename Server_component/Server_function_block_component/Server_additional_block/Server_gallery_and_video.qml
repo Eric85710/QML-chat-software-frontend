@@ -1,4 +1,5 @@
 import QtQuick
+import App 1.0
 
 //Gallery and Video
 Rectangle {
@@ -41,6 +42,13 @@ Rectangle {
                     color: "black"
                     anchors.verticalCenter: parent.verticalCenter
                     font.pixelSize: 16
+                }
+            }
+
+            MouseArea {
+                anchors.fill: parent
+                onClicked: {
+                    EventBus.postMessage("gallery")
                 }
             }
         }

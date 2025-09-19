@@ -167,6 +167,7 @@ Component {
                                 case "text_chat_room1": return group_text_chat_q
                                 case "text_chat_room2": return group_text_chat_q
                                 case "text_chat_room3": return Server3Content
+                                case "gallery": return group_gallery_q
                                 default: return DefaultServerContent
                             }
                         }
@@ -178,6 +179,11 @@ Component {
                     Component {
                         id: group_text_chat_q
                         Group_text_chat {}
+                    }
+
+                    Component {
+                        id: group_gallery_q
+                        Group_gallery{}
                     }
                 }
 
