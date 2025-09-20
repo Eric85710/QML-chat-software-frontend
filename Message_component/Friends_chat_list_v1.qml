@@ -1,6 +1,7 @@
 import QtQuick
 import QtQuick.Controls
 import "../Server_component/"
+import App 1.0
 
 Item {
     id:whole_friends_chat_list
@@ -9,10 +10,10 @@ Item {
 
     ListModel {
         id: memberModel
-        ListElement { name: "Alice"; role: "Designer" }
-        ListElement { name: "Bob"; role: "Developer" }
-        ListElement { name: "Charlie"; role: "Manager" }
-        ListElement { name: "Diana"; role: "QA" }
+        ListElement { name: "Alice"; role: "Designer"; userID:user1}
+        ListElement { name: "Bob"; role: "Developer"; userID:user2}
+        ListElement { name: "Charlie"; role: "Manager"; userID:user3}
+        ListElement { name: "Diana"; role: "QA"; userID:user4}
     }
 
     ListView {
@@ -99,7 +100,11 @@ Item {
 
             MouseArea {
                 anchors.fill: parent
-                onClicked: console.log("Clicked:", name)
+                onClicked: {
+                    EventBus.postMessage(model.userID)
+
+                }
+
                 hoverEnabled: true
                 onEntered: parent.color = "#90a3d5e5"
                 onExited: parent.color = "transparent"

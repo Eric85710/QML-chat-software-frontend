@@ -80,6 +80,14 @@ Rectangle {
                     font.pixelSize: 16
                 }
             }
+
+
+            MouseArea {
+                anchors.fill: parent
+                onClicked: {
+                    EventBus.postMessage("video")
+                }
+            }
         }
     }
 }
