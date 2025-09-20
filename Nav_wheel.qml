@@ -56,9 +56,15 @@ Item {
             anchors.fill: parent
             acceptedButtons: Qt.NoButton   // 不擋點擊，只收滾輪
             onWheel: {
-                    // wheel.angleDelta.y 在這裡一定有正負號
+                if (!root.allowScroll) {
+                    // 不允許滾動時，直接忽略
+                    wheel.accepted = false
+                    return
+                }
+
+                // 允許滾動時才處理
                 if (wheel.angleDelta.y > 0) {
-                     // 往上 → 往左
+                    // 往上 → 往左
                     nav_listView.currentIndex = Math.max(0, nav_listView.currentIndex - 1)
                 } else if (wheel.angleDelta.y < 0) {
                     // 往下 → 往右
@@ -69,6 +75,7 @@ Item {
                 wheel.accepted = true
             }
         }
+
 
 
 
