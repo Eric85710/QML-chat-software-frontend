@@ -49,6 +49,32 @@ Item {
 
 
 
+
+
+
+        MouseArea {
+            anchors.fill: parent
+            acceptedButtons: Qt.NoButton   // 不擋點擊，只收滾輪
+            onWheel: {
+                    // wheel.angleDelta.y 在這裡一定有正負號
+                if (wheel.angleDelta.y > 0) {
+                     // 往上 → 往左
+                    nav_listView.currentIndex = Math.max(0, nav_listView.currentIndex - 1)
+                } else if (wheel.angleDelta.y < 0) {
+                    // 往下 → 往右
+                    nav_listView.currentIndex = Math.min(nav_listView.count - 1, nav_listView.currentIndex + 1)
+                }
+
+                nav_listView.positionViewAtIndex(nav_listView.currentIndex, ListView.Center)
+                wheel.accepted = true
+            }
+        }
+
+
+
+
+
+
         delegate: Item {                    //each option repeat in here
 
             Text_width_calulator{
