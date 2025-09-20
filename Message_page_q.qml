@@ -118,10 +118,10 @@ Component {
 
                 Rectangle {
                     id: message_chat_block
-                    color: "#44000000"
+                    color: "transparent"
                     Layout.fillWidth: true
                     Layout.fillHeight: true
-                    radius: 12
+
 
                     OpacityAnimator { target: message_chat_block; from: 0; to: 1; duration: 300 }
 
