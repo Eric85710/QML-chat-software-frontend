@@ -59,6 +59,7 @@ qt_add_qml_module(appqrc_test
         QML_FILES Server_component/Server_function_windows/Group_gallery.qml
         QML_FILES Server_component/Server_function_windows/Group_video.qml
         QML_FILES Message_component/Message_chat_area.qml
+        QML_FILES Message_component/message_display/message_room_style_V1.qml
 )
 
 

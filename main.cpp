@@ -9,7 +9,7 @@ int main(int argc, char *argv[])
 
     QQmlApplicationEngine engine;
 
-     qmlRegisterSingletonInstance("App", 1, 0, "EventBus", EventBus::instance());
+    qmlRegisterSingletonInstance("App", 1, 0, "EventBus", EventBus::instance());
 
 
     QObject::connect(

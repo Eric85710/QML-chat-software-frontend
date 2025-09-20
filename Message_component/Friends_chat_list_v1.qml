@@ -10,10 +10,10 @@ Item {
 
     ListModel {
         id: memberModel
-        ListElement { name: "Alice"; role: "Designer"; userID:user1}
-        ListElement { name: "Bob"; role: "Developer"; userID:user2}
-        ListElement { name: "Charlie"; role: "Manager"; userID:user3}
-        ListElement { name: "Diana"; role: "QA"; userID:user4}
+        ListElement { name: "Alice"; role: "Designer"; userID:"user1"}
+        ListElement { name: "Bob"; role: "Developer"; userID:"user2"}
+        ListElement { name: "Charlie"; role: "Manager"; userID:"user3"}
+        ListElement { name: "Diana"; role: "QA"; userID:"user4"}
     }
 
     ListView {
@@ -101,8 +101,7 @@ Item {
             MouseArea {
                 anchors.fill: parent
                 onClicked: {
-                    EventBus.postMessage(model.userID)
-
+                    EventBus.postChatWith(model.userID)
                 }
 
                 hoverEnabled: true

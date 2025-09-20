@@ -3,6 +3,8 @@ import QtQuick
 import QtQuick.Layouts
 import QtQuick.Controls
 import "Message_component/"
+import "Message_component/message_display/"
+import App 1.0
 
 Component {
     Item {
@@ -106,6 +108,14 @@ Component {
                 }
 
 
+
+
+
+
+
+
+
+
                 Rectangle {
                     id: message_chat_block
                     color: "#44000000"
@@ -120,6 +130,38 @@ Component {
                         x:100
                         y:100
                     }
+
+
+                    property string currentMessage: ""
+
+                    Connections {
+                        target: EventBus
+                        function onChatWith(userId) {
+                            message_chat_block.currentMessage = userId
+                        }
+                    }
+
+
+
+                    Loader {
+                        id: message_chat_loader
+                        anchors.fill: parent
+                        sourceComponent: {
+                            switch (message_chat_block.currentMessage) {
+                                case "user1": return chat_room1
+                                case "user2": return group_text_chat_q
+                                case "user3": return Server3Content
+                                case "user4": return group_gallery_q
+                                default: return DefaultServerContent
+                            }
+                        }
+                    }
+
+                    Component {
+                        id:chat_room1
+                        Message_chat_area{}
+                    }
+
                 }
             }
         }
