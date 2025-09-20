@@ -60,37 +60,6 @@ Item {
 
 
 
-        Timer {
-            id: wheelResetTimer
-            interval: 200  // 毫秒，可調整
-            repeat: false
-            onTriggered: {
-                root.allowScroll = false
-                nav_listView.positionViewAtIndex(nav_listView.currentIndex, ListView.Center)
-            }
-        }
-
-        MouseArea {
-            anchors.fill: parent
-            acceptedButtons: Qt.NoButton
-            onWheel: {
-                if (!root.allowScroll) {
-                    wheel.accepted = false
-                    return
-                }
-
-                if (wheel.angleDelta.y > 0) {
-                    nav_listView.currentIndex = Math.max(0, nav_listView.currentIndex - 1)
-                } else if (wheel.angleDelta.y < 0) {
-                    nav_listView.currentIndex = Math.min(nav_listView.count - 1, nav_listView.currentIndex + 1)
-                }
-
-                nav_listView.positionViewAtIndex(nav_listView.currentIndex, ListView.Center)
-
-                wheelResetTimer.restart()  // 每次滾輪事件都重啟計時器
-                wheel.accepted = true
-            }
-        }
 
 
 
