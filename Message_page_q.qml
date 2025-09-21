@@ -149,7 +149,7 @@ Component {
                         sourceComponent: {
                             switch (message_chat_block.currentMessage) {
                                 case "user1": return chat_room1
-                                case "user2": return group_text_chat_q
+                                case "user2": return chat_room2
                                 case "user3": return Server3Content
                                 case "user4": return group_gallery_q
                                 default: return DefaultServerContent
@@ -159,6 +159,11 @@ Component {
 
                     Component {
                         id:chat_room1
+                        Message_chat_area{}
+                    }
+
+                    Component {
+                        id:chat_room2
                         Message_chat_area{}
                     }
 

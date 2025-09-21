@@ -15,6 +15,8 @@ ApplicationWindow {
 
 
 
+
+
     Item {
         id: mainFocusItem
         focus: true

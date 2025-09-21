@@ -11,7 +11,6 @@ ColumnLayout{
 
 
 
-
     //message will shows in here
     Rectangle {
         id:chat_message_block
@@ -128,7 +127,6 @@ ColumnLayout{
 
                     Keys.onPressed: {
                         if (event.key === Qt.Key_Escape) {
-                            searchField.focus = false
                             whole_app_window.returnFocusToMain() // 焦點回主界面
                             event.accepted = true
                         }
