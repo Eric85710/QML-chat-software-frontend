@@ -34,6 +34,13 @@ Item {
                 radius: 6
                 anchors.centerIn: parent
                 opacity: 0.4
+                MouseArea {
+                    anchors.fill: parent
+                    onClicked: {
+                        whole_app_window.returnFocusToMain() // 焦點回主界面
+                        event.accepted = true
+                    }
+                }
 
                 Row {
                     anchors.fill: parent

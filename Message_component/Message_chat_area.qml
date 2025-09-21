@@ -18,6 +18,14 @@ ColumnLayout{
         Layout.fillHeight: true
         color: "transparent"
 
+        MouseArea {
+            anchors.fill: parent
+            onClicked: {
+                whole_app_window.returnFocusToMain() // 焦點回主界面
+                event.accepted = true
+            }
+        }
+
         ColumnLayout {
             id:showing_the_chat_message
             anchors.fill: parent
