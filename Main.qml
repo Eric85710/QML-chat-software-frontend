@@ -12,6 +12,26 @@ ApplicationWindow {
     visible: true
     title: qsTr("Hello World")
 
+
+
+
+    Item {
+        id: mainFocusItem
+        focus: true
+        visible: false // 不影響畫面
+        Keys.onPressed: {
+            console.log("主界面收到鍵盤事件:", event.key)
+        }
+    }
+
+    function returnFocusToMain() {
+        mainFocusItem.focus = true
+    }
+
+
+
+
+
     //background
     background: Image {
         id: bg1

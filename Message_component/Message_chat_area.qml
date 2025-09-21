@@ -9,6 +9,9 @@ ColumnLayout{
 
 
 
+
+
+
     //message will shows in here
     Rectangle {
         id:chat_message_block
@@ -86,6 +89,9 @@ ColumnLayout{
 
 
 
+
+
+
     //input bar in here
     Rectangle {
         id: message_input_block
@@ -118,6 +124,14 @@ ColumnLayout{
                     onAccepted: {
                         console.log("搜尋關鍵字:", searchField.text)
                                 // 這裡可以觸發搜尋邏輯
+                    }
+
+                    Keys.onPressed: {
+                        if (event.key === Qt.Key_Escape) {
+                            searchField.focus = false
+                            whole_app_window.returnFocusToMain() // 焦點回主界面
+                            event.accepted = true
+                        }
                     }
                 }
             }

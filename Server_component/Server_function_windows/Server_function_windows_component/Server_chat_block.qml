@@ -63,7 +63,7 @@ ColumnLayout{
 
                             Text {
                                 id: message_test
-                                text: qsTr("yooooooo  婊子")
+                                text: qsTr("yooooooo  陳奕呈")
                                 wrapMode: Text.Wrap
                                 font.pixelSize: 22
                                 color: "white"
