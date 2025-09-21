@@ -22,6 +22,8 @@ ApplicationWindow {
         Keys.onPressed: {
             console.log("主界面收到鍵盤事件:", event.key)
         }
+
+        Keys.forwardTo: [ pickerWheel, pageLoader ]
     }
 
     function returnFocusToMain() {
