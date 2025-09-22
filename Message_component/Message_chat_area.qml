@@ -158,6 +158,22 @@ ColumnLayout{
                 }
 
 
+                Image {
+                    id: emoji_input
+                    source: "qrc:/svg_icon/plus-svgrepo-com.svg"
+                    Layout.preferredWidth: 50
+                    Layout.preferredHeight: 50
+
+                    MouseArea {
+                        anchors.fill: parent
+                        onClicked: {
+                            whole_app_window.returnFocusToMain()
+                            event.accepted = true
+                        }
+                    }
+                }
+
+
                 TextEdit {
                     id: message_input
                     Layout.fillWidth: true
