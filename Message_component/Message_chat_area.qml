@@ -114,13 +114,25 @@ ColumnLayout{
             anchors.margins: 10
             height: 60
             radius: 12
-            color: "black"
-            opacity: 0.6
+            color: Qt.rgba(0.4, 0.4, 0.4, 0.4)
+
+
 
 
             RowLayout {
                 anchors.fill: parent
                 anchors.margins: 2
+
+
+
+
+                Image {
+                    id: more_input
+                    source: "qrc:/svg_icon/plus-svgrepo-com.svg"
+                    Layout.preferredWidth: 50
+                    Layout.preferredHeight: 50
+                }
+
 
                 TextEdit {
                     id: message_input

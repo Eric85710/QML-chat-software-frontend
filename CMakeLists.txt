@@ -60,6 +60,7 @@ qt_add_qml_module(appqrc_test
         QML_FILES Server_component/Server_function_windows/Group_video.qml
         QML_FILES Message_component/Message_chat_area.qml
         QML_FILES Message_component/message_display/message_room_style_V1.qml
+        RESOURCES svg_icon/plus-svgrepo-com.svg
 )
 
 
@@ -75,6 +76,7 @@ qt_add_resources(appqrc_test "icons"
         svg_icon/sound-loud-svgrepo-com.svg
         svg_icon/plus-svgrepo-com.svg
         svg_icon/plus-circle-svgrepo-com.svg
+        svg_icon/plus-svgrepo-com.svg
 )
 
 
