@@ -61,6 +61,10 @@ qt_add_qml_module(appqrc_test
         QML_FILES Message_component/Message_chat_area.qml
         QML_FILES Message_component/message_display/message_room_style_V1.qml
         RESOURCES svg_icon/plus-svgrepo-com.svg
+        RESOURCES svg_icon/image-plus-svgrepo-com.svg
+        RESOURCES svg_icon/face-smile-svgrepo-com.svg
+        RESOURCES svg_icon/gallery-minimalistic-svgrepo-com.svg
+        RESOURCES svg_icon/send-alt-1-svgrepo-com.svg
 )
 
 
@@ -77,6 +81,10 @@ qt_add_resources(appqrc_test "icons"
         svg_icon/plus-svgrepo-com.svg
         svg_icon/plus-circle-svgrepo-com.svg
         svg_icon/plus-svgrepo-com.svg
+        svg_icon/image-plus-svgrepo-com.svg
+        svg_icon/face-smile-svgrepo-com.svg
+        svg_icon/gallery-minimalistic-svgrepo-com.svg
+        svg_icon/send-alt-1-svgrepo-com.svg
 )
 
 

@@ -122,15 +122,28 @@ ColumnLayout{
             RowLayout {
                 anchors.fill: parent
                 anchors.margins: 2
+                spacing: 0
 
 
 
 
-                Image {
-                    id: more_input
-                    source: "qrc:/svg_icon/plus-svgrepo-com.svg"
+
+
+
+
+                //plus icon
+                Item {
+                    id: plus_input_container
                     Layout.preferredWidth: 50
                     Layout.preferredHeight: 50
+
+                    Image {
+                        id: plus_input
+                        width: parent.width
+                        height: parent.height
+                        anchors.centerIn: parent
+                        source: "qrc:/svg_icon/plus-svgrepo-com.svg"
+                    }
 
                     MouseArea {
                         anchors.fill: parent
@@ -142,11 +155,42 @@ ColumnLayout{
                 }
 
 
-                Image {
-                    id: img_input
-                    source: "qrc:/svg_icon/plus-svgrepo-com.svg"
+                //img_icon
+                Item {
+                    id: img_input_container
+                    Layout.preferredWidth: 40
+                    Layout.preferredHeight: 50
+
+                    Image {
+                        id: img_input
+                        width: parent.width
+                        height: parent.height-10
+                        anchors.centerIn: parent
+                        source: "qrc:/svg_icon/image-plus-svgrepo-com.svg"
+                    }
+
+                    MouseArea {
+                        anchors.fill: parent
+                        onClicked: {
+                            whole_app_window.returnFocusToMain()
+                            event.accepted = true
+                        }
+                    }
+                }
+
+                //icon
+                Item {
+                    id: emoji_input_container
                     Layout.preferredWidth: 50
                     Layout.preferredHeight: 50
+
+                    Image {
+                        id: emoji_input
+                        width: parent.width - 10
+                        height: parent.height - 10
+                        anchors.centerIn: parent
+                        source: "qrc:/svg_icon/face-smile-svgrepo-com.svg"
+                    }
 
                     MouseArea {
                         anchors.fill: parent
@@ -158,20 +202,18 @@ ColumnLayout{
                 }
 
 
-                Image {
-                    id: emoji_input
-                    source: "qrc:/svg_icon/plus-svgrepo-com.svg"
-                    Layout.preferredWidth: 50
-                    Layout.preferredHeight: 50
 
-                    MouseArea {
-                        anchors.fill: parent
-                        onClicked: {
-                            whole_app_window.returnFocusToMain()
-                            event.accepted = true
-                        }
-                    }
-                }
+
+
+
+
+
+
+
+
+
+
+
 
 
                 TextEdit {
