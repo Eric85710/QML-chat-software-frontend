@@ -84,17 +84,20 @@ Item {
             height: parent.height
 
             Rectangle {
-                    id: localNavColor
-                    anchors.verticalCenter: parent.verticalCenter
-                    anchors.horizontalCenter: parent.horizontalCenter
-                    width: parent.width
-                    height: 50  // 與 ToolBar 的 nav_bar_h 一致
-                    color: "transparent"
+                id: localNavColor
+                anchors.verticalCenter: parent.verticalCenter
+                anchors.horizontalCenter: parent.horizontalCenter
+                width: parent.width
+                height: 50  // 與 ToolBar 的 nav_bar_h 一致
+                color: "transparent"
 
-                    MouseArea {
-                        anchors.fill: parent
-                        onClicked: {
+                MouseArea {
+                    anchors.fill: parent
+                    onClicked: {
                         nav_listView.currentIndex = index
+
+                        whole_app_window.returnFocusToMain() // 焦點回主界面
+                        event.accepted = true
                     }
                 }
             }
