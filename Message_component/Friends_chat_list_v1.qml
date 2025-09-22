@@ -8,6 +8,9 @@ Item {
     width: parent.width
     height: parent.height
 
+
+
+
     ListModel {
         id: memberModel
         ListElement { name: "Alice"; role: "Designer"; userID:"user1"}
@@ -21,6 +24,8 @@ Item {
         model: memberModel
         orientation: ListView.Vertical
         clip: true
+
+
 
 
         header: Item {
@@ -91,6 +96,7 @@ Item {
                 }
             }
 
+
             //seperate_line
             Rectangle {
                 width: parent.width
@@ -102,6 +108,9 @@ Item {
                 anchors.fill: parent
                 onClicked: {
                     EventBus.postChatWith(model.userID)
+
+                    whole_app_window.returnFocusToMain() // 焦點回主界面
+                    event.accepted = true
                 }
 
                 hoverEnabled: true
