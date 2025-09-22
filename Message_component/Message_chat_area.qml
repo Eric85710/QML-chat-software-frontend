@@ -122,24 +122,35 @@ ColumnLayout{
                 anchors.fill: parent
                 anchors.margins: 2
 
-                TextField {
-                    id: searchField
+                TextEdit {
+                    id: message_input
                     Layout.fillWidth: true
-                    placeholderText: "type..."
+                    wrapMode: TextEdit.Wrap
                     font.pixelSize: 16
-                    background: null
-                    onAccepted: {
-                        console.log("搜尋關鍵字:", searchField.text)
-                                // 這裡可以觸發搜尋邏輯
-                    }
 
-                    Keys.onPressed: {
-                        if (event.key === Qt.Key_Escape) {
-                            whole_app_window.returnFocusToMain() // 焦點回主界面
+                    // 自動高度 (最小 40px，最大 120px)
+                    implicitHeight: Math.min(contentHeight, 120)
+                    height: implicitHeight
+                    verticalAlignment: Text.AlignVCenter
+
+                    Keys.onPressed: (event) => {
+                        if (event.key === Qt.Key_Return || event.key === Qt.Key_Enter) {
+                            if (event.modifiers & Qt.ShiftModifier) {
+                                // Shift+Enter → 換行
+                                event.accepted = false
+                            } else {
+                                // Enter → 送出訊息
+                                console.log("Send:", message_input.text)
+                                message_input.text = ""
+                                event.accepted = true
+                            }
+                        } else if (event.key === Qt.Key_Escape) {
+                            whole_app_window.returnFocusToMain()
                             event.accepted = true
                         }
                     }
                 }
+
             }
         }
     }
