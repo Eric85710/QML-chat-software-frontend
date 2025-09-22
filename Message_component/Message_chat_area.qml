@@ -127,19 +127,19 @@ ColumnLayout{
                     Layout.fillWidth: true
                     wrapMode: TextEdit.Wrap
                     font.pixelSize: 16
+                    color: "white"
 
-                    // 自動高度 (最小 40px，最大 120px)
-                    implicitHeight: Math.min(contentHeight, 120)
-                    height: implicitHeight
-                    verticalAlignment: Text.AlignVCenter
+
+                    // 設定高度隨內容變化 (最小 40px，最大 120px)
+                    height: Math.min(Math.max(contentHeight, 40), 120)
 
                     Keys.onPressed: (event) => {
                         if (event.key === Qt.Key_Return || event.key === Qt.Key_Enter) {
                             if (event.modifiers & Qt.ShiftModifier) {
-                                // Shift+Enter → 換行
+                                // Shift+Enter = 換行
                                 event.accepted = false
                             } else {
-                                // Enter → 送出訊息
+                                // Enter = 送出訊息
                                 console.log("Send:", message_input.text)
                                 message_input.text = ""
                                 event.accepted = true
@@ -150,6 +150,7 @@ ColumnLayout{
                         }
                     }
                 }
+
 
             }
         }
