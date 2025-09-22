@@ -131,6 +131,30 @@ ColumnLayout{
                     source: "qrc:/svg_icon/plus-svgrepo-com.svg"
                     Layout.preferredWidth: 50
                     Layout.preferredHeight: 50
+
+                    MouseArea {
+                        anchors.fill: parent
+                        onClicked: {
+                            whole_app_window.returnFocusToMain()
+                            event.accepted = true
+                        }
+                    }
+                }
+
+
+                Image {
+                    id: img_input
+                    source: "qrc:/svg_icon/plus-svgrepo-com.svg"
+                    Layout.preferredWidth: 50
+                    Layout.preferredHeight: 50
+
+                    MouseArea {
+                        anchors.fill: parent
+                        onClicked: {
+                            whole_app_window.returnFocusToMain()
+                            event.accepted = true
+                        }
+                    }
                 }
 
 
