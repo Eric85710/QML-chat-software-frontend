@@ -99,6 +99,17 @@ ColumnLayout{
 
 
 
+
+
+
+
+
+
+
+
+
+
+
     //input bar in here
     Rectangle {
         id: message_input_block
@@ -178,7 +189,7 @@ ColumnLayout{
                     }
                 }
 
-                //icon
+                //emoji_icon
                 Item {
                     id: emoji_input_container
                     Layout.preferredWidth: 50
@@ -200,9 +211,6 @@ ColumnLayout{
                         }
                     }
                 }
-
-
-
 
 
 
@@ -239,6 +247,34 @@ ColumnLayout{
                                 event.accepted = true
                             }
                         } else if (event.key === Qt.Key_Escape) {
+                            whole_app_window.returnFocusToMain()
+                            event.accepted = true
+                        }
+                    }
+                }
+
+
+
+
+
+
+                //send_icon
+                Item {
+                    id: send_input_container
+                    Layout.preferredWidth: 50
+                    Layout.preferredHeight: 50
+
+                    Image {
+                        id: send_input
+                        width: parent.width - 10
+                        height: parent.height - 10
+                        anchors.centerIn: parent
+                        source: "qrc:/svg_icon/send-alt-1-svgrepo-com.svg"
+                    }
+
+                    MouseArea {
+                        anchors.fill: parent
+                        onClicked: {
                             whole_app_window.returnFocusToMain()
                             event.accepted = true
                         }
