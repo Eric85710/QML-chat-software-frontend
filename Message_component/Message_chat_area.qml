@@ -117,7 +117,7 @@ ColumnLayout{
     Rectangle {
         id: message_input_block
         Layout.fillWidth: true
-        Layout.preferredHeight: message_input_button_area.height + 10
+        Layout.preferredHeight: Math.min(Math.max(message_input.contentHeight, 40), message_input.maximumHeight) + 30
         color: "transparent"
 
         //input_bar_rect
@@ -239,14 +239,15 @@ ColumnLayout{
 
                 TextEdit {
                     id: message_input
+                    property int maximumHeight: 200
                     Layout.fillWidth: true
                     wrapMode: TextEdit.Wrap
-                    font.pixelSize: 16
+                    font.pixelSize: 24
                     color: "white"
 
 
-                    // 設定高度隨內容變化 (最小 40px，最大 120px)
-                    height: Math.min(Math.max(contentHeight, 40), 120)
+                    height: Math.min(contentHeight, maximumHeight)
+
 
                     Keys.onPressed: (event) => {
                         if (event.key === Qt.Key_Return || event.key === Qt.Key_Enter) {
