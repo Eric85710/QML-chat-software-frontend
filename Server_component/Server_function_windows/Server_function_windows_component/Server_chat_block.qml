@@ -142,7 +142,7 @@ ColumnLayout{
             anchors.left: parent.left
             anchors.right: parent.right
             anchors.margins: 10
-            height: Math.min(Math.max(message_input.contentHeight, 40), 200) + 16
+            height: Math.min(Math.max(message_input.contentHeight, 40), 400) + 16
             radius: 12
             color: Qt.rgba(0.4, 0.4, 0.4, 0.4)
 
@@ -265,15 +265,16 @@ ColumnLayout{
                     boundsBehavior: Flickable.StopAtBounds
                     flickableDirection: Flickable.VerticalFlick
 
-                    TextEdit {
+                    TextArea {
                         id: message_input
-                        property int maximumHeight: 200
+                        property int maximumHeight: 400
                         width: parent.width
-                        wrapMode: TextEdit.Wrap
+                        wrapMode: TextArea.Wrap
                         font.pixelSize: 24
                         color: "white"
                         height: contentHeight
                         anchors.top: parent.top
+                        background: null  // 移除預設背景以符合原本透明風格
 
                         Keys.onPressed: (event) => {
                             if (event.key === Qt.Key_Return || event.key === Qt.Key_Enter) {
@@ -291,11 +292,11 @@ ColumnLayout{
                         }
                     }
 
-                    // 不顯示任何滾動條
                     ScrollBar.vertical: ScrollBar {
                         policy: ScrollBar.AlwaysOff
                     }
                 }
+
 
 
 

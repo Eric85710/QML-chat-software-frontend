@@ -133,7 +133,7 @@ ColumnLayout{
             anchors.left: parent.left
             anchors.right: parent.right
             anchors.margins: 10
-            height: Math.min(Math.max(message_input.contentHeight, 40), 600) + 16
+            height: Math.min(Math.max(message_input.contentHeight, 40), 400) + 16
             radius: 12
             color: Qt.rgba(0.4, 0.4, 0.4, 0.4)
 
@@ -258,7 +258,7 @@ ColumnLayout{
 
                     TextArea {
                         id: message_input
-                        property int maximumHeight: 600
+                        property int maximumHeight: 400
                         width: parent.width
                         wrapMode: TextArea.Wrap
                         font.pixelSize: 24

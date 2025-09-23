@@ -36,11 +36,17 @@ ApplicationWindow {
 
 
 
+
+
+
     //background
     background: Image {
         id: bg1
         source: "qrc:/img/after-sunset.jpg"
     }
+
+
+
 
 
 
