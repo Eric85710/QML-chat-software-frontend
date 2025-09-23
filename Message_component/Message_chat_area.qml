@@ -160,6 +160,7 @@ ColumnLayout{
                     id: plus_input_container
                     Layout.preferredWidth: 50
                     Layout.preferredHeight: 50
+                    anchors.bottom: parent.bottom
 
                     Image {
                         id: plus_input
@@ -184,6 +185,7 @@ ColumnLayout{
                     id: img_input_container
                     Layout.preferredWidth: 40
                     Layout.preferredHeight: 50
+                    anchors.bottom: parent.bottom
 
                     Image {
                         id: img_input
@@ -207,6 +209,7 @@ ColumnLayout{
                     id: emoji_input_container
                     Layout.preferredWidth: 50
                     Layout.preferredHeight: 50
+                    anchors.bottom: parent.bottom
 
                     Image {
                         id: emoji_input
@@ -277,6 +280,7 @@ ColumnLayout{
                     id: send_input_container
                     Layout.preferredWidth: 50
                     Layout.preferredHeight: 50
+                    anchors.bottom: parent.bottom
 
                     Image {
                         id: send_input
