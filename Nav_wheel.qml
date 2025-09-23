@@ -60,6 +60,33 @@ Item {
 
 
 
+        WheelHandler {
+            id: wheelHandler
+            target: nav_listView
+            orientation: Qt.Horizontal
+            onWheel: {
+                if (!root.allowScroll) return
+
+                // 根據滾輪方向調整 currentIndex
+                if (wheel.angleDelta.y > 0 && nav_listView.currentIndex > 0) {
+                    nav_listView.currentIndex--
+                } else if (wheel.angleDelta.y < 0 && nav_listView.currentIndex < root.model.length - 1) {
+                    nav_listView.currentIndex++
+                }
+
+                whole_app_window.returnFocusToMain()
+                wheel.accepted = true
+            }
+        }
+
+
+
+
+
+
+
+
+
 
 
 
@@ -129,6 +156,7 @@ Item {
         onCurrentIndexChanged: {
             root.currentIndex = currentIndex
             root.indexChanged(currentIndex)
+            console.log(currentIndex)
         }
 
         // 停止滑動後關閉 scroll 模式（避免 snap bug）
@@ -166,8 +194,8 @@ Item {
         // 🎞️ 動畫：寬度變化
         Behavior on width {
             NumberAnimation {
-                duration: 200
-                easing.type: Easing.InOutBounce
+                duration: 260
+                easing.type: Easing.InOutQuad
             }
         }
 
