@@ -110,6 +110,9 @@ ColumnLayout{
 
 
 
+
+
+
     //input bar in here
     Rectangle {
         id: message_input_block
@@ -123,9 +126,13 @@ ColumnLayout{
             anchors.left: parent.left
             anchors.right: parent.right
             anchors.margins: 10
-            height: 60
+            height: Math.min(Math.max(message_input.contentHeight, 40), 120) + 20
             radius: 12
             color: Qt.rgba(0.4, 0.4, 0.4, 0.4)
+
+            anchors.bottom: parent.bottom
+
+
 
 
 
@@ -134,8 +141,6 @@ ColumnLayout{
                 anchors.fill: parent
                 anchors.margins: 2
                 spacing: 0
-
-
 
 
 

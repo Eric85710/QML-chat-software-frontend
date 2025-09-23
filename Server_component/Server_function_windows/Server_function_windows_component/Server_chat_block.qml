@@ -8,12 +8,25 @@ ColumnLayout{
 
 
 
+
+    MouseArea {
+        anchors.fill: parent
+        onClicked: {
+            whole_app_window.returnFocusToMain()
+            event.accepted = true
+        }
+    }
+
+
+
     //message will shows in here
     Rectangle {
         id:chat_message_block
         Layout.fillWidth: true
         Layout.fillHeight: true
         color: "transparent"
+
+
 
         ColumnLayout {
             id:showing_the_chat_message
@@ -41,8 +54,6 @@ ColumnLayout{
                         radius: width / 2
                         source: "qrc:/img/after-sunset.jpg"
                     }
-
-
 
 
                     Rectangle {
@@ -77,6 +88,13 @@ ColumnLayout{
             }
         }
     }
+
+
+
+
+
+
+
 
 
 
