@@ -125,11 +125,15 @@ ColumnLayout{
 
 
 
+
+
+
+
     //input bar in here
     Rectangle {
         id: message_input_block
         Layout.fillWidth: true
-        Layout.preferredHeight: 80
+        Layout.preferredHeight: message_input_button_area.height + 10
         color: "transparent"
 
         //input_bar_rect
@@ -138,9 +142,21 @@ ColumnLayout{
             anchors.left: parent.left
             anchors.right: parent.right
             anchors.margins: 10
-            height: 60
+            height: Math.min(Math.max(message_input.contentHeight, 40), 200) + 20
             radius: 12
             color: Qt.rgba(0.4, 0.4, 0.4, 0.4)
+
+            anchors.bottom: parent.bottom
+
+
+            //smoother transition for autoheight
+            Behavior on height {
+                NumberAnimation {
+                    duration: 150
+                    easing.type: Easing.InOutQuad
+                }
+            }
+
 
 
 
@@ -155,13 +171,12 @@ ColumnLayout{
 
 
 
-
-
                 //plus icon
                 Item {
                     id: plus_input_container
                     Layout.preferredWidth: 50
                     Layout.preferredHeight: 50
+                    anchors.bottom: parent.bottom
 
                     Image {
                         id: plus_input
@@ -186,6 +201,7 @@ ColumnLayout{
                     id: img_input_container
                     Layout.preferredWidth: 40
                     Layout.preferredHeight: 50
+                    anchors.bottom: parent.bottom
 
                     Image {
                         id: img_input
@@ -209,6 +225,7 @@ ColumnLayout{
                     id: emoji_input_container
                     Layout.preferredWidth: 50
                     Layout.preferredHeight: 50
+                    anchors.bottom: parent.bottom
 
                     Image {
                         id: emoji_input
@@ -239,34 +256,47 @@ ColumnLayout{
 
 
 
-                TextEdit {
-                    id: message_input
+                Flickable {
+                    id: message_input_flickable
                     Layout.fillWidth: true
-                    wrapMode: TextEdit.Wrap
-                    font.pixelSize: 16
-                    color: "white"
+                    Layout.preferredHeight: Math.min(message_input.contentHeight, message_input.maximumHeight)
+                    contentHeight: message_input.contentHeight
+                    clip: true
+                    boundsBehavior: Flickable.StopAtBounds
+                    flickableDirection: Flickable.VerticalFlick
 
+                    TextEdit {
+                        id: message_input
+                        property int maximumHeight: 200
+                        width: parent.width
+                        wrapMode: TextEdit.Wrap
+                        font.pixelSize: 24
+                        color: "white"
+                        height: contentHeight
+                        anchors.top: parent.top
 
-                    // 設定高度隨內容變化 (最小 40px，最大 120px)
-                    height: Math.min(Math.max(contentHeight, 40), 120)
-
-                    Keys.onPressed: (event) => {
-                        if (event.key === Qt.Key_Return || event.key === Qt.Key_Enter) {
-                            if (event.modifiers & Qt.ShiftModifier) {
-                                // Shift+Enter = 換行
-                                event.accepted = false
-                            } else {
-                                // Enter = 送出訊息
-                                console.log("Send:", message_input.text)
-                                message_input.text = ""
+                        Keys.onPressed: (event) => {
+                            if (event.key === Qt.Key_Return || event.key === Qt.Key_Enter) {
+                                if (event.modifiers & Qt.ShiftModifier) {
+                                    event.accepted = false
+                                } else {
+                                    console.log("Send:", message_input.text)
+                                    message_input.text = ""
+                                    event.accepted = true
+                                }
+                            } else if (event.key === Qt.Key_Escape) {
+                                whole_app_window.returnFocusToMain()
                                 event.accepted = true
                             }
-                        } else if (event.key === Qt.Key_Escape) {
-                            whole_app_window.returnFocusToMain()
-                            event.accepted = true
                         }
                     }
+
+                    // 不顯示任何滾動條
+                    ScrollBar.vertical: ScrollBar {
+                        policy: ScrollBar.AlwaysOff
+                    }
                 }
+
 
 
 
@@ -278,6 +308,7 @@ ColumnLayout{
                     id: send_input_container
                     Layout.preferredWidth: 50
                     Layout.preferredHeight: 50
+                    anchors.bottom: parent.bottom
 
                     Image {
                         id: send_input
