@@ -117,7 +117,7 @@ ColumnLayout{
     Rectangle {
         id: message_input_block
         Layout.fillWidth: true
-        Layout.preferredHeight: 80
+        Layout.preferredHeight: message_input_button_area.height + 10
         color: "transparent"
 
         //input_bar_rect
