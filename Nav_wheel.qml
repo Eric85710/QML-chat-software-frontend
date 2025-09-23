@@ -69,7 +69,7 @@ Item {
         delegate: Item {
             // 📏 計算文字寬度元件（自訂）
 
-            width: nav_t_d.implicitWidth
+            width: nav_t_d.implicitWidth + 16
             height: parent.height
 
 
