@@ -133,6 +133,14 @@ ColumnLayout{
             anchors.bottom: parent.bottom
 
 
+            //smoother transition for autoheight
+            Behavior on height {
+                NumberAnimation {
+                    duration: 150
+                    easing.type: Easing.InOutQuad
+                }
+            }
+
 
 
 
