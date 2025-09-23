@@ -68,16 +68,11 @@ Item {
         // 🔁 每個選項的 delegate
         delegate: Item {
             // 📏 計算文字寬度元件（自訂）
-            Text_width_calulator {
-                id: widthCalc
-                text: modelData
-                fontSize: 20
-                bold: true
-                padding: 40
-            }
 
-            width: widthCalc.calculatedWidth
+            width: nav_t_d.implicitWidth
             height: parent.height
+
+
 
             // 🟦 背景矩形 + 點擊區域
             Rectangle {
@@ -100,6 +95,7 @@ Item {
 
             // 🔤 顯示選項文字
             Text {
+                id:nav_t_d
                 anchors.centerIn: parent
                 text: modelData
                 font.pixelSize: 20
@@ -140,13 +136,23 @@ Item {
         onFlickEnded: root.allowScroll = false
     }
 
+
+
+
+
+
+
+
+
+
+
     // 中間選中框：視覺提示目前選中項目
     Rectangle {
         id: choosing_rect
         anchors.verticalCenter: parent.verticalCenter
         anchors.horizontalCenter: parent.horizontalCenter
 
-        width: root.allowScroll ? root.itemWidth * 1.2 : root.itemWidth
+        width: root.allowScroll ? nav_listView.currentItem.width * 1.2 : nav_listView.currentItem.width
         height: root.allowScroll ? 60 : 40
 
         // 🎞️ 動畫：高度變化
