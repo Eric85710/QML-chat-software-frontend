@@ -6,6 +6,8 @@ import "Style_component"
 Item {
     id: root
 
+
+
     // 📦 外部可設定的屬性
     property var model: []          // 選項列表資料
     property int currentIndex: 0    // 當前選中的索引
@@ -20,6 +22,7 @@ Item {
             event.accepted = true
         }
     }
+
 
 
 
@@ -60,24 +63,7 @@ Item {
 
 
 
-        WheelHandler {
-            id: wheelHandler
-            target: nav_listView
-            orientation: Qt.Horizontal
-            onWheel: {
-                if (!root.allowScroll) return
 
-                // 根據滾輪方向調整 currentIndex
-                if (wheel.angleDelta.y > 0 && nav_listView.currentIndex > 0) {
-                    nav_listView.currentIndex--
-                } else if (wheel.angleDelta.y < 0 && nav_listView.currentIndex < root.model.length - 1) {
-                    nav_listView.currentIndex++
-                }
-
-                whole_app_window.returnFocusToMain()
-                wheel.accepted = true
-            }
-        }
 
 
 

@@ -263,8 +263,8 @@ ColumnLayout{
                         wrapMode: TextArea.Wrap
                         font.pixelSize: 24
                         color: "white"
-                        height: contentHeight
-                        anchors.top: parent.top
+                        Layout.preferredHeight: Math.min(message_input.implicitHeight, message_input.maximumHeight)
+                        anchors.bottom: parent.bottom
                         background: null  // 移除預設背景以符合原本透明風格
 
                         Keys.onPressed: (event) => {
