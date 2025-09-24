@@ -167,7 +167,7 @@ Item {
         anchors.horizontalCenter: parent.horizontalCenter
 
         width: root.allowScroll ? nav_listView.currentItem.width * 1.2 : nav_listView.currentItem.width
-        height: root.allowScroll ? 60 : 40
+        height: root.allowScroll ? 60 : 36
 
         // 🎞️ 動畫：高度變化
         Behavior on height {
