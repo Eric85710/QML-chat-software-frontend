@@ -39,6 +39,32 @@ Item {
     width: whole_app_window.width
     height: whole_app_window.height * 2
 
+
+
+
+
+    //nav_bar_wheel control
+    WheelHandler {
+        target: root
+        orientation: Qt.Vertical
+        onWheel: (event) => {
+            if (root.allowScroll) {
+                let speed = event.angleDelta.y * 5   // 調整倍率讓滑感更順
+                console.log("Wheel -> flick:", speed)
+
+                // flick(x速度, y速度)，只模擬水平方向
+                nav_listView.flick(-speed, 0)
+
+                event.accepted = true
+            }
+        }
+    }
+
+
+
+
+
+
     // 📜 水平 ListView：顯示選項列表
     ListView {
         id: nav_listView
@@ -55,6 +81,14 @@ Item {
 
         model: root.model
         currentIndex: root.currentIndex
+
+
+
+
+
+
+
+
 
 
 
