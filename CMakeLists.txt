@@ -65,6 +65,8 @@ qt_add_qml_module(appqrc_test
         RESOURCES svg_icon/face-smile-svgrepo-com.svg
         RESOURCES svg_icon/gallery-minimalistic-svgrepo-com.svg
         RESOURCES svg_icon/send-alt-1-svgrepo-com.svg
+        QML_FILES Style_component/Theme_mode.qml
+        QML_FILES Style_component/BlurCard.qml
 )
 
 

@@ -49,7 +49,7 @@ Item {
         orientation: Qt.Vertical
         onWheel: (event) => {
             if (root.allowScroll) {
-                let speed = event.angleDelta.y * 5   // 調整倍率讓滑感更順
+                let speed = event.angleDelta.y * 4   // 調整倍率讓滑感更順
                 console.log("Wheel -> flick:", speed)
 
                 // flick(x速度, y速度)，只模擬水平方向

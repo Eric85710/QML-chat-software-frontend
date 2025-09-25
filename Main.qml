@@ -17,6 +17,15 @@ ApplicationWindow {
 
 
 
+    Theme_mode{
+        id:theme_m
+    }
+
+
+
+
+
+
     Item {
         id: mainFocusItem
         focus: true
