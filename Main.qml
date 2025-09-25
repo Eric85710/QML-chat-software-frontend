@@ -148,6 +148,7 @@ ApplicationWindow {
             height: parent.height
             blurSource: bg1
             borderRadius: 35
+            anchors.centerIn: parent
             layer.enabled: true
         }
     }
