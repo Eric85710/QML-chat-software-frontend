@@ -4,7 +4,7 @@ import QtQuick 2.15
 QtObject {
     id: theme
 
-    property bool isDark: false
+    property bool isDark: true
 
     // === 基础颜色 ===
     property color primaryColor: isDark ? "#121212" : "#ffffff"

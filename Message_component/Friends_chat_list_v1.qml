@@ -2,11 +2,21 @@ import QtQuick
 import QtQuick.Controls
 import "../Server_component/"
 import App 1.0
+import "../Style_component"
 
 Item {
     id:whole_friends_chat_list
     width: parent.width
     height: parent.height
+
+    BlurCard {
+        width: parent.width
+        height: parent.height
+        blurSource: bg1
+        borderRadius: 12
+        anchors.top: parent.top
+        layer.enabled: true
+    }
 
 
 

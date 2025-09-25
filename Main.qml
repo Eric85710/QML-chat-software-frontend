@@ -49,9 +49,12 @@ ApplicationWindow {
 
 
     //background
-    background:Image {
+    Image {
         id: bg1
-        source: "qrc:/img/after-sunset.jpg"
+        anchors.fill: parent
+        source: theme.backgroundImage
+        fillMode: Image.PreserveAspectCrop
+        cache: false
     }
 
 
@@ -72,11 +75,18 @@ ApplicationWindow {
             anchors.fill: parent
 
 
-            Rectangle {
-                id:nav_color
-                anchors.fill: parent
-                color: "#66000000"
+            BlurCard {
+                width: parent.width
+                height: parent.height
+                blurSource: bg1
+                borderRadius: 0
+                layer.enabled: true
             }
+
+
+
+
+
         }
 
         //nav_wheel_layout
@@ -144,8 +154,6 @@ ApplicationWindow {
     Component {
         id: blur_iii
         BlurCard {
-            width: 240
-            height: parent.height
             blurSource: bg1
             borderRadius: 35
             anchors.centerIn: parent

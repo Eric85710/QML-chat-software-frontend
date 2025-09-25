@@ -5,6 +5,7 @@ import QtQuick.Controls
 import "Message_component/"
 import "Message_component/message_display/"
 import App 1.0
+import "Style_component/"
 
 Component {
     Item {
@@ -88,6 +89,8 @@ Component {
                         GradientStop { position: 0.0; color: Qt.rgba(0.2, 0.2, 0.2, 0.4) }
                         GradientStop { position: 1.0; color: Qt.rgba(0.2, 0.2, 0.2, 0.2) }
                     }
+
+
                     Layout.preferredWidth: 320
                     Layout.fillHeight: true
                     radius: 12
