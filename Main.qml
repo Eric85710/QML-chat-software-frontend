@@ -18,7 +18,7 @@ ApplicationWindow {
 
 
     Theme_mode{
-        id:theme_m
+        id:theme
     }
 
 
@@ -49,7 +49,7 @@ ApplicationWindow {
 
 
     //background
-    background: Image {
+    background:Image {
         id: bg1
         source: "qrc:/img/after-sunset.jpg"
     }
@@ -111,7 +111,7 @@ ApplicationWindow {
                 case "server": return server_Page
                 case "marketplace": return marketplace_Page
                 case "setting": return setting_page
-                case "workspace": return workspace_Page
+                case "workspace": return blur_iii
                 default: return server_Page
             }
         }
@@ -138,6 +138,18 @@ ApplicationWindow {
 
     Setting_page_q {
         id: setting_page
+    }
+
+
+    Component {
+        id: blur_iii
+        BlurCard {
+            width: 240
+            height: parent.height
+            blurSource: bg1
+            borderRadius: 35
+            layer.enabled: true
+        }
     }
 
 

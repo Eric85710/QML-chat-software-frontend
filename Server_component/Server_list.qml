@@ -165,6 +165,8 @@ RowLayout{
             height: 56
 
 
+
+
             Round_img_avatar {
                 id: per_avatar
                 width: parent.width
@@ -172,6 +174,7 @@ RowLayout{
                 radius: width / 2
                 source: model.icon
                 x: current_server === model.serverID ? 18 : (servers_icon_list.width - width) / 2
+
 
 
 
