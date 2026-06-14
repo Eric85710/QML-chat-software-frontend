@@ -11,23 +11,14 @@ RowLayout{
     signal serverSelected(string serverID)
     property string current_server: ""
     property var current_server_position
-    property real waveY: 0   // 最终目标
-    property real animWaveY: 200 // 实际动画用的值
-    property real wave_end: 12
-    property real have_radi: -12
-    property real have_end_wave: 0
-    property real have_cen_wave1x: 0
-    property real have_cen_wave2x: 0
-    property real have_cen_control2y: 0
-
-    property real have_wavePath1_x: 0
-    property real have_wavePath1_y: -44
-    property real have_wavePath1_controlx: 0
-    property real have_wavePath1_controly: 0
-
-    property real have_wavePath2_x: 0
-    property real have_wavePath2_controlx: 0
-    property real have_wavePath2_controly: 0
+    property real animWaveY: 0
+    property real waveDepth: 0
+    property real serverListWidth: 68
+    property real serverIconSize: 56
+    property real serverIconX: (serverListWidth - serverIconSize) / 2
+    property real selectedIconRadius: serverIconSize / 2
+    property real waveHalfHeight: selectedIconRadius * 1.5
+    property real waveActiveDepth: selectedIconRadius * 0.5
 
 
     property bool waveAnimated: false
@@ -36,109 +27,24 @@ RowLayout{
     Behavior on animWaveY {
         NumberAnimation { duration: 300; easing.type: Easing.InOutQuad }
     }
-    Behavior on have_end_wave {
-        NumberAnimation { duration: 300; easing.type: Easing.InOutQuad }
-    }
-    Behavior on have_radi {
-        NumberAnimation { duration: 300; easing.type: Easing.InOutQuad }
-    }
-    Behavior on wave_end {
-        NumberAnimation { duration: 300; easing.type: Easing.InOutQuad }
-    }
-    Behavior on have_cen_wave1x {
-        NumberAnimation { duration: 300; easing.type: Easing.InOutQuad }
-    }
-    Behavior on have_cen_wave2x {
-        NumberAnimation { duration: 300; easing.type: Easing.InOutQuad }
-    }
-    Behavior on have_cen_control2y {
-        NumberAnimation { duration: 300; easing.type: Easing.InOutQuad }
-    }
-    Behavior on have_wavePath1_x {
-        NumberAnimation { duration: 300; easing.type: Easing.InOutQuad }
-    }
-    Behavior on have_wavePath1_y {
-        NumberAnimation { duration: 300; easing.type: Easing.InOutQuad }
-    }
-    Behavior on have_wavePath1_controlx {
-        NumberAnimation { duration: 300; easing.type: Easing.InOutQuad }
-    }
-    Behavior on have_wavePath1_controly {
-        NumberAnimation { duration: 300; easing.type: Easing.InOutQuad }
-    }
-    Behavior on have_wavePath2_x {
-        NumberAnimation { duration: 300; easing.type: Easing.InOutQuad }
-    }
-    Behavior on have_wavePath2_controlx {
-        NumberAnimation { duration: 300; easing.type: Easing.InOutQuad }
-    }
-    Behavior on have_wavePath2_controly {
+    Behavior on waveDepth {
         NumberAnimation { duration: 300; easing.type: Easing.InOutQuad }
     }
 
 
-    // 只有超過 150 才更新目標位置
     onCurrent_server_positionChanged: {
-        if (!waveAnimated) {
-            // waveAnimated 為 false 時，只更新數值，不做動畫
-            have_cen_wave1x = 0
-            have_cen_wave2x = 0
-            have_cen_control2y = 0
-
-            have_wavePath1_x = 0
-            have_wavePath1_y = -44
-            have_wavePath1_controlx = 0
-            have_wavePath1_controly = 0
-
-            have_wavePath2_x = 0
-            have_wavePath2_controlx = 0
-            have_wavePath2_controly = 0
-
+        if (!current_server_position) {
             return
         }
 
-        // waveAnimated 為 true 時，開啟動畫
-        if (current_server_position.y >= 150) {
-            have_end_wave = -44
-            have_radi = -12
-            wave_end = 12
-            waveY = current_server_position.y
-            animWaveY = waveY
+        animWaveY = current_server_position.y
 
-            have_cen_wave1x = -60
-            have_cen_wave2x = -60
-            have_cen_control2y = -80
-
-            have_wavePath1_x = -12
-            have_wavePath1_y = -44
-            have_wavePath1_controlx = 0
-            have_wavePath1_controly = -38
-
-            have_wavePath2_x = 12
-            have_wavePath2_controlx = 12
-            have_wavePath2_controly = -6
-
-        //Don't have end wave
-        } else {
-            have_end_wave = 0
-            have_radi = 0
-            wave_end = 0
-            waveY = current_server_position.y
-            animWaveY = waveY
-
-            have_cen_wave1x = -60
-            have_cen_wave2x = -60
-            have_cen_control2y = -80
-
-            have_wavePath1_x = -12
-            have_wavePath1_y = -44
-            have_wavePath1_controlx = 0
-            have_wavePath1_controly = -38
-
-            have_wavePath2_x = 12
-            have_wavePath2_controlx = 12
-            have_wavePath2_controly = -6
+        if (!waveAnimated) {
+            waveDepth = 0
+            return
         }
+
+        waveDepth = waveActiveDepth
     }
 
 
@@ -149,7 +55,7 @@ RowLayout{
     //choosing_the_server in here
     ListView {
         id: servers_icon_list
-        Layout.preferredWidth: 68
+        Layout.preferredWidth: serverListWidth
         Layout.fillHeight: true
         model: ListModel {
             ListElement { serverID: "add_server"; name: "日落伺服器"; icon: "qrc:/svg_icon/plus-circle-svgrepo-com.svg"; unread: 3 }
@@ -161,8 +67,8 @@ RowLayout{
 
 
         delegate: Item {
-            width: 56
-            height: 56
+            width: serverIconSize
+            height: serverIconSize
 
 
 
@@ -173,26 +79,7 @@ RowLayout{
                 height: parent.height
                 radius: width / 2
                 source: model.icon
-                x: current_server === model.serverID ? 18 : (servers_icon_list.width - width) / 2
-
-
-
-
-                Behavior on x {
-                    NumberAnimation { duration: 200; easing.type: Easing.InOutQuad }
-                }
-
-                transform: Scale {
-                    id: avatarScale
-                    origin.x: per_avatar.width / 2
-                    origin.y: per_avatar.height / 2
-                    xScale: current_server === model.serverID ? 0.714 : 1.0
-                    yScale: current_server === model.serverID ? 0.714 : 1.0
-                }
-
-                Behavior on transform {
-                    NumberAnimation { duration: 150; easing.type: Easing.InOutQuad }
-                }
+                x: serverIconX
 
                 MouseArea {
                     anchors.fill: parent
@@ -204,7 +91,7 @@ RowLayout{
 
 
                         let mappedPos = per_avatar.mapToItem(servers_icon_list, 0, 0)
-                        current_server_position = Qt.point(mappedPos.x, mappedPos.y + 105)
+                        current_server_position = Qt.point(mappedPos.x, mappedPos.y + per_avatar.height / 2)
                         console.log("Mapped Y:", current_server_position.y)
                     }
                 }
@@ -232,7 +119,7 @@ RowLayout{
                     let firstDelegate = servers_icon_list.contentItem.children[0]
                     if (firstDelegate) {
                         let mappedPos = firstDelegate.mapToItem(servers_icon_list, 0, 0)
-                        current_server_position = Qt.point(mappedPos.x, mappedPos.y + 105)
+                        current_server_position = Qt.point(mappedPos.x, mappedPos.y + firstDelegate.height / 2)
                     }
 
                     serverSelected(firstServer.serverID)
@@ -272,7 +159,16 @@ RowLayout{
         Shape {
             id: wave_sh
             width: parent.width
-            height: parent.heights
+            height: parent.height
+
+            property real cornerRadius: 12
+            property real topY: Math.max(cornerRadius, animWaveY - waveHalfHeight)
+            property real bottomY: Math.min(server_function_block.height - cornerRadius, animWaveY + waveHalfHeight)
+            property real upperSpan: Math.max(1, animWaveY - topY)
+            property real lowerSpan: Math.max(1, bottomY - animWaveY)
+            property real shoulderTension: 0.45
+            property real crestTension: 0.62
+            property real crestShoulder: 0.16
 
 
             ShapePath {
@@ -288,92 +184,67 @@ RowLayout{
                 //radius top right
                 PathQuad {
                     x:server_function_block.width
-                    y:12
-                    relativeControlX: 12
-                    relativeControlY: 0
+                    y:wave_sh.cornerRadius
+                    controlX: server_function_block.width
+                    controlY: 0
                 }
 
                 //down
-                PathLine { x:server_function_block.width; y:server_function_block.height -12}
+                PathLine { x:server_function_block.width; y:server_function_block.height - wave_sh.cornerRadius}
 
                 //radius bottom right
                 PathQuad {
-                    relativeX: -12
-                    relativeY: 12
-                    relativeControlY: 12
-                    relativeControlX: 0
+                    x: server_function_block.width - wave_sh.cornerRadius
+                    y: server_function_block.height
+                    controlX: server_function_block.width
+                    controlY: server_function_block.height
                 }
 
                 //left
-                PathLine { x: 12; y: server_function_block.height }
+                PathLine { x: wave_sh.cornerRadius; y: server_function_block.height }
 
                 //radius bottom left
                 PathQuad {
-                    relativeX: -12
-                    relativeY: -12
-                    relativeControlX: -12
-                    relativeControlY: 0
+                    x: 0
+                    y: server_function_block.height - wave_sh.cornerRadius
+                    controlX: 0
+                    controlY: server_function_block.height
                 }
 
 
-                //line to wave
-                //define wave position in here
-                PathLine { relativeX: 0; y: animWaveY }
+                //line to selection cradle
+                PathLine { x: 0; y: wave_sh.bottomY }
 
-
-
-
-
-
-
-
-
-
-                //wave_path1
-                PathQuad {
-                    relativeX: have_wavePath1_x
-                    relativeY: have_wavePath1_y
-                    relativeControlX: 0
-                    relativeControlY: have_wavePath1_controly
-                }
-
-                //wave center
+                //lower half of the smooth cradle
                 PathCubic {
-                    relativeX: 0
-                    relativeY: -80
-                    relativeControl1X: have_cen_wave1x
-                    relativeControl2X: have_cen_wave2x
-                    relativeControl1Y: 0
-                    relativeControl2Y: have_cen_control2y
+                    x: -waveDepth
+                    y: animWaveY
+                    control1X: 0
+                    control1Y: wave_sh.bottomY - wave_sh.lowerSpan * wave_sh.shoulderTension
+                    control2X: -waveDepth + selectedIconRadius * wave_sh.crestShoulder
+                    control2Y: animWaveY + wave_sh.lowerSpan * wave_sh.crestTension
                 }
 
-                //wave_path2
-                PathQuad {
-                    relativeX: have_wavePath2_x
-                    relativeY: have_end_wave
-                    relativeControlX: have_wavePath2_controlx
-                    relativeControlY: have_wavePath2_controly
+                //upper half of the smooth cradle
+                PathCubic {
+                    x: 0
+                    y: wave_sh.topY
+                    control1X: -waveDepth + selectedIconRadius * wave_sh.crestShoulder
+                    control1Y: animWaveY - wave_sh.upperSpan * wave_sh.crestTension
+                    control2X: 0
+                    control2Y: wave_sh.topY + wave_sh.upperSpan * wave_sh.shoulderTension
                 }
-
-
-
-
-
-
-
-
-
 
 
                 //up
-                PathLine { x: 0; y: wave_end}
+                PathLine { x: 0; y: wave_sh.cornerRadius}
 
                 //radius
                 PathQuad {
-                    x: 12
+                    x: wave_sh.cornerRadius
                     y: 0
-                    relativeControlX: 0
-                    relativeControlY: have_radi
+                    controlX: 0
+                    controlY: 0
                 }
             }
         }
