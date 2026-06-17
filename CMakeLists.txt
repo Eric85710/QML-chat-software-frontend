@@ -11,6 +11,8 @@ qt_standard_project_setup(REQUIRES 6.8)
 
 qt_add_executable(appqrc_test
     main.cpp
+    systemscrollhandler.cpp
+    systemscrollhandler.h
     ${RESOURCE_ADDED}
 )
 

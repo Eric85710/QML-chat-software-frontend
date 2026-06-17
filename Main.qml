@@ -1,7 +1,6 @@
 import QtQuick
 import QtQuick.Window
 import QtQuick.Controls
-import QtQuick.Layouts
 import QtQuick.Effects
 import "Style_component"
 
@@ -89,21 +88,13 @@ ApplicationWindow {
 
         }
 
-        //nav_wheel_layout
-        RowLayout{
+        Nav_wheel{
+            id: pickerWheel
+            anchors.fill: parent
+            model: ["message", "server", "marketplace", "setting", "workspace"]
 
-            anchors.centerIn: parent
-
-
-            Nav_wheel{
-                id: pickerWheel
-                anchors.centerIn: parent
-                model: ["message", "server", "marketplace", "setting", "workspace"]
-
-                onIndexChanged: {
-                    console.log("選中項目:", model[currentIndex])
-                }
-
+            onIndexChanged: {
+                console.log("選中項目:", model[currentIndex])
             }
         }
     }
