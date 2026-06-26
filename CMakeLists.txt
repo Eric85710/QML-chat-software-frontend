@@ -4,8 +4,20 @@ project(qrc_test VERSION 0.1 LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-find_package(Qt6 REQUIRED COMPONENTS Quick)
-find_package(Qt6 REQUIRED COMPONENTS Core)
+find_package(Qt6 REQUIRED COMPONENTS Core Gui Quick)
+
+set(PLATFORM_CHROME_SOURCES
+    platform/SystemWindowChrome.cpp
+    platform/SystemWindowChrome.h
+)
+
+if(APPLE)
+    enable_language(OBJCXX)
+    list(APPEND PLATFORM_CHROME_SOURCES
+        platform/macos/MacSystemWindowChrome.mm
+        platform/macos/MacSystemWindowChrome_p.h
+    )
+endif()
 
 qt_standard_project_setup(REQUIRES 6.8)
 
@@ -13,6 +25,7 @@ qt_add_executable(appqrc_test
     main.cpp
     systemscrollhandler.cpp
     systemscrollhandler.h
+    ${PLATFORM_CHROME_SOURCES}
     ${RESOURCE_ADDED}
 )
 
@@ -21,6 +34,8 @@ qt_add_qml_module(appqrc_test
     VERSION 1.0
     QML_FILES
         Main.qml
+        LoginWindow.qml
+        FramelessWindow.qml
         RESOURCES resources.qrc
         QML_FILES Nav_wheel.qml
         QML_FILES Text_width_calulator.qml
@@ -107,6 +122,15 @@ target_link_libraries(appqrc_test
     PRIVATE Qt6::Quick
 )
 target_link_libraries(appqrc_test PRIVATE Qt6::Core)
+target_link_libraries(appqrc_test PRIVATE Qt6::Gui)
+
+if(APPLE)
+    target_link_libraries(appqrc_test PRIVATE "-framework AppKit")
+endif()
+
+if(WIN32)
+    target_link_libraries(appqrc_test PRIVATE dwmapi)
+endif()
 
 include(GNUInstallDirs)
 install(TARGETS appqrc_test

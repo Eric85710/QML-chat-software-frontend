@@ -7,6 +7,7 @@ Rectangle {
     color: Qt.rgba(0.8, 0.8, 0.8, 0.4)
     anchors.horizontalCenter: parent.horizontalCenter
     implicitHeight: text_chaanel_content.implicitHeight + 2
+    height: implicitHeight
 
     Column {
         anchors.fill: parent

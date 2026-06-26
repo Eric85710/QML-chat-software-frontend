@@ -39,7 +39,7 @@ Item {
                 width: parent.width - 20
                 height: 40
                 radius: 6
-                opacity: 0.4
+                color: "#66FFFFFF"
                 anchors.verticalCenter: parent.verticalCenter
 
                 Row {
@@ -68,6 +68,7 @@ Item {
             Rectangle {
                 id:setting_button_block
                 implicitWidth: option_r.implicitWidth
+                width: implicitWidth
                 height: 64
                 color: "#10FFFFFF"
                 radius: 12

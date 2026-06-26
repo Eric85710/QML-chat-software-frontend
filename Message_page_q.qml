@@ -103,6 +103,7 @@ Component {
 
                     Friends_chat_list_v1 {
                         id:friends_chat_list_block
+                        blurSource: whole_app_window.blurBackdropSource
                     }
 
                 }

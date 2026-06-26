@@ -21,6 +21,13 @@ public:
                                    qreal angleDeltaY,
                                    qreal pixelDeltaX,
                                    qreal pixelDeltaY);
+    Q_INVOKABLE qreal normalizedNavigationDistance(qreal angleDeltaX,
+                                                   qreal angleDeltaY,
+                                                   qreal pixelDeltaX,
+                                                   qreal pixelDeltaY,
+                                                   qreal itemWidth,
+                                                   qreal pixelGain,
+                                                   bool mouseWheel);
     Q_INVOKABLE int nextNavigationIndex(int currentIndex,
                                         int itemCount,
                                         qreal angleDeltaX,

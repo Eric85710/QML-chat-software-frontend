@@ -4,6 +4,7 @@ import QtQuick.Layouts
 import QtQuick.Controls
 import "Setting_page_component"
 import "Setting_page_component/Settting_option_pages"
+import "Style_component"
 
 Component {
     Item {
@@ -84,10 +85,11 @@ Component {
 
                 Rectangle {
                     id: chat_room_list
-                    color: "#44000000"
+                    color: "transparent"
                     Layout.preferredWidth: 200
                     Layout.fillHeight: true
                     radius: 12
+                    clip: true
 
                     // 淡入動畫
                     OpacityAnimator { target: chat_room_list; from: 0; to: 1; duration: 300 }
@@ -96,6 +98,18 @@ Component {
                         id:friends_list_loadin_animation
                         x:-100
                         y:100
+                    }
+
+                    BlurCard {
+                        anchors.fill: parent
+                        blurSource: whole_app_window.blurBackdropSource
+                        borderRadius: chat_room_list.radius
+                    }
+
+                    Rectangle {
+                        anchors.fill: parent
+                        radius: chat_room_list.radius
+                        color: "#44000000"
                     }
 
                     Setting_list_v2 {
@@ -129,10 +143,11 @@ Component {
 
                 Rectangle {
                     id: message_chat_block
-                    color: "#44000000"
+                    color: "transparent"
                     Layout.fillWidth: true
                     Layout.fillHeight: true
                     radius: 12
+                    clip: true
 
                     OpacityAnimator { target: message_chat_block; from: 0; to: 1; duration: 300 }
 
@@ -140,6 +155,18 @@ Component {
                         id:message_chat_block_loadin_animation
                         x:100
                         y:100
+                    }
+
+                    BlurCard {
+                        anchors.fill: parent
+                        blurSource: whole_app_window.blurBackdropSource
+                        borderRadius: message_chat_block.radius
+                    }
+
+                    Rectangle {
+                        anchors.fill: parent
+                        radius: message_chat_block.radius
+                        color: "#44000000"
                     }
 
                     Loader {

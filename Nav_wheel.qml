@@ -284,6 +284,30 @@ Item {
     }
 
     function handleWheel(wheel) {
+        if (root.hasWheelScrollModifier(wheel)) {
+            if (root.isMouseWheel(wheel)
+                    || root.isMouseLikeTouchPadWheel(wheel)
+                    || root.isAngleOnlyWheel(wheel)) {
+                const step = SystemScroll.navigationStep(wheelValue(wheel.angleDelta, "x"),
+                                                         wheelValue(wheel.angleDelta, "y"),
+                                                         wheelValue(wheel.pixelDelta, "x"),
+                                                         wheelValue(wheel.pixelDelta, "y"))
+                root.switchByWheelStep(step)
+                return
+            }
+
+            const distance = SystemScroll.normalizedNavigationDistance(
+                    wheelValue(wheel.angleDelta, "x"),
+                    wheelValue(wheel.angleDelta, "y"),
+                    wheelValue(wheel.pixelDelta, "x"),
+                    wheelValue(wheel.pixelDelta, "y"),
+                    root.itemWidth,
+                    root.wheelPixelGain,
+                    root.isMouseWheel(wheel))
+            root.scrollByPixels(distance)
+            return
+        }
+
         if (SystemScroll.platform === "Windows") {
             root.handleWindowsWheel(wheel)
         } else if (SystemScroll.platform === "macOS") {
@@ -291,6 +315,15 @@ Item {
         } else {
             root.handleBasicWheel(wheel)
         }
+    }
+
+    function hasWheelScrollModifier(wheel) {
+        if (!wheel) {
+            return false
+        }
+
+        return (wheel.modifiers & Qt.ControlModifier) !== 0
+                || (wheel.modifiers & Qt.MetaModifier) !== 0
     }
 
     function switchToIndex(index) {
@@ -329,8 +362,8 @@ Item {
 
 
     // 📐 元件尺寸設定
-    implicitWidth: whole_app_window.width
-    implicitHeight: 70
+    implicitWidth: parent ? parent.width : whole_app_window.width
+    implicitHeight: 52
 
     onWidthChanged: Qt.callLater(function() {
         root.snapToIndex(root.currentIndex, false)
@@ -431,7 +464,9 @@ Item {
                         width: root.itemWidth - 24
                         horizontalAlignment: Text.AlignHCenter
 
-                        property real selectedAmount: root.centerAmount(index)
+                        property real selectedAmount: index === root.displayIndex
+                                                      ? root.centerAmount(index)
+                                                      : 0
 
                         color: Qt.rgba(0.67 + selectedAmount * 0.33,
                                        0.67 + selectedAmount * 0.33,
@@ -446,11 +481,6 @@ Item {
                             }
                         }
 
-                        Behavior on color {
-                            ColorAnimation {
-                                duration: 200
-                            }
-                        }
                     }
                 }
             }

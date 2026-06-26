@@ -1,6 +1,7 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
 #include "Server_Page_status/eventbus.h"
+#include "platform/SystemWindowChrome.h"
 #include "systemscrollhandler.h"
 
 
@@ -13,6 +14,7 @@ int main(int argc, char *argv[])
     QQmlApplicationEngine engine;
     qmlRegisterSingletonInstance("App", 1, 0, "EventBus", EventBus::instance());
     qmlRegisterSingletonInstance("App", 1, 0, "SystemScroll", systemScrollHandler.get());
+    qmlRegisterType<SystemWindowChrome>("App", 1, 0, "SystemWindowChrome");
 
 
     QObject::connect(

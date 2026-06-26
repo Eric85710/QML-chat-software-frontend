@@ -2,6 +2,7 @@
 import QtQuick
 import QtQuick.Layouts
 import QtQuick.Controls
+import "Style_component"
 
 Component {
     Item {
@@ -86,7 +87,20 @@ Component {
                         height: 40
                         anchors.centerIn: parent
                         radius: 12
-                        color: "#80000000"
+                        color: "transparent"
+                        clip: true
+
+                        BlurCard {
+                            anchors.fill: parent
+                            blurSource: whole_app_window.blurBackdropSource
+                            borderRadius: marketplace_search_bar_rect.radius
+                        }
+
+                        Rectangle {
+                            anchors.fill: parent
+                            radius: marketplace_search_bar_rect.radius
+                            color: "#80000000"
+                        }
                     }
                 }
 

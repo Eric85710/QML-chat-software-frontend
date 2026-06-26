@@ -7,6 +7,20 @@
 
 namespace {
 
+qreal navigationAxisDelta(qreal x, qreal y)
+{
+    return std::abs(x) > std::abs(y) ? -x : -y;
+}
+
+qreal clampNavigationDistance(qreal distance, qreal maxDistance)
+{
+    if (qFuzzyIsNull(maxDistance) || maxDistance < 0.0) {
+        return distance;
+    }
+
+    return std::clamp(distance, -maxDistance, maxDistance);
+}
+
 class MacOsScrollHandler final : public SystemScrollHandler
 {
 public:
@@ -113,6 +127,33 @@ int SystemScrollHandler::navigationStep(qreal angleDeltaX,
                                         qreal pixelDeltaY)
 {
     return computeNavigationStep(angleDeltaX, angleDeltaY, pixelDeltaX, pixelDeltaY);
+}
+
+qreal SystemScrollHandler::normalizedNavigationDistance(qreal angleDeltaX,
+                                                        qreal angleDeltaY,
+                                                        qreal pixelDeltaX,
+                                                        qreal pixelDeltaY,
+                                                        qreal itemWidth,
+                                                        qreal pixelGain,
+                                                        bool mouseWheel)
+{
+    if (itemWidth <= 0.0) {
+        return 0.0;
+    }
+
+    const qreal angle = navigationAxisDelta(angleDeltaX, angleDeltaY);
+    if (!qFuzzyIsNull(angle)) {
+        const qreal divisor = mouseWheel ? 120.0 : 240.0;
+        const qreal maxDistance = mouseWheel ? itemWidth : itemWidth * 0.5;
+        return clampNavigationDistance(angle / divisor * itemWidth, maxDistance);
+    }
+
+    const qreal pixel = navigationAxisDelta(pixelDeltaX, pixelDeltaY);
+    if (qFuzzyIsNull(pixel)) {
+        return 0.0;
+    }
+
+    return clampNavigationDistance(pixel * pixelGain, itemWidth * 0.35);
 }
 
 int SystemScrollHandler::nextNavigationIndex(int currentIndex,

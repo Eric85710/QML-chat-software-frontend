@@ -13,7 +13,6 @@ Column {
         color: "#40FFFFFF"
 
 
-
         Column {
             anchors.fill: parent
             padding: 20

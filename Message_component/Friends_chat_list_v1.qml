@@ -6,13 +6,15 @@ import "../Style_component"
 
 Item {
     id:whole_friends_chat_list
+    property Item blurSource
+
     width: parent.width
     height: parent.height
 
     BlurCard {
         width: parent.width
         height: parent.height
-        blurSource: bg1
+        blurSource: whole_friends_chat_list.blurSource
         borderRadius: 12
         anchors.top: parent.top
         layer.enabled: true
@@ -47,8 +49,8 @@ Item {
                 width: parent.width - 20
                 height: 40
                 radius: 6
+                color: "#66FFFFFF"
                 anchors.centerIn: parent
-                opacity: 0.4
 
                 Row {
                     anchors.fill: parent
