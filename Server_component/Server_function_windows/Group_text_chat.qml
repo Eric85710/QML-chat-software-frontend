@@ -1,6 +1,7 @@
 import QtQuick
 import QtQuick.Layouts
 import "Server_function_windows_component"
+import "../../Style_component"
 
 
 
@@ -98,10 +99,7 @@ RowLayout {
     //all of the members will shows in here
     Rectangle {
         id: server_member_list
-        gradient: Gradient {
-            GradientStop { position: 0.0; color: Qt.rgba(0.2, 0.2, 0.2, 0.4) }
-            GradientStop { position: 1.0; color: Qt.rgba(0.2, 0.2, 0.2, 0.2) }
-        }
+        color: "transparent"
         Layout.preferredWidth: 160
         Layout.fillHeight: true
         radius: 12
@@ -116,6 +114,21 @@ RowLayout {
             id:server_member_list_loadin_animation
             x:100
             y:100
+        }
+
+        BlurCard {
+            anchors.fill: parent
+            blurSource: whole_app_window.blurBackdropSource
+            borderRadius: server_member_list.radius
+        }
+
+        Rectangle {
+            anchors.fill: parent
+            radius: server_member_list.radius
+            gradient: Gradient {
+                GradientStop { position: 0.0; color: Qt.rgba(0.2, 0.2, 0.2, 0.4) }
+                GradientStop { position: 1.0; color: Qt.rgba(0.2, 0.2, 0.2, 0.2) }
+            }
         }
 
         Server_members_list_block {}

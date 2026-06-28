@@ -111,14 +111,12 @@ Component {
                 //choosing the server here
                 Rectangle {
                     id: server_list
-                    gradient: Gradient {
-                        GradientStop { position: 0.0; color: Qt.rgba(0.2, 0.2, 0.2, 0.4) }
-                        GradientStop { position: 1.0; color: Qt.rgba(0.2, 0.2, 0.2, 0.2) }
-                    }
+                    color: "transparent"
 
                     Layout.preferredWidth: 340
                     Layout.fillHeight: true
                     radius: 12
+                    clip: true
 
 
                     transform: Translate{
@@ -127,6 +125,21 @@ Component {
                         y:100
                     }
 
+
+                    BlurCard {
+                        anchors.fill: parent
+                        blurSource: whole_app_window.blurBackdropSource
+                        borderRadius: server_list.radius
+                    }
+
+                    Rectangle {
+                        anchors.fill: parent
+                        radius: server_list.radius
+                        gradient: Gradient {
+                            GradientStop { position: 0.0; color: Qt.rgba(0.2, 0.2, 0.2, 0.4) }
+                            GradientStop { position: 1.0; color: Qt.rgba(0.2, 0.2, 0.2, 0.2) }
+                        }
+                    }
 
                     Server_list{
                         id:server_list_qmlfile

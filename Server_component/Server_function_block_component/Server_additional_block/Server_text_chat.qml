@@ -9,6 +9,7 @@ Rectangle {
     color: Qt.rgba(0.8, 0.8, 0.8, 0.4)
     anchors.horizontalCenter: parent.horizontalCenter
     implicitHeight: text_chaanel_content.implicitHeight + 2
+    height: implicitHeight
 
     signal chatRoomSelected(var text_chat_room_id)
 
@@ -16,7 +17,6 @@ Rectangle {
     onChatRoomSelected: {
         console.log(text_chat_room_id)
     }
-
 
     Column {
         anchors.fill: parent

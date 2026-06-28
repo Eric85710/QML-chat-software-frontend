@@ -2,6 +2,7 @@ import QtQuick 2.15
 import QtQuick.Layouts
 import QtQuick.Controls
 import "../../Server_component"
+import "../../Style_component"
 
 
 ColumnLayout{
@@ -48,8 +49,21 @@ ColumnLayout{
 
                     Rectangle {
                         id: message_background_color
-                        color: "#4033ccff"
+                        color: "transparent"
                         radius: 8
+                        clip: true
+
+                        BlurCard {
+                            anchors.fill: parent
+                            blurSource: whole_app_window.blurBackdropSource
+                            borderRadius: message_background_color.radius
+                        }
+
+                        Rectangle {
+                            anchors.fill: parent
+                            radius: message_background_color.radius
+                            color: "#4033ccff"
+                        }
 
                         Column {
                             id:message_text_column
@@ -94,18 +108,30 @@ ColumnLayout{
         color: "transparent"
 
         //input_bar_rect
-        Rectangle {
-            id: message_input_button_area
-            anchors.left: parent.left
-            anchors.right: parent.right
-            anchors.margins: 10
-            height: 60
-            radius: 12
-            color: "black"
-            opacity: 0.6
+            Rectangle {
+                id: message_input_button_area
+                anchors.left: parent.left
+                anchors.right: parent.right
+                anchors.margins: 10
+                height: 60
+                radius: 12
+                color: "transparent"
+                clip: true
+
+                BlurCard {
+                    anchors.fill: parent
+                    blurSource: whole_app_window.blurBackdropSource
+                    borderRadius: message_input_button_area.radius
+                }
+
+                Rectangle {
+                    anchors.fill: parent
+                    radius: message_input_button_area.radius
+                    color: "#99000000"
+                }
 
 
-            RowLayout {
+                RowLayout {
                 anchors.fill: parent
                 anchors.margins: 2
 
